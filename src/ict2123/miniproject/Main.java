@@ -11,8 +11,8 @@ public class Main {
         SwingUtilities.invokeLater(new Runnable(){
             @Override
             public void run(){
-                Login login = new Login();
-                login.show();
+                IndexPage index = new IndexPage();
+                index.show();
             }
         });
     }
