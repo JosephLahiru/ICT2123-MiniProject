@@ -18,6 +18,9 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.SwingConstants;
 
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Login{
     
@@ -36,11 +39,22 @@ public class Login{
     private JTextField textFieldUname;
     private JPasswordField textFieldPwd;
     
+    Connection conn;
+    
+    String password;
+    String userName;
+    
     public Login(){
-        initialize();
+        try {
+            initialize();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
-    private void initialize(){
+    private void initialize() throws ClassNotFoundException, SQLException{
         window = new JFrame();
         window.setTitle("Login");
         window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -84,7 +98,7 @@ public class Login{
         ImageIcon labelIcon = new ImageIcon(this.getClass().getResource("logo.png"));
         labelTopic.setIcon(labelIcon);
         
-        labelUname = new JLabel("User Name : ");
+        labelUname = new JLabel("Username : ");
         labelUname.setForeground(Color.black);
         labelUname.setFont(new Font("Sans-serif", Font.BOLD, 36));
         
@@ -108,6 +122,25 @@ public class Login{
         
         button = createButton();
         panel3.add(button);
+        
+        String url = "jdbc:mysql://localhost:3306/school";
+        String user = "root";
+        String password = "";
+        String db_query = "use ICT2123;";
+        
+        Class.forName("com.mysql.cj.jdbc.Driver");
+
+        conn = DriverManager.getConnection(url, user, password);
+        if(conn != null)
+            System.out.println("Connected");
+
+        Statement st1 = conn.createStatement();
+
+        if(!st1.execute(db_query)){
+            System.out.println("Databse selected sucessfully.");
+        }else{
+            System.out.println("Databse selected failed.");
+        }
     }
 
     private JButton createButton() {
@@ -121,16 +154,29 @@ public class Login{
             @Override
             public void actionPerformed(ActionEvent e) {
                 
-                String userName = textFieldUname.getText();
+                userName = textFieldUname.getText();
                 char pwd[] = textFieldPwd.getPassword();
-                String password = new String(pwd);
+                password = new String(pwd);
                 
                 if(userName.length()<=0){
                     JOptionPane.showMessageDialog(null, "User Name cannot be empty !!!", "Warning !!!", JOptionPane.WARNING_MESSAGE);
                 }else if(password.length()<=0){
                     JOptionPane.showMessageDialog(null, "Password cannot be empty !!!", "Warning !!!", JOptionPane.WARNING_MESSAGE);
                 }else{
-                    System.out.println("Hello " + userName + ", Your Password is " + password);
+                    boolean status=false;
+                    try {
+                        status = checkAccount(userName, password);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    if(status==true){
+                        System.out.println("HELLO USER, WELCOME!!");
+                    }else{
+                        JOptionPane.showMessageDialog(null, "User credentials incorrect,\n Please try again !!!", "Warning !!!", JOptionPane.WARNING_MESSAGE);
+                    }
                 }
             }
         });
@@ -147,6 +193,40 @@ public class Login{
         textfield.setMargin(new Insets(5, 10, 5, 10));
         
         return textfield;
+    }
+    
+    public boolean checkAccount(String uname, String pwd) throws ClassNotFoundException, SQLException{
+        
+        boolean status = false;
+        int check_id;
+        String chek_type;
+        
+        try{
+            check_id = Integer.parseInt(uname.split("_")[1]);
+            chek_type = uname.split("_")[0];
+
+        }catch(ArrayIndexOutOfBoundsException e){
+            check_id = -99999;
+            chek_type = "none";
+        }
+        
+        String user_query = "SELECT id, user_type, password FROM user;";
+
+        Statement st2 = conn.createStatement();
+        ResultSet result = st2.executeQuery(user_query);
+
+        while(result.next()){
+            int id = result.getInt("id");
+            String type = result.getString("user_type");
+            String pswd = result.getString("password");
+            
+            if((id==check_id) && (pswd.equals(pwd)) && (chek_type.equals(type))){
+                status = true;
+                break;
+            }
+        }
+        
+        return status;
     }
     
     public void show(){

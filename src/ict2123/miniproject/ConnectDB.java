@@ -1,22 +1,18 @@
 package ict2123.miniproject;
+
 import java.sql.*;
 
-public class SetupDB{
-
+public class ConnectDB {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
 
         String url = "jdbc:mysql://localhost:3306/school";
         String user = "root";
         String password = "";
-        String query1 = "CREATE DATABASE ICT2123;";
+//        String query1 = "CREATE DATABASE ICT2123;";
         String query5 = "use ICT2123;";
-        String query2 = "CREATE TABLE user(id INT PRIMARY KEY AUTO_INCREMENT, first_name VARCHAR(30), last_name VARCHAR(30),"
-                + "password VARCHAR(50), address VARCHAR(50), email VARCHAR(30), "
-                + "dob date, contact_numer VARCHAR(11), gender CHAR(1));";
+//        String query2 = ";";
 //        String query3 = "UPDATE student SET name='suvimal' WHERE id='1';";
 //        String query4 = "DELETE FROM student WHERE id='1';";
-
-        String query3 = "SELECT * FROM user WHERE first_name='kamal'";
 
         // register the driver
         Class.forName("com.mysql.cj.jdbc.Driver");
@@ -28,35 +24,27 @@ public class SetupDB{
 
         //Insert data into db
         Statement st1 = conn.createStatement();
-        
-        if(!st1.execute(query5)){
+        int rowsInserted = st1.executeUpdate(query5);
+
+        if(rowsInserted > 0){
             System.out.println("Databse selected sucessfully.");
         }else{
             System.out.println("Databse selected failed.");
         }
-        
+
+//        //Display Values in database
 //        Statement st2 = conn.createStatement();
-//        int rowsInserted2 = st2.executeUpdate(query2);
+//        ResultSet result2 = st2.executeQuery(query2);
 //
-//        if(rowsInserted2 > 0){
-//            System.out.println("User table created sucessfully.");
-//        }else{
-//            System.out.println("User table creation failed.");
+//        while(result2.next()){
+//            int id = result2.getInt("id");
+//            String name = result2.getString("name");
+//            int age = result2.getInt("age");
+//
+//            System.out.println("ID : " + id);
+//            System.out.println("Name : " + name);
+//            System.out.println("Age : " + age);
 //        }
-
-        //Display Values in database
-        Statement st2 = conn.createStatement();
-        ResultSet result2 = st2.executeQuery(query3);
-
-        while(result2.next()){
-            int id = result2.getInt("id");
-            String name = result2.getString("first_name");
-            String pwd = result2.getString("password");
-
-            System.out.println("ID : " + id);
-            System.out.println("Name : " + name);
-            System.out.println("Pwd : " + pwd);
-        }
 //
 //        //Update values in db
 //        PreparedStatement st3 = conn.prepareStatement(query3);
