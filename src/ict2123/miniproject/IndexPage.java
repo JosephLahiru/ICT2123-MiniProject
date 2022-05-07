@@ -1,17 +1,24 @@
 package ict2123.miniproject;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class IndexPage implements ActionListener{
     
-    JFrame frame = new JFrame();
+    JFrame frame = new JFrame("Index");
     JButton startButton = new JButton("Get Started");
     JPanel panel = new JPanel();
+    JPanel panel2 = new JPanel();
+    JLabel labelTopic = new JLabel("<html><center>WELCOME<br>TO</center></html>");
 
     public IndexPage() {
         initialize();
@@ -20,14 +27,31 @@ public class IndexPage implements ActionListener{
     private void initialize(){
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(800, 500);
-        frame.setLayout(new BorderLayout(10, 10));
+        frame.setLayout(new BorderLayout());
+        frame.setResizable(false);
         
         frame.add(panel, BorderLayout.CENTER);
+        frame.add(panel2, BorderLayout.SOUTH);
         
         startButton.setFocusable(false);
         startButton.addActionListener(this);
+        startButton.setFont(new Font("Sans-serif", Font.PLAIN, 40));
         
-        panel.add(startButton);
+        panel.setBackground(new Color(0x696969));
+        panel2.setBackground(new Color(0x696969));
+        
+        labelTopic.setHorizontalTextPosition(SwingConstants.CENTER);
+        labelTopic.setVerticalTextPosition(SwingConstants.TOP);
+        
+        ImageIcon labelIcon = new ImageIcon(this.getClass().getResource("logo.png"));
+        labelTopic.setIcon(labelIcon);
+        labelTopic.setFont(new Font("Arial", Font.BOLD, 56));
+        labelTopic.setForeground(Color.white);
+        
+        //frame.add(startButton);
+        
+        panel2.add(startButton);
+        panel.add(labelTopic);
     }
     
     public void show(){
