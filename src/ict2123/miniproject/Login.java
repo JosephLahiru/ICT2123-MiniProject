@@ -1,236 +1,253 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
 package ict2123.miniproject;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.ImageIcon;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-import javax.swing.SwingConstants;
-
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
-public class Login{
-    
-    private JFrame window;
-    private JPanel panel;
-    private JPanel panel2;
-    private JPanel panel3;
-    
-    private JPanel panel4;
-    private JPanel panel5;
-    
-    private JButton button;
-    private JLabel labelTopic;
-    private JLabel labelUname;
-    private JLabel labelPwd;
-    private JTextField textFieldUname;
-    private JPasswordField textFieldPwd;
-    
+/**
+ *
+ * @author Joseph Rasanjana
+ */
+public class Login extends javax.swing.JFrame {
+
     Connection conn;
-    
-    String password;
-    String userName;
-    
-    public Login(){
-        try {
-            initialize();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    private void initialize() throws ClassNotFoundException, SQLException{
-        window = new JFrame();
-        window.setTitle("Login");
-        window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        window.setSize(800, 500);
-        window.setResizable(false);
-        window.setLayout(new BorderLayout(10, 10));
-        window.getContentPane().setBackground(Color.LIGHT_GRAY);
-        window.setLocationRelativeTo(null);
-        
-        panel = new JPanel();
-        panel2 = new JPanel();
-        panel3 = new JPanel();
-        
-        panel4 = new JPanel();
-        panel5 = new JPanel();
-        
-        panel.setBackground(Color.GRAY);
-        panel2.setBackground(Color.LIGHT_GRAY);
-        panel3.setBackground(Color.LIGHT_GRAY);
-        
-        panel4.setBackground(Color.LIGHT_GRAY);
-        panel5.setBackground(Color.LIGHT_GRAY);
-        
-        panel2.setLayout(new GridLayout(2, 2, 10, 10));
-        
-        window.add(panel, BorderLayout.NORTH);
-        window.add(panel2, BorderLayout.CENTER);
-        window.add(panel3, BorderLayout.SOUTH);
-        
-        window.add(panel4, BorderLayout.EAST);
-        window.add(panel5, BorderLayout.WEST);
 
-        labelTopic = new JLabel("Login");
-        labelTopic.setHorizontalTextPosition(SwingConstants.CENTER);
-        labelTopic.setVerticalTextPosition(SwingConstants.BOTTOM);
-        panel.add(labelTopic);
-        
-        labelTopic.setForeground(Color.white);
-        labelTopic.setFont(new Font("Sans-serif", Font.BOLD, 36));
-        
-        ImageIcon labelIcon = new ImageIcon(this.getClass().getResource("logo.png"));
-        labelTopic.setIcon(labelIcon);
-        
-        labelUname = new JLabel("Username : ");
-        labelUname.setForeground(Color.black);
-        labelUname.setFont(new Font("Sans-serif", Font.BOLD, 36));
-        
-        
-        labelPwd = new JLabel("Password : ");
-        labelPwd.setForeground(Color.black);
-        labelPwd.setFont(new Font("Sans-serif", Font.BOLD, 36));
-
-        textFieldUname = createTextField();
-        panel2.add(labelUname);
-        panel2.add(textFieldUname);
-        
-        textFieldPwd = new JPasswordField(10);
-        textFieldPwd.setFont(new Font("Arial", Font.BOLD, 24));
-        textFieldPwd.setForeground(Color.GRAY);
-        textFieldPwd.setMargin(new Insets(5, 10, 5, 10));
-        textFieldPwd.setEchoChar('*');
-        
-        panel2.add(labelPwd);
-        panel2.add(textFieldPwd);
-        
-        button = createButton();
-        panel3.add(button);
-        
-        String url = "jdbc:mysql://localhost:3306/school";
-        String user = "root";
-        String password = "";
-        String db_query = "use ICT2123;";
-        
-        Class.forName("com.mysql.cj.jdbc.Driver");
-
-        conn = DriverManager.getConnection(url, user, password);
-        if(conn != null)
-            System.out.println("Connected");
-
-        Statement st1 = conn.createStatement();
-
-        if(!st1.execute(db_query)){
-            System.out.println("Databse selected sucessfully.");
-        }else{
-            System.out.println("Databse selected failed.");
-        }
+    public Login() {
+        initComponents();
+        init();
     }
 
-    private JButton createButton() {
-        JButton button = new JButton("Login");
-        button.setFocusable(false);
-        
-        button.setFont(new Font("Arial", Font.PLAIN, 24));
-        button.setMargin(new Insets(10, 10, 10, 10));
-        
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                
-                userName = textFieldUname.getText();
-                char pwd[] = textFieldPwd.getPassword();
-                password = new String(pwd);
-                
-                if(userName.length()<=0){
-                    JOptionPane.showMessageDialog(null, "User Name cannot be empty !!!", "Warning !!!", JOptionPane.WARNING_MESSAGE);
-                }else if(password.length()<=0){
-                    JOptionPane.showMessageDialog(null, "Password cannot be empty !!!", "Warning !!!", JOptionPane.WARNING_MESSAGE);
-                }else{
-                    boolean status=false;
-                    try {
-                        status = checkAccount(userName, password);
-                    } catch (ClassNotFoundException ex) {
-                        Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (SQLException ex) {
-                        Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    
-                    if(status==true){
-                        System.out.println("HELLO USER, WELCOME!!");
-                    }else{
-                        JOptionPane.showMessageDialog(null, "User credentials incorrect,\n Please try again !!!", "Warning !!!", JOptionPane.WARNING_MESSAGE);
-                    }
-                }
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        btnLogin = new javax.swing.JButton();
+        pwdField = new javax.swing.JPasswordField();
+        txtUname = new javax.swing.JTextField();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(204, 204, 204));
+        setPreferredSize(new java.awt.Dimension(800, 500));
+        setResizable(false);
+
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ict2123/miniproject/logo.png"))); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Login");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(312, 312, 312)
+                .addComponent(jLabel1)
+                .addGap(312, 312, 312))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addGap(348, 348, 348))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addGap(21, 21, 21))
+        );
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel3.setText("Username : ");
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel4.setText("Password : ");
+
+        btnLogin.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
             }
         });
-        
-        return button;
-    }
-    
-    public JTextField createTextField(){
-        JTextField textfield = new JTextField(10);
-        
-        textfield.setFont(new Font("Arial", Font.BOLD, 24));
-        textfield.setForeground(Color.GRAY);
-        textfield.setToolTipText("Enter your user name.");
-        textfield.setMargin(new Insets(5, 10, 5, 10));
-        
-        return textfield;
-    }
-    
-    public boolean checkAccount(String uname, String pwd) throws ClassNotFoundException, SQLException{
-        
+
+        pwdField.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+
+        txtUname.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(58, 58, 58)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pwdField)
+                    .addComponent(txtUname, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnLogin)
+                .addGap(343, 343, 343))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtUname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(pwdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addComponent(btnLogin)
+                .addGap(54, 54, 54))
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+         
+        String userName, password;
+
+        userName = txtUname.getText();
+        char[] pwd = pwdField.getPassword();
+        password = new String(pwd);
+
+        if (userName.length() <= 0) {
+            JOptionPane.showMessageDialog(null, "User Name cannot be empty !!!", "Warning !!!", JOptionPane.WARNING_MESSAGE);
+        } else if (password.length() <= 0) {
+            JOptionPane.showMessageDialog(null, "Password cannot be empty !!!", "Warning !!!", JOptionPane.WARNING_MESSAGE);
+        } else {
+            boolean status = false;
+            try {
+                status = checkAccount(userName, password);
+            } catch (ClassNotFoundException ex) {
+                System.out.println("ClassNotFound Exception !!!");
+            } catch (SQLException ex) {
+                System.out.println("SQL Expection !!!");
+            }
+
+            if (status == true) {
+                System.out.println("HELLO USER, WELCOME!!");
+                UserAccount account = new UserAccount(userName);
+                account.show();
+                dispose();
+
+            } else {
+                JOptionPane.showMessageDialog(null, "User credentials incorrect,\n Please try again !!!", "Warning !!!", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnLoginActionPerformed
+
+    public boolean checkAccount(String uname, String pwd) throws ClassNotFoundException, SQLException {
+
         boolean status = false;
         int check_id;
         String chek_type;
-        
-        try{
+
+        try {
             check_id = Integer.parseInt(uname.split("_")[1]);
             chek_type = uname.split("_")[0];
 
-        }catch(ArrayIndexOutOfBoundsException e){
+        } catch (ArrayIndexOutOfBoundsException e) {
             check_id = -99999;
             chek_type = "none";
         }
-        
+
         String user_query = "SELECT id, user_type, password FROM user;";
 
         Statement st2 = conn.createStatement();
         ResultSet result = st2.executeQuery(user_query);
 
-        while(result.next()){
+        while (result.next()) {
             int id = result.getInt("id");
             String type = result.getString("user_type");
             String pswd = result.getString("password");
-            
-            if((id==check_id) && (pswd.equals(pwd)) && (chek_type.equals(type))){
+
+            if ((id == check_id) && (pswd.equals(pwd)) && (chek_type.equals(type))) {
                 status = true;
                 break;
             }
         }
-        
+
         return status;
     }
-    
-    public void show(){
-        this.window.setVisible(true);
+
+    private void init() {
+        setLocationRelativeTo(null);
+        btnLogin.setFocusable(false);
+
+        DbConnector DbCon = new DbConnector();
+        conn = DbCon.getConnection();
     }
-    
+
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Login().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLogin;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField pwdField;
+    private javax.swing.JTextField txtUname;
+    // End of variables declaration//GEN-END:variables
 }
