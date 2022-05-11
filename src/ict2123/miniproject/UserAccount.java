@@ -3,7 +3,6 @@ package ict2123.miniproject;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JFrame;
