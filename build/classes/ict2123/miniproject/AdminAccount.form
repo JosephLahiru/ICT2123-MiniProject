@@ -3,6 +3,7 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -23,13 +24,129 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="lblAdmin" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="225" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblAdminName" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btnUpdateUser" pref="123" max="32767" attributes="0"/>
+                          <Component id="btnCreateUser" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btnCreateCourse" max="32767" attributes="0"/>
+                          <Component id="btnUpdateCourse" pref="123" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btnCreateNotice" max="32767" attributes="0"/>
+                          <Component id="btnUpdateNotice" pref="123" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btnUpdateTimetable" max="32767" attributes="0"/>
+                          <Component id="btnCreateTimetable" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="300" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+              <Component id="lblAdmin" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+              <Component id="lblAdminName" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="74" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnCreateUser" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
+                  <Component id="btnCreateCourse" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
+                  <Component id="btnCreateNotice" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
+                  <Component id="btnCreateTimetable" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="btnUpdateCourse" alignment="1" min="-2" pref="59" max="-2" attributes="0"/>
+                  <Component id="btnUpdateNotice" alignment="1" min="-2" pref="59" max="-2" attributes="0"/>
+                  <Component id="btnUpdateTimetable" alignment="1" min="-2" pref="59" max="-2" attributes="0"/>
+                  <Component id="btnUpdateUser" alignment="1" min="-2" pref="57" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="163" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JButton" name="btnCreateUser">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Create User"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateUserActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnUpdateUser">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Update User"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnCreateCourse">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Create Course"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnUpdateCourse">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Update Course"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnCreateNotice">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Create Notice"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateNoticeActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnUpdateNotice">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Update Notice"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnCreateTimetable">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Create Timetable"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnUpdateTimetable">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Update Timetable"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblAdmin">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI Emoji" size="48" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Welcome Admin"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblAdminName">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="24" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Current Admin  : "/>
+      </Properties>
+    </Component>
+  </SubComponents>
 </Form>

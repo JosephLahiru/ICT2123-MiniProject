@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 public class Login extends javax.swing.JFrame {
 
     Connection conn;
+    String type, uName;
 
     public Login() {
         initComponents();
@@ -133,7 +134,7 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-         
+
         String userName, password;
 
         userName = txtUname.getText();
@@ -149,17 +150,35 @@ public class Login extends javax.swing.JFrame {
             try {
                 status = checkAccount(userName, password);
             } catch (ClassNotFoundException ex) {
-                System.out.println("ClassNotFound Exception !!!");
+                System.out.println("ClassNotFound Exception !!! : " + ex);
             } catch (SQLException ex) {
-                System.out.println("SQL Expection !!!");
+                System.out.println("SQL Expection !!! : " + ex);
             }
 
-            if (status == true) {
-                System.out.println("HELLO USER, WELCOME!!");
-                UserAccount account = new UserAccount(userName);
+            if ("ADM".equals(type)) {
+                System.out.println("HELLO Admin, WELCOME!!");
+                AdminAccount account = new AdminAccount(uName);
                 account.show();
                 dispose();
 
+            } else if ("ST".equals(type)) {
+                System.out.println("HELLO Student, WELCOME!!");
+                StudentAccount account = new StudentAccount(uName);
+                account.show();
+                dispose();
+                
+            } else if ("LEC".equals(type)) {
+                System.out.println("HELLO Lecturer, WELCOME!!");
+                LecturerAccount account = new LecturerAccount(uName);
+                account.show();
+                dispose();
+                
+            } else if ("TO".equals(type)) {
+                System.out.println("HELLO Technical Officer, WELCOME!!");
+                TechnicalOfficerAccount account = new TechnicalOfficerAccount(uName);
+                account.show();
+                dispose();
+                
             } else {
                 JOptionPane.showMessageDialog(null, "User credentials incorrect,\n Please try again !!!", "Warning !!!", JOptionPane.WARNING_MESSAGE);
             }
@@ -170,29 +189,43 @@ public class Login extends javax.swing.JFrame {
 
         boolean status = false;
         int check_id;
-        String chek_type;
+        String check_type, _check_type = null;
+        type = "none";
 
         try {
             check_id = Integer.parseInt(uname.split("_")[1]);
-            chek_type = uname.split("_")[0];
+            check_type = uname.split("_")[0];
 
         } catch (ArrayIndexOutOfBoundsException e) {
             check_id = -99999;
-            chek_type = "none";
+            check_type = "none";
         }
 
-        String user_query = "SELECT id, user_type, password FROM user;";
+        if ("ADM".equals(check_type)) {
+            _check_type = "admin";
+        } else if ("ST".equals(check_type)) {
+            _check_type = "student";
+        } else if ("LEC".equals(check_type)) {
+            _check_type = "lecturer";
+        } else if ("TO".equals(check_type)) {
+            _check_type = "technical_officer";
+        } else{
+            _check_type = "none";
+        }
+
+        String user_query = "SELECT id, first_name, password FROM " + _check_type + ";";
 
         Statement st2 = conn.createStatement();
         ResultSet result = st2.executeQuery(user_query);
 
         while (result.next()) {
             int id = result.getInt("id");
-            String type = result.getString("user_type");
             String pswd = result.getString("password");
+            uName = result.getString("first_name");
 
-            if ((id == check_id) && (pswd.equals(pwd)) && (chek_type.equals(type))) {
+            if ((id == check_id) && (pswd.equals(pwd))) {
                 status = true;
+                type = check_type;
                 break;
             }
         }

@@ -10,11 +10,17 @@ package ict2123.miniproject;
  */
 public class LecturerAccount extends javax.swing.JFrame {
 
-    /**
-     * Creates new form LecturerAccount
-     */
-    public LecturerAccount() {
+    String userName;
+    
+    public LecturerAccount(String uName) {
+        
+        this.userName = uName;
+        
         initComponents();
+        init();
+    }
+
+    private LecturerAccount() {
     }
 
     /**
@@ -26,25 +32,49 @@ public class LecturerAccount extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblLecturerName = new javax.swing.JLabel();
+        lblLecturer = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+
+        lblLecturerName.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblLecturerName.setText("Current Lecturer  : ");
+
+        lblLecturer.setFont(new java.awt.Font("Segoe UI Emoji", 0, 48)); // NOI18N
+        lblLecturer.setText("Welcome Lecturer");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(209, Short.MAX_VALUE)
+                .addComponent(lblLecturer)
+                .addGap(208, 208, 208))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addComponent(lblLecturerName)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(lblLecturer)
+                .addGap(16, 16, 16)
+                .addComponent(lblLecturerName)
+                .addContainerGap(361, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    private void init(){
+        setLocationRelativeTo(null);
+        lblLecturerName.setText("Current Lecturer : " + userName);
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -78,5 +108,7 @@ public class LecturerAccount extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel lblLecturer;
+    private javax.swing.JLabel lblLecturerName;
     // End of variables declaration//GEN-END:variables
 }

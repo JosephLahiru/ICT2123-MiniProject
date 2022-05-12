@@ -10,11 +10,17 @@ package ict2123.miniproject;
  */
 public class StudentAccount extends javax.swing.JFrame {
 
-    /**
-     * Creates new form StudentAccount
-     */
-    public StudentAccount() {
+    String userName;
+    
+    public StudentAccount(String uName) {
+        
+        this.userName = uName;
+        
         initComponents();
+        init();
+    }
+
+    private StudentAccount() {
     }
 
     /**
@@ -26,27 +32,50 @@ public class StudentAccount extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblStudent = new javax.swing.JLabel();
+        lblStudentName = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(800, 500));
         setResizable(false);
+
+        lblStudent.setFont(new java.awt.Font("Segoe UI Emoji", 0, 48)); // NOI18N
+        lblStudent.setText("Welcome Student");
+
+        lblStudentName.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblStudentName.setText("Current Student  : ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(212, Short.MAX_VALUE)
+                .addComponent(lblStudent)
+                .addGap(212, 212, 212))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addComponent(lblStudentName)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(lblStudent)
+                .addGap(16, 16, 16)
+                .addComponent(lblStudentName)
+                .addContainerGap(361, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    private void init(){
+        setLocationRelativeTo(null);
+        lblStudentName.setText("Current Student : " + userName);
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -80,5 +109,7 @@ public class StudentAccount extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel lblStudent;
+    private javax.swing.JLabel lblStudentName;
     // End of variables declaration//GEN-END:variables
 }

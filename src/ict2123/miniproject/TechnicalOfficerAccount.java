@@ -10,11 +10,17 @@ package ict2123.miniproject;
  */
 public class TechnicalOfficerAccount extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TechnicalOfficerAccount
-     */
-    public TechnicalOfficerAccount() {
+    String userName;
+    
+    public TechnicalOfficerAccount(String uName) {
+        
+        this.userName = uName;
+        
         initComponents();
+        init();
+    }
+
+    private TechnicalOfficerAccount() {
     }
 
     /**
@@ -26,25 +32,50 @@ public class TechnicalOfficerAccount extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblTechnicalOfficerName = new javax.swing.JLabel();
+        lblTechnicalOfficer = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(800, 500));
+        setResizable(false);
+
+        lblTechnicalOfficerName.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblTechnicalOfficerName.setText("Current Technical Officer  : ");
+
+        lblTechnicalOfficer.setFont(new java.awt.Font("Segoe UI Emoji", 0, 48)); // NOI18N
+        lblTechnicalOfficer.setText("Welcome Technical Officer");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(119, Short.MAX_VALUE)
+                .addComponent(lblTechnicalOfficer)
+                .addGap(119, 119, 119))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addComponent(lblTechnicalOfficerName)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(lblTechnicalOfficer)
+                .addGap(16, 16, 16)
+                .addComponent(lblTechnicalOfficerName)
+                .addContainerGap(361, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    private void init(){
+        setLocationRelativeTo(null);
+        lblTechnicalOfficerName.setText("Current Technical Officer : " + userName);
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -78,5 +109,7 @@ public class TechnicalOfficerAccount extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel lblTechnicalOfficer;
+    private javax.swing.JLabel lblTechnicalOfficerName;
     // End of variables declaration//GEN-END:variables
 }
