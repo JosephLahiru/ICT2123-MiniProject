@@ -95,6 +95,11 @@ public class AdminAccount extends javax.swing.JFrame {
         });
 
         btnCreateTimetable.setText("Create Timetable");
+        btnCreateTimetable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateTimetableActionPerformed(evt);
+            }
+        });
 
         btnUpdateTimetable.setText("Update Timetable");
 
@@ -264,6 +269,10 @@ public class AdminAccount extends javax.swing.JFrame {
         notice.show();
         dispose();
     }//GEN-LAST:event_btnViewNoticeActionPerformed
+
+    private void btnCreateTimetableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateTimetableActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCreateTimetableActionPerformed
 
     private void init(){
         setLocationRelativeTo(null);
