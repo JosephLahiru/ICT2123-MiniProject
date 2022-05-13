@@ -83,6 +83,11 @@ public class AdminAccount extends javax.swing.JFrame {
         });
 
         btnUpdateNotice.setText("Update Notice");
+        btnUpdateNotice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateNoticeActionPerformed(evt);
+            }
+        });
 
         btnCreateTimetable.setText("Create Timetable");
 
@@ -150,7 +155,9 @@ public class AdminAccount extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateNoticeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateNoticeActionPerformed
-        // TODO add your handling code here:
+        CreateNotice notice = new CreateNotice();
+        notice.show();
+        dispose();
     }//GEN-LAST:event_btnCreateNoticeActionPerformed
 
     private void btnCreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateUserActionPerformed
@@ -176,6 +183,12 @@ public class AdminAccount extends javax.swing.JFrame {
         update.show();
         dispose();
     }//GEN-LAST:event_btnUpdateCourseActionPerformed
+
+    private void btnUpdateNoticeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateNoticeActionPerformed
+        UpdateNotice update = new UpdateNotice();
+        update.show();
+        dispose();
+    }//GEN-LAST:event_btnUpdateNoticeActionPerformed
 
     private void init(){
         setLocationRelativeTo(null);
