@@ -55,6 +55,11 @@ public class AdminAccount extends javax.swing.JFrame {
         });
 
         btnUpdateUser.setText("Update User");
+        btnUpdateUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateUserActionPerformed(evt);
+            }
+        });
 
         btnCreateCourse.setText("Create Course");
 
@@ -143,6 +148,12 @@ public class AdminAccount extends javax.swing.JFrame {
         user.show();
         dispose();
     }//GEN-LAST:event_btnCreateUserActionPerformed
+
+    private void btnUpdateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateUserActionPerformed
+        UpdateUser update = new UpdateUser();
+        update.show();
+        dispose();
+    }//GEN-LAST:event_btnUpdateUserActionPerformed
 
     private void init(){
         setLocationRelativeTo(null);
