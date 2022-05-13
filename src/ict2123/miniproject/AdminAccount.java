@@ -1,5 +1,18 @@
 package ict2123.miniproject;
 
+import ict2123.miniproject.admin_windows.ViewNotice;
+import ict2123.miniproject.admin_windows.ViewTimetable;
+import ict2123.miniproject.admin_windows.UpdateNotice;
+import ict2123.miniproject.admin_windows.ViewCourse;
+import ict2123.miniproject.admin_windows.CreateNotice;
+import ict2123.miniproject.admin_windows.CreateCourse;
+import ict2123.miniproject.admin_windows.CreateUser;
+import ict2123.miniproject.admin_windows.UpdateUser;
+import ict2123.miniproject.admin_windows.UpdateCourse;
+import ict2123.miniproject.admin_windows.UpdateTimetable;
+import ict2123.miniproject.admin_windows.CreateTimetable;
+import ict2123.miniproject.admin_windows.ViewUser;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
