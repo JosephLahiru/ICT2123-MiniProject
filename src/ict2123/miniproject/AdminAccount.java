@@ -120,8 +120,18 @@ public class AdminAccount extends javax.swing.JFrame {
         });
 
         btnViewCourse.setText("View Course");
+        btnViewCourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewCourseActionPerformed(evt);
+            }
+        });
 
         btnViewNotice.setText("View Notice");
+        btnViewNotice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewNoticeActionPerformed(evt);
+            }
+        });
 
         btnViewTimetable.setText("View Timetable");
 
@@ -242,6 +252,18 @@ public class AdminAccount extends javax.swing.JFrame {
         user.show();
         dispose();
     }//GEN-LAST:event_btnViewUserActionPerformed
+
+    private void btnViewCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewCourseActionPerformed
+        ViewCourse course = new ViewCourse(userName);
+        course.show();
+        dispose();
+    }//GEN-LAST:event_btnViewCourseActionPerformed
+
+    private void btnViewNoticeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewNoticeActionPerformed
+        ViewNotice notice = new ViewNotice(userName);
+        notice.show();
+        dispose();
+    }//GEN-LAST:event_btnViewNoticeActionPerformed
 
     private void init(){
         setLocationRelativeTo(null);

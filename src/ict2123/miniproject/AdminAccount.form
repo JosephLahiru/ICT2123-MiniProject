@@ -201,11 +201,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="View Course"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewCourseActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnViewNotice">
       <Properties>
         <Property name="text" type="java.lang.String" value="View Notice"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewNoticeActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnViewTimetable">
       <Properties>
