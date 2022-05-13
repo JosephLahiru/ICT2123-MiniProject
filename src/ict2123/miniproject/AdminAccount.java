@@ -44,6 +44,10 @@ public class AdminAccount extends javax.swing.JFrame {
         lblAdmin = new javax.swing.JLabel();
         lblAdminName = new javax.swing.JLabel();
         btnLogout = new javax.swing.JButton();
+        btnViewUser = new javax.swing.JButton();
+        btnViewCourse = new javax.swing.JButton();
+        btnViewNotice = new javax.swing.JButton();
+        btnViewTimetable = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -108,6 +112,19 @@ public class AdminAccount extends javax.swing.JFrame {
             }
         });
 
+        btnViewUser.setText("View User");
+        btnViewUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewUserActionPerformed(evt);
+            }
+        });
+
+        btnViewCourse.setText("View Course");
+
+        btnViewNotice.setText("View Notice");
+
+        btnViewTimetable.setText("View Timetable");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -123,21 +140,25 @@ public class AdminAccount extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblAdminName)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnUpdateUser, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-                            .addComponent(btnCreateUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnViewUser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnUpdateUser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                            .addComponent(btnCreateUser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnCreateCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnUpdateCourse, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE))
+                            .addComponent(btnUpdateCourse, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                            .addComponent(btnViewCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnCreateNotice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnUpdateNotice, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE))
+                            .addComponent(btnUpdateNotice, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                            .addComponent(btnViewNotice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnUpdateTimetable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnCreateTimetable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(btnCreateTimetable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnViewTimetable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(79, 79, 79))
         );
         layout.setVerticalGroup(
@@ -161,7 +182,14 @@ public class AdminAccount extends javax.swing.JFrame {
                     .addComponent(btnUpdateNotice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnUpdateTimetable, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnUpdateUser, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(163, 163, 163))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnViewTimetable, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnViewNotice, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+                        .addComponent(btnViewUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnViewCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(94, 94, 94))
         );
 
         pack();
@@ -208,6 +236,12 @@ public class AdminAccount extends javax.swing.JFrame {
         login.show();
         dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void btnViewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewUserActionPerformed
+        ViewUser user = new ViewUser(userName);
+        user.show();
+        dispose();
+    }//GEN-LAST:event_btnViewUserActionPerformed
 
     private void init(){
         setLocationRelativeTo(null);
@@ -257,6 +291,10 @@ public class AdminAccount extends javax.swing.JFrame {
     private javax.swing.JButton btnUpdateNotice;
     private javax.swing.JButton btnUpdateTimetable;
     private javax.swing.JButton btnUpdateUser;
+    private javax.swing.JButton btnViewCourse;
+    private javax.swing.JButton btnViewNotice;
+    private javax.swing.JButton btnViewTimetable;
+    private javax.swing.JButton btnViewUser;
     private javax.swing.JLabel lblAdmin;
     private javax.swing.JLabel lblAdminName;
     // End of variables declaration//GEN-END:variables

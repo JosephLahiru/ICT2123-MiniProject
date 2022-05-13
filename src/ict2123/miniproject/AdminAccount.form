@@ -31,29 +31,33 @@
               <Component id="btnLogout" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
           </Group>
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lblAdminName" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btnUpdateUser" pref="123" max="32767" attributes="0"/>
-                          <Component id="btnCreateUser" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="btnViewUser" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnUpdateUser" alignment="0" pref="123" max="32767" attributes="0"/>
+                          <Component id="btnCreateUser" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="btnCreateCourse" max="32767" attributes="0"/>
                           <Component id="btnUpdateCourse" pref="123" max="32767" attributes="0"/>
+                          <Component id="btnViewCourse" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="btnCreateNotice" max="32767" attributes="0"/>
                           <Component id="btnUpdateNotice" pref="123" max="32767" attributes="0"/>
+                          <Component id="btnViewNotice" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="btnUpdateTimetable" max="32767" attributes="0"/>
                           <Component id="btnCreateTimetable" max="32767" attributes="0"/>
+                          <Component id="btnViewTimetable" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -85,7 +89,16 @@
                   <Component id="btnUpdateTimetable" alignment="1" min="-2" pref="59" max="-2" attributes="0"/>
                   <Component id="btnUpdateUser" alignment="1" min="-2" pref="57" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btnViewTimetable" pref="57" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="btnViewNotice" pref="57" max="32767" attributes="0"/>
+                      <Component id="btnViewUser" max="32767" attributes="0"/>
+                      <Component id="btnViewCourse" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -175,6 +188,29 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLogoutActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnViewUser">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="View User"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewUserActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnViewCourse">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="View Course"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnViewNotice">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="View Notice"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnViewTimetable">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="View Timetable"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
