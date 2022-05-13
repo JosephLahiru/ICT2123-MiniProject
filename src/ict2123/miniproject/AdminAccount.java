@@ -62,8 +62,18 @@ public class AdminAccount extends javax.swing.JFrame {
         });
 
         btnCreateCourse.setText("Create Course");
+        btnCreateCourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateCourseActionPerformed(evt);
+            }
+        });
 
         btnUpdateCourse.setText("Update Course");
+        btnUpdateCourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateCourseActionPerformed(evt);
+            }
+        });
 
         btnCreateNotice.setText("Create Notice");
         btnCreateNotice.addActionListener(new java.awt.event.ActionListener() {
@@ -154,6 +164,18 @@ public class AdminAccount extends javax.swing.JFrame {
         update.show();
         dispose();
     }//GEN-LAST:event_btnUpdateUserActionPerformed
+
+    private void btnCreateCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateCourseActionPerformed
+        CreateCourse course = new CreateCourse();
+        course.show();
+        dispose();
+    }//GEN-LAST:event_btnCreateCourseActionPerformed
+
+    private void btnUpdateCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateCourseActionPerformed
+        UpdateCourse update = new UpdateCourse();
+        update.show();
+        dispose();
+    }//GEN-LAST:event_btnUpdateCourseActionPerformed
 
     private void init(){
         setLocationRelativeTo(null);

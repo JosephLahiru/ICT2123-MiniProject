@@ -106,11 +106,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Create Course"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateCourseActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnUpdateCourse">
       <Properties>
         <Property name="text" type="java.lang.String" value="Update Course"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateCourseActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnCreateNotice">
       <Properties>
