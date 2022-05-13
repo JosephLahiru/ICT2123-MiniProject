@@ -16,10 +16,17 @@ import java.util.logging.Logger;
 public class CreateUser extends javax.swing.JFrame {
 
     Connection conn;
+    String userName;
     
-    public CreateUser() {
+    public CreateUser(String uName) {
+        
+        this.userName = uName;
+        
         initComponents();
         init();
+    }
+
+    private CreateUser() {
     }
 
     /**
@@ -53,6 +60,7 @@ public class CreateUser extends javax.swing.JFrame {
         comboGender = new javax.swing.JComboBox<>();
         pwd = new javax.swing.JPasswordField();
         pwdCom = new javax.swing.JPasswordField();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -92,6 +100,15 @@ public class CreateUser extends javax.swing.JFrame {
 
         comboGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Other" }));
 
+        btnBack.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnBack.setText("Back");
+        btnBack.setActionCommand("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -122,7 +139,9 @@ public class CreateUser extends javax.swing.JFrame {
                     .addComponent(comboGender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pwd)
                     .addComponent(pwdCom))
-                .addContainerGap(278, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+                .addComponent(btnBack)
+                .addGap(58, 58, 58))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnCreateUser)
@@ -131,8 +150,10 @@ public class CreateUser extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jLabel1)
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblType)
@@ -234,6 +255,12 @@ public class CreateUser extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnCreateUserActionPerformed
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        AdminAccount admin = new AdminAccount(userName);
+        admin.show();
+        dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
+
     private void init(){
         setLocationRelativeTo(null);
         btnCreateUser.setFocusable(false);
@@ -286,6 +313,7 @@ public class CreateUser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCreateUser;
     private javax.swing.JComboBox<String> comboGender;
     private javax.swing.JComboBox<String> comboType;

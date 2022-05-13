@@ -16,10 +16,17 @@ import java.util.logging.Logger;
 public class CreateCourse extends javax.swing.JFrame {
 
     Connection conn;
+    String userName;
     
-    public CreateCourse() {
+    public CreateCourse(String uName) {
+        
+        this.userName = uName;
+        
         initComponents();
         init();
+    }
+
+    private CreateCourse() {
     }
 
     /**
@@ -39,6 +46,7 @@ public class CreateCourse extends javax.swing.JFrame {
         txtCourseName = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtCourseId = new javax.swing.JTextField();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -60,18 +68,28 @@ public class CreateCourse extends javax.swing.JFrame {
 
         jLabel2.setText("Course Id");
 
+        btnBack.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 357, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnCreate)
                 .addGap(356, 356, 356))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(252, 252, 252)
                 .addComponent(jLabel1)
-                .addGap(251, 251, 251))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                .addComponent(btnBack)
+                .addGap(58, 58, 58))
             .addGroup(layout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,8 +106,10 @@ public class CreateCourse extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabel1)
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(100, 100, 100)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblType)
@@ -106,8 +126,6 @@ public class CreateCourse extends javax.swing.JFrame {
                 .addComponent(btnCreate)
                 .addGap(100, 100, 100))
         );
-
-        jLabel1.getAccessibleContext().setAccessibleName("Create Course");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -148,6 +166,12 @@ public class CreateCourse extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnCreateActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        AdminAccount admin = new AdminAccount(userName);
+        admin.show();
+        dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
 
     private void init(){
         setLocationRelativeTo(null);
@@ -196,6 +220,7 @@ public class CreateCourse extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCreate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

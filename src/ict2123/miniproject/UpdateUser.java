@@ -16,10 +16,17 @@ import java.util.logging.Logger;
 public class UpdateUser extends javax.swing.JFrame {
 
     Connection conn;
+    String userName;
 
-    public UpdateUser() {
+    public UpdateUser(String uName) {
+        
+        this.userName = uName;
+        
         initComponents();
         init();
+    }
+
+    private UpdateUser() {
     }
 
     /**
@@ -39,6 +46,7 @@ public class UpdateUser extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtNewValue = new javax.swing.JTextField();
         btnUpdateData = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -62,6 +70,14 @@ public class UpdateUser extends javax.swing.JFrame {
             }
         });
 
+        btnBack.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -74,12 +90,17 @@ public class UpdateUser extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblLecturer)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(txtNewValue, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(updateFieldCombo, javax.swing.GroupLayout.Alignment.LEADING, 0, 258, Short.MAX_VALUE)
-                        .addComponent(txtUname, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addContainerGap(214, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtNewValue, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(updateFieldCombo, javax.swing.GroupLayout.Alignment.LEADING, 0, 258, Short.MAX_VALUE)
+                            .addComponent(txtUname, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addContainerGap(329, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblLecturer)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnBack)
+                        .addGap(58, 58, 58))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnUpdateData)
@@ -88,8 +109,10 @@ public class UpdateUser extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(lblLecturer)
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblLecturer)
+                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -163,6 +186,12 @@ public class UpdateUser extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnUpdateDataActionPerformed
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        AdminAccount admin = new AdminAccount(userName);
+        admin.show();
+        dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
+
     private void init() {
         setLocationRelativeTo(null);
 
@@ -210,6 +239,7 @@ public class UpdateUser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnUpdateData;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

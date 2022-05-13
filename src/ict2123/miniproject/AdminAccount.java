@@ -43,6 +43,7 @@ public class AdminAccount extends javax.swing.JFrame {
         btnUpdateTimetable = new javax.swing.JButton();
         lblAdmin = new javax.swing.JLabel();
         lblAdminName = new javax.swing.JLabel();
+        btnLogout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -99,6 +100,14 @@ public class AdminAccount extends javax.swing.JFrame {
         lblAdminName.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblAdminName.setText("Current Admin  : ");
 
+        btnLogout.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -106,7 +115,9 @@ public class AdminAccount extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblAdmin)
-                .addGap(225, 225, 225))
+                .addGap(93, 93, 93)
+                .addComponent(btnLogout)
+                .addGap(58, 58, 58))
             .addGroup(layout.createSequentialGroup()
                 .addGap(79, 79, 79)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,8 +143,10 @@ public class AdminAccount extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(lblAdmin)
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblAdmin)
+                    .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16)
                 .addComponent(lblAdminName)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
@@ -148,50 +161,57 @@ public class AdminAccount extends javax.swing.JFrame {
                     .addComponent(btnUpdateNotice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnUpdateTimetable, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnUpdateUser, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(163, Short.MAX_VALUE))
+                .addGap(163, 163, 163))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateNoticeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateNoticeActionPerformed
-        CreateNotice notice = new CreateNotice();
+        CreateNotice notice = new CreateNotice(userName);
         notice.show();
         dispose();
     }//GEN-LAST:event_btnCreateNoticeActionPerformed
 
     private void btnCreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateUserActionPerformed
-        CreateUser user = new CreateUser();
+        CreateUser user = new CreateUser(userName);
         user.show();
         dispose();
     }//GEN-LAST:event_btnCreateUserActionPerformed
 
     private void btnUpdateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateUserActionPerformed
-        UpdateUser update = new UpdateUser();
+        UpdateUser update = new UpdateUser(userName);
         update.show();
         dispose();
     }//GEN-LAST:event_btnUpdateUserActionPerformed
 
     private void btnCreateCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateCourseActionPerformed
-        CreateCourse course = new CreateCourse();
+        CreateCourse course = new CreateCourse(userName);
         course.show();
         dispose();
     }//GEN-LAST:event_btnCreateCourseActionPerformed
 
     private void btnUpdateCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateCourseActionPerformed
-        UpdateCourse update = new UpdateCourse();
+        UpdateCourse update = new UpdateCourse(userName);
         update.show();
         dispose();
     }//GEN-LAST:event_btnUpdateCourseActionPerformed
 
     private void btnUpdateNoticeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateNoticeActionPerformed
-        UpdateNotice update = new UpdateNotice();
+        UpdateNotice update = new UpdateNotice(userName);
         update.show();
         dispose();
     }//GEN-LAST:event_btnUpdateNoticeActionPerformed
 
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        Login login = new Login();
+        login.show();
+        dispose();
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
     private void init(){
         setLocationRelativeTo(null);
+        btnLogout.setFocusable(false);
         lblAdminName.setText("Current Admin : " + userName);
     }
     
@@ -232,6 +252,7 @@ public class AdminAccount extends javax.swing.JFrame {
     private javax.swing.JButton btnCreateNotice;
     private javax.swing.JButton btnCreateTimetable;
     private javax.swing.JButton btnCreateUser;
+    private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnUpdateCourse;
     private javax.swing.JButton btnUpdateNotice;
     private javax.swing.JButton btnUpdateTimetable;
