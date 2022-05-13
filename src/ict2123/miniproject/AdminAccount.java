@@ -102,6 +102,11 @@ public class AdminAccount extends javax.swing.JFrame {
         });
 
         btnUpdateTimetable.setText("Update Timetable");
+        btnUpdateTimetable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateTimetableActionPerformed(evt);
+            }
+        });
 
         lblAdmin.setFont(new java.awt.Font("Segoe UI Emoji", 0, 48)); // NOI18N
         lblAdmin.setText("Welcome Admin");
@@ -285,6 +290,12 @@ public class AdminAccount extends javax.swing.JFrame {
         timetable.show();
         dispose();
     }//GEN-LAST:event_btnViewTimetableActionPerformed
+
+    private void btnUpdateTimetableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateTimetableActionPerformed
+        UpdateTimetable table = new UpdateTimetable(userName);
+        table.show();
+        dispose();
+    }//GEN-LAST:event_btnUpdateTimetableActionPerformed
 
     private void init(){
         setLocationRelativeTo(null);

@@ -14,12 +14,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Joseph Rasanjana
  */
-public class UpdateNotice extends javax.swing.JFrame {
+public class UpdateTimetable extends javax.swing.JFrame {
 
     Connection conn;
     String userName;
 
-    public UpdateNotice(String uName) {
+    public UpdateTimetable(String uName) {
         
         this.userName = uName;
         
@@ -27,7 +27,7 @@ public class UpdateNotice extends javax.swing.JFrame {
         init();
     }
 
-    private UpdateNotice() {
+    private UpdateTimetable() {
     }
 
     /**
@@ -41,27 +41,27 @@ public class UpdateNotice extends javax.swing.JFrame {
 
         lblLecturer = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        txtNoticeId = new javax.swing.JTextField();
+        txtTimetableId = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         updateFieldCombo = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         txtNewValue = new javax.swing.JTextField();
         btnUpdateData = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        noticeTable = new javax.swing.JTable();
+        timetableTable = new javax.swing.JTable();
         btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         lblLecturer.setFont(new java.awt.Font("Segoe UI Emoji", 0, 48)); // NOI18N
-        lblLecturer.setText("Update Notice Data");
+        lblLecturer.setText("Update Timetable Data");
 
-        jLabel1.setText("Notice ID : ");
+        jLabel1.setText("Timetable ID : ");
 
         jLabel2.setText("Update Field Name : ");
 
-        updateFieldCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "notice topic", "notice body" }));
+        updateFieldCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "topic", "department", "pdf ref" }));
 
         jLabel3.setText("New Value : ");
 
@@ -73,30 +73,30 @@ public class UpdateNotice extends javax.swing.JFrame {
             }
         });
 
-        noticeTable.setModel(new javax.swing.table.DefaultTableModel(
+        timetableTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Notice ID", "Create Time", "Notice Topic", "Notice Body"
+                "Timetable ID", "Topic", "Create Time", "Department", "PDF Ref"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(noticeTable);
-        if (noticeTable.getColumnModel().getColumnCount() > 0) {
-            noticeTable.getColumnModel().getColumn(0).setResizable(false);
-            noticeTable.getColumnModel().getColumn(0).setPreferredWidth(5);
-            noticeTable.getColumnModel().getColumn(1).setResizable(false);
-            noticeTable.getColumnModel().getColumn(2).setResizable(false);
-            noticeTable.getColumnModel().getColumn(2).setPreferredWidth(20);
-            noticeTable.getColumnModel().getColumn(3).setResizable(false);
+        jScrollPane1.setViewportView(timetableTable);
+        if (timetableTable.getColumnModel().getColumnCount() > 0) {
+            timetableTable.getColumnModel().getColumn(0).setResizable(false);
+            timetableTable.getColumnModel().getColumn(0).setPreferredWidth(5);
+            timetableTable.getColumnModel().getColumn(1).setResizable(false);
+            timetableTable.getColumnModel().getColumn(1).setPreferredWidth(20);
+            timetableTable.getColumnModel().getColumn(2).setResizable(false);
+            timetableTable.getColumnModel().getColumn(3).setResizable(false);
         }
 
         btnBack.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -116,7 +116,7 @@ public class UpdateNotice extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblLecturer)
-                        .addGap(162, 162, 162)
+                        .addGap(122, 122, 122)
                         .addComponent(btnBack))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,7 +134,7 @@ public class UpdateNotice extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(txtNewValue, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(updateFieldCombo, javax.swing.GroupLayout.Alignment.LEADING, 0, 258, Short.MAX_VALUE)
-                                    .addComponent(txtNoticeId, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(txtTimetableId, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(36, 36, 36))
@@ -155,7 +155,7 @@ public class UpdateNotice extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(txtNoticeId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtTimetableId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -174,15 +174,15 @@ public class UpdateNotice extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUpdateDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateDataActionPerformed
-        String notice_id, updateField, newValue;
+        String timetable_id, updateField, newValue;
 
-        notice_id = txtNoticeId.getText();
-        if (!notice_id.isEmpty()) {
+        timetable_id = txtTimetableId.getText();
+        if (!timetable_id.isEmpty()) {
 
             updateField = updateFieldCombo.getSelectedItem().toString().replace(" ", "_");
             newValue = txtNewValue.getText();
 
-            String update_query = "UPDATE notice SET " + updateField + " = '" + newValue + "' WHERE id = '" + notice_id + "';";
+            String update_query = "UPDATE timetable SET " + updateField + " = '" + newValue + "' WHERE id = '" + timetable_id + "';";
 
             Statement st1 = null;
             try {
@@ -193,13 +193,13 @@ public class UpdateNotice extends javax.swing.JFrame {
 
             try {
                 if (!st1.execute(update_query)) {
-                    System.out.println("notice table updated sucessfully.");
-                    JOptionPane.showMessageDialog(null, "notice Table Updated sucessfully !!!", "Sucess !!!", JOptionPane.INFORMATION_MESSAGE);
-                    clear_form();
                     populate_table();
+                    System.out.println("timetable table updated sucessfully.");
+                    JOptionPane.showMessageDialog(null, "timetable Table Updated sucessfully !!!", "Sucess !!!", JOptionPane.INFORMATION_MESSAGE);
+                    clear_form();
                 } else {
-                    System.out.println("notice table update failed.");
-                    JOptionPane.showMessageDialog(null, "notice Table Update Failed !!!", "Error !!!", JOptionPane.ERROR_MESSAGE);
+                    System.out.println("timetable table update failed.");
+                    JOptionPane.showMessageDialog(null, "timetable Table Update Failed !!!", "Error !!!", JOptionPane.ERROR_MESSAGE);
                     clear_form();
                 }
             } catch (SQLException ex) {
@@ -227,32 +227,33 @@ public class UpdateNotice extends javax.swing.JFrame {
         try {
             populate_table();
         } catch (SQLException ex) {
-            Logger.getLogger(UpdateNotice.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateTimetable.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     private void clear_form() {
         txtNewValue.setText("");
-        txtNoticeId.setText("");
+        txtTimetableId.setText("");
     }
 
     private void populate_table() throws SQLException {
 
-        DefaultTableModel tblModel = (DefaultTableModel) noticeTable.getModel();
+        DefaultTableModel tblModel = (DefaultTableModel) timetableTable.getModel();
         tblModel.setRowCount(0);
         
-        String get_notice = "SELECT * FROM notice;";
+        String get_notice = "SELECT * FROM timetable;";
 
         Statement st2 = conn.createStatement();
         ResultSet result2 = st2.executeQuery(get_notice);
 
         while (result2.next()) {
             int id = result2.getInt("id");
+            String topic = result2.getString("topic");
             String create_time = result2.getString("create_time");
-            String notice_topic = result2.getString("notice_topic");
-            String notice_body = result2.getString("notice_body");
+            String department = result2.getString("department");
+            String pdf_ref = result2.getString("pdf_ref");
 
-            String table_data[] = {Integer.toString(id), create_time, notice_topic, notice_body};
+            String table_data[] = {Integer.toString(id), topic, create_time, department, pdf_ref};
 
             tblModel.addRow(table_data);
         }
@@ -272,14 +273,18 @@ public class UpdateNotice extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UpdateNotice.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateTimetable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UpdateNotice.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateTimetable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UpdateNotice.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateTimetable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UpdateNotice.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateTimetable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -288,7 +293,7 @@ public class UpdateNotice extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UpdateNotice().setVisible(true);
+                new UpdateTimetable().setVisible(true);
             }
         });
     }
@@ -301,9 +306,9 @@ public class UpdateNotice extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblLecturer;
-    private javax.swing.JTable noticeTable;
+    private javax.swing.JTable timetableTable;
     private javax.swing.JTextField txtNewValue;
-    private javax.swing.JTextField txtNoticeId;
+    private javax.swing.JTextField txtTimetableId;
     private javax.swing.JComboBox<String> updateFieldCombo;
     // End of variables declaration//GEN-END:variables
 }
