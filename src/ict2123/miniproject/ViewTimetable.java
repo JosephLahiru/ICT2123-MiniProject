@@ -49,11 +49,11 @@ public class ViewTimetable extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Create Time", "Department", "PDF Reference"
+                "ID", "Topic", "Create Time", "Department", "PDF Reference"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -67,6 +67,7 @@ public class ViewTimetable extends javax.swing.JFrame {
             timetableTable.getColumnModel().getColumn(1).setResizable(false);
             timetableTable.getColumnModel().getColumn(2).setResizable(false);
             timetableTable.getColumnModel().getColumn(3).setResizable(false);
+            timetableTable.getColumnModel().getColumn(4).setResizable(false);
         }
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
@@ -141,11 +142,12 @@ public class ViewTimetable extends javax.swing.JFrame {
 
         while (result2.next()) {
             int id = result2.getInt("id");
+            String topic = result2.getString("topic");
             String create_time = result2.getString("create_time");
             String department = result2.getString("department");
             String pdf_ref = result2.getString("pdf_ref");
 
-            String table_data[] = {Integer.toString(id), create_time, department, pdf_ref};
+            String table_data[] = {Integer.toString(id), topic, create_time, department, pdf_ref};
 
             tblModel.addRow(table_data);
         }

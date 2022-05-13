@@ -139,6 +139,11 @@ public class AdminAccount extends javax.swing.JFrame {
         });
 
         btnViewTimetable.setText("View Timetable");
+        btnViewTimetable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewTimetableActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -200,10 +205,9 @@ public class AdminAccount extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnViewTimetable, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnViewNotice, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
-                        .addComponent(btnViewUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnViewCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(btnViewNotice, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+                    .addComponent(btnViewUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnViewCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(94, 94, 94))
         );
 
@@ -271,8 +275,16 @@ public class AdminAccount extends javax.swing.JFrame {
     }//GEN-LAST:event_btnViewNoticeActionPerformed
 
     private void btnCreateTimetableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateTimetableActionPerformed
-        // TODO add your handling code here:
+        CreateTimetable timetable = new CreateTimetable(userName);
+        timetable.show();
+        dispose();
     }//GEN-LAST:event_btnCreateTimetableActionPerformed
+
+    private void btnViewTimetableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewTimetableActionPerformed
+        ViewTimetable timetable = new ViewTimetable(userName);
+        timetable.show();
+        dispose();
+    }//GEN-LAST:event_btnViewTimetableActionPerformed
 
     private void init(){
         setLocationRelativeTo(null);

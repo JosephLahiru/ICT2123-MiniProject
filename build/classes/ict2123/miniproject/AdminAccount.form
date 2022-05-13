@@ -92,11 +92,9 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="btnViewTimetable" pref="57" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btnViewNotice" pref="57" max="32767" attributes="0"/>
-                      <Component id="btnViewUser" max="32767" attributes="0"/>
-                      <Component id="btnViewCourse" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="btnViewNotice" pref="57" max="32767" attributes="0"/>
+                  <Component id="btnViewUser" max="32767" attributes="0"/>
+                  <Component id="btnViewCourse" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
           </Group>
@@ -220,6 +218,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="View Timetable"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewTimetableActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
