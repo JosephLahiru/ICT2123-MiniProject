@@ -6,6 +6,7 @@ package ict2123.miniproject;
 
 import java.awt.Image;
 import java.sql.*;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -19,13 +20,13 @@ public class StudentAccount extends javax.swing.JFrame {
     String userName;
     int userId;
     Connection conn;
-    private ImageIcon format=null;
-    
+    private ImageIcon format = null;
+
     public StudentAccount(String uName, int uID) {
-        
+
         this.userName = uName;
         this.userId = uID;
-        
+
         initComponents();
         init();
     }
@@ -145,10 +146,10 @@ public class StudentAccount extends javax.swing.JFrame {
                         .addComponent(lblStudentName)
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -171,38 +172,40 @@ public class StudentAccount extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
 
-    private void init(){
+    private void init() {
         setLocationRelativeTo(null);
-        
+
         DbConnector DbCon = new DbConnector();
         conn = DbCon.getConnection();
-        
+
         try {
             retrieve_pro_pic();
         } catch (SQLException ex) {
             Logger.getLogger(StudentAccount.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         lblStudentName.setText("Current Student : " + userName);
     }
-    
-    private void retrieve_pro_pic() throws SQLException{
-        
+
+    private void retrieve_pro_pic() throws SQLException {
+
         String propic_query = "SELECT pro_pic FROM student WHERE id = " + userId + ";";
-        
+
         Statement st2 = conn.createStatement();
         ResultSet result2 = st2.executeQuery(propic_query);
 
         while (result2.next()) {
             byte[] pro_pic_data = result2.getBytes("pro_pic");
-            format = new ImageIcon(pro_pic_data);
-            Image mm = format.getImage();
-            Image img2 = mm.getScaledInstance(lblPropic.getWidth(),lblPropic.getHeight(), Image.SCALE_SMOOTH);
-            ImageIcon image=new ImageIcon(img2);
-            lblPropic.setIcon(image);
+            if (Objects.nonNull(pro_pic_data)) {
+                format = new ImageIcon(pro_pic_data);
+                Image mm = format.getImage();
+                Image img2 = mm.getScaledInstance(lblPropic.getWidth(), lblPropic.getHeight(), Image.SCALE_SMOOTH);
+                ImageIcon image = new ImageIcon(img2);
+                lblPropic.setIcon(image);
+            }
         }
     }
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

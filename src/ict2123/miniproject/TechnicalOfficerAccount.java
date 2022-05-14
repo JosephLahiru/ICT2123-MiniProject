@@ -6,6 +6,7 @@ package ict2123.miniproject;
 
 import java.awt.Image;
 import java.sql.*;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -19,13 +20,13 @@ public class TechnicalOfficerAccount extends javax.swing.JFrame {
     String userName;
     int userId;
     Connection conn;
-    private ImageIcon format=null;
-    
+    private ImageIcon format = null;
+
     public TechnicalOfficerAccount(String uName, int uID) {
-        
+
         this.userName = uName;
         this.userId = uID;
-        
+
         initComponents();
         init();
     }
@@ -159,38 +160,40 @@ public class TechnicalOfficerAccount extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void init(){
+    private void init() {
         setLocationRelativeTo(null);
-        
+
         DbConnector DbCon = new DbConnector();
         conn = DbCon.getConnection();
-        
+
         try {
             retrieve_pro_pic();
         } catch (SQLException ex) {
             Logger.getLogger(TechnicalOfficerAccount.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         lblTechnicalOfficerName.setText("Current Technical Officer : " + userName);
     }
-    
-    private void retrieve_pro_pic() throws SQLException{
-        
+
+    private void retrieve_pro_pic() throws SQLException {
+
         String propic_query = "SELECT pro_pic FROM technical_officer WHERE id = " + userId + ";";
-        
+
         Statement st2 = conn.createStatement();
         ResultSet result2 = st2.executeQuery(propic_query);
 
         while (result2.next()) {
             byte[] pro_pic_data = result2.getBytes("pro_pic");
-            format = new ImageIcon(pro_pic_data);
-            Image mm = format.getImage();
-            Image img2 = mm.getScaledInstance(lblPropic.getWidth(),lblPropic.getHeight(), Image.SCALE_SMOOTH);
-            ImageIcon image=new ImageIcon(img2);
-            lblPropic.setIcon(image);
+            if (Objects.nonNull(pro_pic_data)) {
+                format = new ImageIcon(pro_pic_data);
+                Image mm = format.getImage();
+                Image img2 = mm.getScaledInstance(lblPropic.getWidth(), lblPropic.getHeight(), Image.SCALE_SMOOTH);
+                ImageIcon image = new ImageIcon(img2);
+                lblPropic.setIcon(image);
+            }
         }
     }
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

@@ -6,6 +6,7 @@ package ict2123.miniproject;
 
 import java.awt.Image;
 import java.sql.*;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -19,13 +20,13 @@ public class LecturerAccount extends javax.swing.JFrame {
     String userName;
     int userId;
     Connection conn;
-    private ImageIcon format=null;
-    
+    private ImageIcon format = null;
+
     public LecturerAccount(String uName, int uId) {
-        
+
         this.userName = uName;
         this.userId = uId;
-        
+
         initComponents();
         init();
     }
@@ -89,6 +90,7 @@ public class LecturerAccount extends javax.swing.JFrame {
             }
         });
 
+        lblPropic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ict2123/miniproject/not-found.png"))); // NOI18N
         lblPropic.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -160,38 +162,40 @@ public class LecturerAccount extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
 
-    private void init(){
+    private void init() {
         setLocationRelativeTo(null);
-        
+
         DbConnector DbCon = new DbConnector();
         conn = DbCon.getConnection();
-        
+
         try {
             retrieve_pro_pic();
         } catch (SQLException ex) {
             Logger.getLogger(LecturerAccount.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         lblLecturerName.setText("Current Lecturer : " + userName);
     }
-    
-    private void retrieve_pro_pic() throws SQLException{
-        
+
+    private void retrieve_pro_pic() throws SQLException {
+
         String propic_query = "SELECT pro_pic FROM lecturer WHERE id = " + userId + ";";
-        
+
         Statement st2 = conn.createStatement();
         ResultSet result2 = st2.executeQuery(propic_query);
 
         while (result2.next()) {
             byte[] pro_pic_data = result2.getBytes("pro_pic");
-            format = new ImageIcon(pro_pic_data);
-            Image mm = format.getImage();
-            Image img2 = mm.getScaledInstance(lblPropic.getWidth(),lblPropic.getHeight(), Image.SCALE_SMOOTH);
-            ImageIcon image=new ImageIcon(img2);
-            lblPropic.setIcon(image);
+            if (Objects.nonNull(pro_pic_data)) {
+                format = new ImageIcon(pro_pic_data);
+                Image mm = format.getImage();
+                Image img2 = mm.getScaledInstance(lblPropic.getWidth(), lblPropic.getHeight(), Image.SCALE_SMOOTH);
+                ImageIcon image = new ImageIcon(img2);
+                lblPropic.setIcon(image);
+            }
         }
     }
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
