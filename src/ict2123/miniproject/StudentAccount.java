@@ -91,6 +91,7 @@ public class StudentAccount extends javax.swing.JFrame {
             }
         });
 
+        lblPropic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ict2123/miniproject/not-found.png"))); // NOI18N
         lblPropic.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
