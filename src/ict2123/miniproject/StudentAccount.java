@@ -4,6 +4,7 @@
  */
 package ict2123.miniproject;
 
+import ict2123.miniproject.admin_windows.UpdateStudent;
 import java.awt.Image;
 import java.sql.*;
 import java.util.Objects;
@@ -65,6 +66,11 @@ public class StudentAccount extends javax.swing.JFrame {
         lblStudentName.setText("Current Student  : ");
 
         jButton1.setText("Update Profile");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("<html><center>View<br>Attendance</center></html>");
 
@@ -172,6 +178,12 @@ public class StudentAccount extends javax.swing.JFrame {
         login.show();
         dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        UpdateStudent student = new UpdateStudent(userName, userId);
+        student.show();
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void init() {
         setLocationRelativeTo(null);
