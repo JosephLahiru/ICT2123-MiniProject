@@ -15,6 +15,7 @@ public class Login extends javax.swing.JFrame {
 
     Connection conn;
     String type, uName;
+    int id;
 
     public Login() {
         initComponents();
@@ -157,25 +158,25 @@ public class Login extends javax.swing.JFrame {
 
             if ("ADM".equals(type)) {
                 System.out.println("HELLO Admin, WELCOME!!");
-                AdminAccount account = new AdminAccount(uName);
+                AdminAccount account = new AdminAccount(uName, id);
                 account.show();
                 dispose();
 
             } else if ("ST".equals(type)) {
                 System.out.println("HELLO Student, WELCOME!!");
-                StudentAccount account = new StudentAccount(uName);
+                StudentAccount account = new StudentAccount(uName, id);
                 account.show();
                 dispose();
                 
             } else if ("LEC".equals(type)) {
                 System.out.println("HELLO Lecturer, WELCOME!!");
-                LecturerAccount account = new LecturerAccount(uName);
+                LecturerAccount account = new LecturerAccount(uName, id);
                 account.show();
                 dispose();
                 
             } else if ("TO".equals(type)) {
                 System.out.println("HELLO Technical Officer, WELCOME!!");
-                TechnicalOfficerAccount account = new TechnicalOfficerAccount(uName);
+                TechnicalOfficerAccount account = new TechnicalOfficerAccount(uName, id);
                 account.show();
                 dispose();
                 
@@ -219,7 +220,7 @@ public class Login extends javax.swing.JFrame {
         ResultSet result = st2.executeQuery(user_query);
 
         while (result.next()) {
-            int id = result.getInt("id");
+            id = result.getInt("id");
             String pswd = result.getString("password");
             uName = result.getString("first_name");
 

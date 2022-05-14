@@ -12,6 +12,11 @@ import ict2123.miniproject.admin_windows.UpdateCourse;
 import ict2123.miniproject.admin_windows.UpdateTimetable;
 import ict2123.miniproject.admin_windows.CreateTimetable;
 import ict2123.miniproject.admin_windows.ViewUser;
+import java.awt.Image;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -25,10 +30,14 @@ import ict2123.miniproject.admin_windows.ViewUser;
 public class AdminAccount extends javax.swing.JFrame {
 
     private String userName;
+    int userId;
+    Connection conn;
+    private ImageIcon format=null;
     
-    public AdminAccount(String uName) {
+    public AdminAccount(String uName, int uID) {
         
         this.userName = uName;
+        this.userId = uID;
         
         initComponents();
         init();
@@ -61,6 +70,7 @@ public class AdminAccount extends javax.swing.JFrame {
         btnViewCourse = new javax.swing.JButton();
         btnViewNotice = new javax.swing.JButton();
         btnViewTimetable = new javax.swing.JButton();
+        lblPropic = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -163,12 +173,16 @@ public class AdminAccount extends javax.swing.JFrame {
             }
         });
 
+        lblPropic.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(17, 17, 17)
+                .addComponent(lblPropic, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblAdmin)
                 .addGap(93, 93, 93)
                 .addComponent(btnLogout)
@@ -203,67 +217,72 @@ public class AdminAccount extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblAdmin)
-                    .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
-                .addComponent(lblAdminName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCreateUser, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCreateCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCreateNotice, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCreateTimetable, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnUpdateCourse, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUpdateNotice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUpdateTimetable, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUpdateUser, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnViewTimetable, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
-                    .addComponent(btnViewNotice, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
-                    .addComponent(btnViewUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnViewCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(94, 94, 94))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblPropic, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblAdmin)
+                            .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                        .addComponent(lblAdminName)
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnCreateUser, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCreateCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCreateNotice, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCreateTimetable, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnUpdateCourse, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnUpdateNotice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnUpdateTimetable, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnUpdateUser, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnViewTimetable, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+                            .addComponent(btnViewNotice, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+                            .addComponent(btnViewUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnViewCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(50, 50, 50))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateNoticeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateNoticeActionPerformed
-        CreateNotice notice = new CreateNotice(userName);
+        CreateNotice notice = new CreateNotice(userName, userId);
         notice.show();
         dispose();
     }//GEN-LAST:event_btnCreateNoticeActionPerformed
 
     private void btnCreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateUserActionPerformed
-        CreateUser user = new CreateUser(userName);
+        CreateUser user = new CreateUser(userName, userId);
         user.show();
         dispose();
     }//GEN-LAST:event_btnCreateUserActionPerformed
 
     private void btnUpdateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateUserActionPerformed
-        UpdateUser update = new UpdateUser(userName);
+        UpdateUser update = new UpdateUser(userName, userId);
         update.show();
         dispose();
     }//GEN-LAST:event_btnUpdateUserActionPerformed
 
     private void btnCreateCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateCourseActionPerformed
-        CreateCourse course = new CreateCourse(userName);
+        CreateCourse course = new CreateCourse(userName, userId);
         course.show();
         dispose();
     }//GEN-LAST:event_btnCreateCourseActionPerformed
 
     private void btnUpdateCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateCourseActionPerformed
-        UpdateCourse update = new UpdateCourse(userName);
+        UpdateCourse update = new UpdateCourse(userName, userId);
         update.show();
         dispose();
     }//GEN-LAST:event_btnUpdateCourseActionPerformed
 
     private void btnUpdateNoticeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateNoticeActionPerformed
-        UpdateNotice update = new UpdateNotice(userName);
+        UpdateNotice update = new UpdateNotice(userName, userId);
         update.show();
         dispose();
     }//GEN-LAST:event_btnUpdateNoticeActionPerformed
@@ -275,37 +294,37 @@ public class AdminAccount extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnViewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewUserActionPerformed
-        ViewUser user = new ViewUser(userName);
+        ViewUser user = new ViewUser(userName, userId);
         user.show();
         dispose();
     }//GEN-LAST:event_btnViewUserActionPerformed
 
     private void btnViewCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewCourseActionPerformed
-        ViewCourse course = new ViewCourse(userName);
+        ViewCourse course = new ViewCourse(userName, userId);
         course.show();
         dispose();
     }//GEN-LAST:event_btnViewCourseActionPerformed
 
     private void btnViewNoticeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewNoticeActionPerformed
-        ViewNotice notice = new ViewNotice(userName);
+        ViewNotice notice = new ViewNotice(userName, userId);
         notice.show();
         dispose();
     }//GEN-LAST:event_btnViewNoticeActionPerformed
 
     private void btnCreateTimetableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateTimetableActionPerformed
-        CreateTimetable timetable = new CreateTimetable(userName);
+        CreateTimetable timetable = new CreateTimetable(userName, userId);
         timetable.show();
         dispose();
     }//GEN-LAST:event_btnCreateTimetableActionPerformed
 
     private void btnViewTimetableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewTimetableActionPerformed
-        ViewTimetable timetable = new ViewTimetable(userName);
+        ViewTimetable timetable = new ViewTimetable(userName, userId);
         timetable.show();
         dispose();
     }//GEN-LAST:event_btnViewTimetableActionPerformed
 
     private void btnUpdateTimetableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateTimetableActionPerformed
-        UpdateTimetable table = new UpdateTimetable(userName);
+        UpdateTimetable table = new UpdateTimetable(userName, userId);
         table.show();
         dispose();
     }//GEN-LAST:event_btnUpdateTimetableActionPerformed
@@ -313,7 +332,33 @@ public class AdminAccount extends javax.swing.JFrame {
     private void init(){
         setLocationRelativeTo(null);
         btnLogout.setFocusable(false);
+        
+        DbConnector DbCon = new DbConnector();
+        conn = DbCon.getConnection();
+        
+        try {
+            retrieve_pro_pic();
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminAccount.class.getName()).log(Level.SEVERE, null, ex);
+        }
         lblAdminName.setText("Current Admin : " + userName);
+    }
+    
+    private void retrieve_pro_pic() throws SQLException{
+        
+        String propic_query = "SELECT pro_pic FROM admin WHERE id = " + userId + ";";
+        
+        Statement st2 = conn.createStatement();
+        ResultSet result2 = st2.executeQuery(propic_query);
+
+        while (result2.next()) {
+            byte[] pro_pic_data = result2.getBytes("pro_pic");
+            format = new ImageIcon(pro_pic_data);
+            Image mm = format.getImage();
+            Image img2 = mm.getScaledInstance(lblPropic.getWidth(),lblPropic.getHeight(), Image.SCALE_SMOOTH);
+            ImageIcon image=new ImageIcon(img2);
+            lblPropic.setIcon(image);
+        }
     }
     
     public static void main(String args[]) {
@@ -364,5 +409,6 @@ public class AdminAccount extends javax.swing.JFrame {
     private javax.swing.JButton btnViewUser;
     private javax.swing.JLabel lblAdmin;
     private javax.swing.JLabel lblAdminName;
+    private javax.swing.JLabel lblPropic;
     // End of variables declaration//GEN-END:variables
 }

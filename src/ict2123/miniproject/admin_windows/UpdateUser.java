@@ -21,10 +21,12 @@ public class UpdateUser extends javax.swing.JFrame {
     Connection conn;
     String userName;
     String currentUserType;
+    int userID;
 
-    public UpdateUser(String uName) {
+    public UpdateUser(String uName, int uID) {
 
         this.userName = uName;
+        this.userID = uID;
 
         initComponents();
         init();
@@ -260,7 +262,7 @@ public class UpdateUser extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUpdateDataActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        AdminAccount admin = new AdminAccount(userName);
+        AdminAccount admin = new AdminAccount(userName, userID);
         admin.show();
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed

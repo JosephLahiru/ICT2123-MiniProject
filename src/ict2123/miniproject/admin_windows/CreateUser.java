@@ -19,10 +19,12 @@ public class CreateUser extends javax.swing.JFrame {
 
     Connection conn;
     String userName;
+    int userID;
     
-    public CreateUser(String uName) {
+    public CreateUser(String uName, int uID) {
         
         this.userName = uName;
+        this.userID = uID;
         
         initComponents();
         init();
@@ -257,7 +259,7 @@ public class CreateUser extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCreateUserActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        AdminAccount admin = new AdminAccount(userName);
+        AdminAccount admin = new AdminAccount(userName, userID);
         admin.show();
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed

@@ -25,6 +25,8 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+              <Component id="lblPropic" min="-2" pref="136" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="lblAdmin" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
@@ -69,34 +71,42 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="lblAdmin" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnLogout" min="-2" pref="70" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-              <Component id="lblAdminName" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="74" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnCreateUser" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
-                  <Component id="btnCreateCourse" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
-                  <Component id="btnCreateNotice" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
-                  <Component id="btnCreateTimetable" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnUpdateCourse" alignment="1" min="-2" pref="59" max="-2" attributes="0"/>
-                  <Component id="btnUpdateNotice" alignment="1" min="-2" pref="59" max="-2" attributes="0"/>
-                  <Component id="btnUpdateTimetable" alignment="1" min="-2" pref="59" max="-2" attributes="0"/>
-                  <Component id="btnUpdateUser" alignment="1" min="-2" pref="57" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="lblPropic" min="-2" pref="160" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="lblAdmin" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnLogout" min="-2" pref="70" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="114" max="32767" attributes="0"/>
+                      <Component id="lblAdminName" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnCreateUser" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
+                          <Component id="btnCreateCourse" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
+                          <Component id="btnCreateNotice" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
+                          <Component id="btnCreateTimetable" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnUpdateCourse" alignment="1" min="-2" pref="59" max="-2" attributes="0"/>
+                          <Component id="btnUpdateNotice" alignment="1" min="-2" pref="59" max="-2" attributes="0"/>
+                          <Component id="btnUpdateTimetable" alignment="1" min="-2" pref="59" max="-2" attributes="0"/>
+                          <Component id="btnUpdateUser" alignment="1" min="-2" pref="57" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btnViewTimetable" pref="57" max="32767" attributes="0"/>
+                          <Component id="btnViewNotice" pref="57" max="32767" attributes="0"/>
+                          <Component id="btnViewUser" max="32767" attributes="0"/>
+                          <Component id="btnViewCourse" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="btnViewTimetable" pref="57" max="32767" attributes="0"/>
-                  <Component id="btnViewNotice" pref="57" max="32767" attributes="0"/>
-                  <Component id="btnViewUser" max="32767" attributes="0"/>
-                  <Component id="btnViewCourse" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -224,6 +234,15 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewTimetableActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblPropic">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder roundedCorners="true" thickness="2"/>
+          </Border>
+        </Property>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

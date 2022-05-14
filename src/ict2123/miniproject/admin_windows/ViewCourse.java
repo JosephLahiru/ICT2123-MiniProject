@@ -17,10 +17,12 @@ public class ViewCourse extends javax.swing.JFrame {
 
     Connection conn;
     String userName;
+    int userID;
     
-    public ViewCourse(String uName) {
+    public ViewCourse(String uName, int uID) {
         
         this.userName = uName;
+        this.userID = uID;
         
         initComponents();
         init();
@@ -113,7 +115,7 @@ public class ViewCourse extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        AdminAccount admin = new AdminAccount(userName);
+        AdminAccount admin = new AdminAccount(userName, userID);
         admin.show();
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed
