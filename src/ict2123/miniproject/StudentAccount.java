@@ -5,6 +5,7 @@
 package ict2123.miniproject;
 
 import ict2123.miniproject.admin_windows.UpdateStudent;
+import ict2123.miniproject.admin_windows.ViewNotice;
 import java.awt.Image;
 import java.sql.*;
 import java.util.Objects;
@@ -46,13 +47,13 @@ public class StudentAccount extends javax.swing.JFrame {
 
         lblStudent = new javax.swing.JLabel();
         lblStudentName = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnUpdateProfile = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        btnViewNotice = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
         lblPropic = new javax.swing.JLabel();
 
@@ -65,10 +66,10 @@ public class StudentAccount extends javax.swing.JFrame {
         lblStudentName.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblStudentName.setText("Current Student  : ");
 
-        jButton1.setText("Update Profile");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdateProfile.setText("Update Profile");
+        btnUpdateProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnUpdateProfileActionPerformed(evt);
             }
         });
 
@@ -87,7 +88,12 @@ public class StudentAccount extends javax.swing.JFrame {
 
         jButton6.setText("<html><center>View<br>Timetables</center></html>");
 
-        jButton7.setText("View Notices");
+        btnViewNotice.setText("View Notices");
+        btnViewNotice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewNoticeActionPerformed(evt);
+            }
+        });
 
         btnLogout.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnLogout.setText("Logout");
@@ -111,13 +117,13 @@ public class StudentAccount extends javax.swing.JFrame {
                         .addComponent(lblStudentName))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(159, 159, 159)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnUpdateProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnViewNotice, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(17, 17, 17)
@@ -155,8 +161,8 @@ public class StudentAccount extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnViewNotice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnUpdateProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -179,11 +185,17 @@ public class StudentAccount extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnUpdateProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateProfileActionPerformed
         UpdateStudent student = new UpdateStudent(userName, userId);
         student.show();
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnUpdateProfileActionPerformed
+
+    private void btnViewNoticeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewNoticeActionPerformed
+        ViewNotice notice = new ViewNotice(userName, userId, "student");
+        notice.show();
+        dispose();
+    }//GEN-LAST:event_btnViewNoticeActionPerformed
 
     private void init() {
         setLocationRelativeTo(null);
@@ -253,13 +265,13 @@ public class StudentAccount extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogout;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnUpdateProfile;
+    private javax.swing.JButton btnViewNotice;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel lblPropic;
     private javax.swing.JLabel lblStudent;
     private javax.swing.JLabel lblStudentName;

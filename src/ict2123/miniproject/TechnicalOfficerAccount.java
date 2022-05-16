@@ -5,6 +5,7 @@
 package ict2123.miniproject;
 
 import ict2123.miniproject.admin_windows.UpdateTO;
+import ict2123.miniproject.admin_windows.ViewNotice;
 import java.awt.Image;
 import java.sql.*;
 import java.util.Objects;
@@ -83,6 +84,11 @@ public class TechnicalOfficerAccount extends javax.swing.JFrame {
         jButton3.setText("<html><center>Add Student<br>Medical<center></html>");
 
         jButton4.setText("View Notices");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("<html><center>View Department<br>Timetable</center></html>");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -172,6 +178,12 @@ public class TechnicalOfficerAccount extends javax.swing.JFrame {
         to.show();
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        ViewNotice notice = new ViewNotice(userName, userId, "technical_officer");
+        notice.show();
+        dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void init() {
         setLocationRelativeTo(null);

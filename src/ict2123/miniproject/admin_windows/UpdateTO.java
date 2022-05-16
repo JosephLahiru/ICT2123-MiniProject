@@ -5,8 +5,6 @@
 package ict2123.miniproject.admin_windows;
 
 import ict2123.miniproject.DbConnector;
-import ict2123.miniproject.LecturerAccount;
-import ict2123.miniproject.StudentAccount;
 import ict2123.miniproject.TechnicalOfficerAccount;
 import java.awt.Color;
 import java.awt.Image;

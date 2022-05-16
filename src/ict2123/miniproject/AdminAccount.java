@@ -307,7 +307,7 @@ public class AdminAccount extends javax.swing.JFrame {
     }//GEN-LAST:event_btnViewCourseActionPerformed
 
     private void btnViewNoticeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewNoticeActionPerformed
-        ViewNotice notice = new ViewNotice(userName, userId);
+        ViewNotice notice = new ViewNotice(userName, userId, "admin");
         notice.show();
         dispose();
     }//GEN-LAST:event_btnViewNoticeActionPerformed

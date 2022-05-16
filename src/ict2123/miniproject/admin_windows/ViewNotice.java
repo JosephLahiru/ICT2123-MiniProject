@@ -3,12 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ict2123.miniproject.admin_windows;
+
 import ict2123.miniproject.AdminAccount;
 import ict2123.miniproject.DbConnector;
+import ict2123.miniproject.LecturerAccount;
+import ict2123.miniproject.StudentAccount;
+import ict2123.miniproject.TechnicalOfficerAccount;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Joseph Rasanjana
@@ -16,17 +21,18 @@ import javax.swing.table.DefaultTableModel;
 public class ViewNotice extends javax.swing.JFrame {
 
     Connection conn;
-    String userName;
+    String userName, userType;
     int userID;
-    
-    public ViewNotice(String uName, int uID) {
-        
+
+    public ViewNotice(String uName, int uID, String uType) {
+
         this.userName = uName;
         this.userID = uID;
-        
+        this.userType = uType;
+
         initComponents();
         init();
-        
+
     }
 
     private ViewNotice() {
@@ -115,29 +121,40 @@ public class ViewNotice extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        AdminAccount admin = new AdminAccount(userName, userID);
-        admin.show();
+        if ("admin".equals(userType)) {
+            AdminAccount admin = new AdminAccount(userName, userID);
+            admin.show();
+        }else if("student".equals(userType)){
+            StudentAccount student = new StudentAccount(userName, userID);
+            student.show();
+        }else if("lecturer".equals(userType)){
+            LecturerAccount lecturer = new LecturerAccount(userName, userID);
+            lecturer.show();
+        }else if("technical_officer".equals(userType)){
+            TechnicalOfficerAccount to = new TechnicalOfficerAccount(userName, userID);
+            to.show();
+        }
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void init(){
+    private void init() {
         setLocationRelativeTo(null);
 
         DbConnector DbCon = new DbConnector();
         conn = DbCon.getConnection();
-        
+
         try {
             load_data();
         } catch (SQLException ex) {
             Logger.getLogger(ViewNotice.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    private void load_data() throws SQLException{
-  
+
+    private void load_data() throws SQLException {
+
         DefaultTableModel tblModel = (DefaultTableModel) noticeTable.getModel();
         tblModel.setRowCount(0);
-        
+
         String get_user_data = "SELECT * FROM notice;";
 
         Statement st2 = conn.createStatement();
@@ -154,7 +171,7 @@ public class ViewNotice extends javax.swing.JFrame {
             tblModel.addRow(table_data);
         }
     }
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
