@@ -25,9 +25,9 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace pref="217" max="32767" attributes="0"/>
-              <Component id="lblStudent" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="160" max="-2" attributes="0"/>
+              <EmptySpace pref="266" max="32767" attributes="0"/>
+              <Component id="lblLecturer" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="215" max="-2" attributes="0"/>
               <Component id="btnBack" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
           </Group>
@@ -71,7 +71,7 @@
               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="btnBack" min="-2" pref="70" max="-2" attributes="0"/>
-                  <Component id="lblStudent" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblLecturer" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -110,12 +110,12 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="lblStudent">
+    <Component class="javax.swing.JLabel" name="lblLecturer">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI Emoji" size="48" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Update Student Data"/>
+        <Property name="text" type="java.lang.String" value="Update TO Data"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
@@ -126,8 +126,14 @@
     <Component class="javax.swing.JComboBox" name="updateFieldCombo">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="1">
-            <StringItem index="0" value="contact number"/>
+          <StringArray count="7">
+            <StringItem index="0" value="first name"/>
+            <StringItem index="1" value="last name"/>
+            <StringItem index="2" value="address"/>
+            <StringItem index="3" value="email"/>
+            <StringItem index="4" value="dob"/>
+            <StringItem index="5" value="contact number"/>
+            <StringItem index="6" value="gender"/>
           </StringArray>
         </Property>
       </Properties>

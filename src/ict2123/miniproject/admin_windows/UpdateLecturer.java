@@ -5,6 +5,7 @@
 package ict2123.miniproject.admin_windows;
 
 import ict2123.miniproject.DbConnector;
+import ict2123.miniproject.LecturerAccount;
 import ict2123.miniproject.StudentAccount;
 import java.awt.Color;
 import java.awt.Image;
@@ -24,7 +25,7 @@ import javax.swing.JFileChooser;
  *
  * @author Joseph Rasanjana
  */
-public class UpdateStudent extends javax.swing.JFrame {
+public class UpdateLecturer extends javax.swing.JFrame {
 
     Connection conn;
     String userName;
@@ -33,8 +34,10 @@ public class UpdateStudent extends javax.swing.JFrame {
     private ImageIcon format = null;
     String img_path;
     File file;
+    
+    String tableName = "lecturer";
 
-    public UpdateStudent(String uName, int uID) {
+    public UpdateLecturer(String uName, int uID) {
 
         this.userName = uName;
         this.userID = uID;
@@ -43,7 +46,7 @@ public class UpdateStudent extends javax.swing.JFrame {
         init();
     }
 
-    private UpdateStudent() {
+    private UpdateLecturer() {
     }
 
     /**
@@ -55,7 +58,7 @@ public class UpdateStudent extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblStudent = new javax.swing.JLabel();
+        lblLecturer = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         updateFieldCombo = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
@@ -87,12 +90,12 @@ public class UpdateStudent extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        lblStudent.setFont(new java.awt.Font("Segoe UI Emoji", 0, 48)); // NOI18N
-        lblStudent.setText("Update Student Data");
+        lblLecturer.setFont(new java.awt.Font("Segoe UI Emoji", 0, 48)); // NOI18N
+        lblLecturer.setText("Update Lecturer Data");
 
         jLabel2.setText("Update Field Name : ");
 
-        updateFieldCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "contact number" }));
+        updateFieldCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "first name", "last name", "address", "email", "dob", "contact number", "gender" }));
 
         jLabel3.setText("New Value : ");
 
@@ -229,9 +232,9 @@ public class UpdateStudent extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(217, Short.MAX_VALUE)
-                .addComponent(lblStudent)
-                .addGap(160, 160, 160)
+                .addContainerGap(207, Short.MAX_VALUE)
+                .addComponent(lblLecturer)
+                .addGap(163, 163, 163)
                 .addComponent(btnBack)
                 .addGap(36, 36, 36))
             .addGroup(layout.createSequentialGroup()
@@ -264,7 +267,7 @@ public class UpdateStudent extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblStudent))
+                    .addComponent(lblLecturer))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -295,13 +298,12 @@ public class UpdateStudent extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUpdateDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateDataActionPerformed
-        String updateField, newValue, tableName;
+        String updateField, newValue;
 
-        tableName = "student";
         updateField = updateFieldCombo.getSelectedItem().toString().replace(" ", "_");
         newValue = txtNewValue.getText();
 
-        String update_query = "UPDATE student SET " + updateField + " = '" + newValue + "' WHERE id = '" + userID + "';";
+        String update_query = "UPDATE " + tableName + " SET " + updateField + " = '" + newValue + "' WHERE id = '" + userID + "';";
 
         Statement st1 = null;
         try {
@@ -328,8 +330,8 @@ public class UpdateStudent extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUpdateDataActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        StudentAccount student = new StudentAccount(userName, userID);
-        student.show();
+        LecturerAccount lecturer = new LecturerAccount(userName, userID);
+        lecturer.show();
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
@@ -353,7 +355,7 @@ public class UpdateStudent extends javax.swing.JFrame {
 
                 PreparedStatement ps;
 
-                ps = conn.prepareStatement("UPDATE student SET pro_pic = ? WHERE id = ?;");
+                ps = conn.prepareStatement("UPDATE " + tableName + " SET pro_pic = ? WHERE id = ?;");
                 
                 ps.setInt(2, userID);
                 
@@ -361,7 +363,7 @@ public class UpdateStudent extends javax.swing.JFrame {
                     ps.setBinaryStream(1, (InputStream) image_input, (int) file.length());
 
                     if (!ps.execute()) {
-                        System.out.println("Profile picture updated data to user table sucessfully.");
+                        System.out.println("Profile picture updated in user table sucessfully.");
                         JOptionPane.showMessageDialog(null, "Profile Picture Updated Sucessfully !!!", "Sucess !!!", JOptionPane.INFORMATION_MESSAGE);
                         clear_form();
                         ps.close();
@@ -373,7 +375,7 @@ public class UpdateStudent extends javax.swing.JFrame {
                     }
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(UpdateStudent.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(UpdateLecturer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_btnSelectPropicActionPerformed
@@ -389,7 +391,7 @@ public class UpdateStudent extends javax.swing.JFrame {
         try {
             populate_table();
         } catch (SQLException ex) {
-            Logger.getLogger(UpdateStudent.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateLecturer.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -399,7 +401,7 @@ public class UpdateStudent extends javax.swing.JFrame {
 
     private void populate_table() throws SQLException {
 
-        String get_notice = "SELECT * FROM student WHERE id=" + Integer.toString(userID) + ";";
+        String get_notice = "SELECT * FROM " + tableName + " WHERE id=" + Integer.toString(userID) + ";";
         //System.out.println(Integer.toString(userID));
 
         Statement st2 = conn.createStatement();
@@ -468,21 +470,23 @@ public class UpdateStudent extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UpdateStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateLecturer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UpdateStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateLecturer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UpdateStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateLecturer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UpdateStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateLecturer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UpdateStudent().setVisible(true);
+                new UpdateLecturer().setVisible(true);
             }
         });
     }
@@ -511,9 +515,9 @@ public class UpdateStudent extends javax.swing.JFrame {
     private javax.swing.JLabel lblGender;
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblLastName;
+    private javax.swing.JLabel lblLecturer;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblProPic;
-    private javax.swing.JLabel lblStudent;
     private javax.swing.JTextField txtNewValue;
     private javax.swing.JComboBox<String> updateFieldCombo;
     // End of variables declaration//GEN-END:variables
