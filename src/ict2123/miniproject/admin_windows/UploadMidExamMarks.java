@@ -12,6 +12,7 @@ import ict2123.miniproject.TechnicalOfficerAccount;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -48,12 +49,20 @@ public class UploadMidExamMarks extends javax.swing.JFrame {
         comboStudent = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        comboCourse = new javax.swing.JComboBox<>();
+        btnSubmit = new javax.swing.JButton();
+        scoreMidTheory = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        scoreMidPractical = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setText("Upload End Exam Marks");
+        jLabel1.setText("Upload Mid Exam Marks");
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -62,20 +71,50 @@ public class UploadMidExamMarks extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("Choose Student : ");
+
+        jLabel4.setText("Course ID : ");
+
+        btnSubmit.setText("Submit");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Mid theory score : ");
+
+        jLabel7.setText("Mid practical score : ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(72, 72, 72)
-                .addComponent(comboStudent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(194, Short.MAX_VALUE)
+                .addContainerGap(191, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(110, 110, 110)
                 .addComponent(btnBack)
                 .addGap(40, 40, 40))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(247, 247, 247)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(comboStudent, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(comboCourse, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(scoreMidTheory, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(scoreMidPractical, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addComponent(btnSubmit)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -84,9 +123,25 @@ public class UploadMidExamMarks extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addComponent(comboStudent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(394, Short.MAX_VALUE))
+                .addGap(107, 107, 107)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(comboStudent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(comboCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(scoreMidTheory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(scoreMidPractical, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(btnSubmit)
+                .addGap(150, 150, 150))
         );
 
         pack();
@@ -110,6 +165,46 @@ public class UploadMidExamMarks extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        String stu_id = comboStudent.getSelectedItem().toString().split(":")[0];
+        String course_id = comboCourse.getSelectedItem().toString().split(":")[0];
+        String theory_score = scoreMidTheory.getText();
+        String practical_score = scoreMidPractical.getText();
+        
+        if(theory_score.length()<=0){
+            theory_score = "0";
+        }
+        if(practical_score.length()<=0){
+            practical_score = null;
+        }
+        
+        String insert_mid_marks = "INSERT INTO mid_exam_marks VALUES('" + stu_id + "', '" + course_id + "'," + theory_score
+                + "," + practical_score + ");";
+        
+            Statement st1 = null;
+            try {
+                st1 = conn.createStatement();
+            } catch (SQLException ex) {
+                Logger.getLogger(CreateUser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            try {
+                if (!st1.execute(insert_mid_marks)) {
+                    System.out.println("Data Inserted to mid exam sucessfully.");
+                    JOptionPane.showMessageDialog(null, "Data Inserted to mid exam sucessfully !!!", "Sucess !!!", JOptionPane.INFORMATION_MESSAGE);
+                    clear_form();
+                } else {
+                    System.out.println("Data Insertion to mid exam failed.");
+                    JOptionPane.showMessageDialog(null, "Data Insertion to mid exam Failed !!!", "Error !!!", JOptionPane.ERROR_MESSAGE);
+                    clear_form();
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "This student data already exists !!!", "Warning !!!", JOptionPane.WARNING_MESSAGE);
+                //Logger.getLogger(CreateUser.class.getName()).log(Level.SEVERE, null, ex);
+                clear_form();
+            }
+    }//GEN-LAST:event_btnSubmitActionPerformed
+
     private void init() {
         try {
             setLocationRelativeTo(null);
@@ -128,11 +223,29 @@ public class UploadMidExamMarks extends javax.swing.JFrame {
                 
                 comboStudent.addItem(Integer.toString(id) + ":" + first_name);
             }
+            
+            String get_course_data = "SELECT id, course_id FROM course;";
+            
+            Statement st3 = conn.createStatement();
+            ResultSet result3 = st3.executeQuery(get_course_data);
+            
+            while (result3.next()) {
+                int id = result3.getInt("id");
+                String course_id = result3.getString("course_id");
+                
+                comboCourse.addItem(Integer.toString(id) + ":" + course_id);
+            }
+            
         } catch (SQLException ex) {
             Logger.getLogger(UploadMidExamMarks.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
+    private void clear_form() {
+        scoreMidTheory.setText("");
+        scoreMidPractical.setText("");
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -157,6 +270,8 @@ public class UploadMidExamMarks extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -168,7 +283,16 @@ public class UploadMidExamMarks extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnSubmit;
+    private javax.swing.JComboBox<String> comboCourse;
     private javax.swing.JComboBox<String> comboStudent;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JTextField scoreMidPractical;
+    private javax.swing.JTextField scoreMidTheory;
     // End of variables declaration//GEN-END:variables
+
 }
