@@ -4,8 +4,14 @@
  */
 package ict2123.miniproject;
 
+import ict2123.miniproject.admin_windows.UpdateCourse;
 import ict2123.miniproject.admin_windows.UpdateLecturer;
+import ict2123.miniproject.admin_windows.UploadMarks;
+import ict2123.miniproject.admin_windows.ViewAttendanceAndMedicalData;
 import ict2123.miniproject.admin_windows.ViewNotice;
+import ict2123.miniproject.admin_windows.ViewStudent;
+import ict2123.miniproject.admin_windows.ViewStudentEligibility;
+import ict2123.miniproject.admin_windows.ViewStudentGrade;
 import java.awt.Image;
 import java.sql.*;
 import java.util.Objects;
@@ -75,14 +81,39 @@ public class LecturerAccount extends javax.swing.JFrame {
         });
 
         jButton2.setText("Upload Marks");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Modify Course");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("View Student Details");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("View Student Eligibility");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("View Student Grades");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setText("View Notices");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -93,6 +124,11 @@ public class LecturerAccount extends javax.swing.JFrame {
 
         jButton8.setText("<html><center>View Attendance <br>and Medical Records</center></html>");
         jButton8.setToolTipText("");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         btnLogout.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnLogout.setText("Logout");
@@ -186,6 +222,42 @@ public class LecturerAccount extends javax.swing.JFrame {
         notice.show();
         dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        ViewAttendanceAndMedicalData att_med = new ViewAttendanceAndMedicalData(userName, userId, "lecturer");
+        att_med.show();
+        dispose();
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        UpdateCourse course = new UpdateCourse(userName, userId, "lecturer");
+        course.show();
+        dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        ViewStudent student = new ViewStudent(userName, userId, "lecturer");
+        student.show();
+        dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        UploadMarks marks = new UploadMarks(userName, userId, "lecturer");
+        marks.show();
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        ViewStudentEligibility eligibility = new ViewStudentEligibility(userName, userId, "lecturer");
+        eligibility.show();
+        dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        ViewStudentGrade grades = new ViewStudentGrade(userName, userId, "lecturer");
+        grades.show();
+        dispose();
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     private void init() {
         setLocationRelativeTo(null);

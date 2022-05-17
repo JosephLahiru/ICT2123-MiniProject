@@ -83,6 +83,8 @@ public class UpdateLecturer extends javax.swing.JFrame {
         lblDob = new javax.swing.JLabel();
         lblContactNumber = new javax.swing.JLabel();
         lblGender = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        lblDepartment = new javax.swing.JLabel();
         lblProPic = new javax.swing.JLabel();
         btnSelectPropic = new javax.swing.JButton();
 
@@ -94,7 +96,7 @@ public class UpdateLecturer extends javax.swing.JFrame {
 
         jLabel2.setText("Update Field Name : ");
 
-        updateFieldCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "first name", "last name", "address", "email", "dob", "contact number", "gender" }));
+        updateFieldCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "first name", "last name", "address", "email", "dob", "contact number", "gender", "department" }));
 
         jLabel3.setText("New Value : ");
 
@@ -146,6 +148,9 @@ public class UpdateLecturer extends javax.swing.JFrame {
 
         lblId.setToolTipText("");
 
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("Department : ");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -161,7 +166,8 @@ public class UpdateLecturer extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(jLabel9)
                     .addComponent(jLabel10)
-                    .addComponent(jLabel11))
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel12))
                 .addGap(63, 63, 63)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -172,7 +178,8 @@ public class UpdateLecturer extends javax.swing.JFrame {
                     .addComponent(lblEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblDob, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblContactNumber, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblGender, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE))
+                    .addComponent(lblGender, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+                    .addComponent(lblDepartment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -214,6 +221,10 @@ public class UpdateLecturer extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(lblGender))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(lblDepartment))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -415,6 +426,7 @@ public class UpdateLecturer extends javax.swing.JFrame {
             String dob = result2.getString("dob");
             String contact_number = result2.getString("contact_number");
             String gender = result2.getString("gender");
+            String department = result2.getString("department");
             byte[] pro_pic_data = result2.getBytes("pro_pic");
             
             if (Objects.nonNull(pro_pic_data)) {
@@ -434,6 +446,7 @@ public class UpdateLecturer extends javax.swing.JFrame {
             lblDob.setForeground(Color.white);
             lblContactNumber.setForeground(Color.white);
             lblGender.setForeground(Color.white);
+            lblDepartment.setForeground(Color.white);
 
             lblId.setText(Integer.toString(userID));
             lblFirstName.setText(first_name);
@@ -444,6 +457,7 @@ public class UpdateLecturer extends javax.swing.JFrame {
             lblDob.setText(dob);
             lblContactNumber.setText(contact_number);
             lblGender.setText(gender);
+            lblDepartment.setText(department);
         }
     }
 
@@ -497,6 +511,7 @@ public class UpdateLecturer extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -508,6 +523,7 @@ public class UpdateLecturer extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblContactNumber;
+    private javax.swing.JLabel lblDepartment;
     private javax.swing.JLabel lblDob;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblFirstName;

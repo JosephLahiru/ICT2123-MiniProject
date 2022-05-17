@@ -72,7 +72,7 @@ public class TechnicalOfficerAccount extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Update Profile");
+        jButton1.setText("<html><center>Update<br>Profile</center></html>");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

@@ -69,7 +69,7 @@ public class UpdateUser extends javax.swing.JFrame {
 
         jLabel2.setText("Update Field Name : ");
 
-        updateFieldCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "first name", "last name", "password", "address", "email", "dob", "contact number", "gender" }));
+        updateFieldCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "first name", "last name", "password", "address", "email", "dob", "contact number", "gender", "department" }));
 
         jLabel3.setText("New Value : ");
 
@@ -94,11 +94,11 @@ public class UpdateUser extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "First Name", "Last Name", "Password", "Address", "Email", "DOB", "Contact Number", "Gender"
+                "ID", "First Name", "Last Name", "Password", "Address", "Email", "DOB", "Contact Number", "Gender", "Department"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -234,7 +234,7 @@ public class UpdateUser extends javax.swing.JFrame {
         if (!"none".equals(tableName)) {
             currentUserType = tableName;
         }
-        
+
         String update_query = "UPDATE " + tableName + " SET " + updateField + " = '" + newValue + "' WHERE id = '" + userid + "';";
 
         Statement st1 = null;
@@ -295,6 +295,8 @@ public class UpdateUser extends javax.swing.JFrame {
 
         DefaultTableModel tblModel = (DefaultTableModel) userTable.getModel();
         tblModel.setRowCount(0);
+        
+        String department = null;
 
         String get_notice = "SELECT * FROM " + currentUserType + ";";
 
@@ -311,8 +313,11 @@ public class UpdateUser extends javax.swing.JFrame {
             String dob = result2.getString("dob");
             String contact_number = result2.getString("contact_number");
             String gender = result2.getString("gender");
-
-            String table_data[] = {Integer.toString(id), first_name, last_name, password, address, email, dob, contact_number, gender};
+            if (!"admin".equals(currentUserType)) {
+                department = result2.getString("department");
+            }
+            
+            String table_data[] = {Integer.toString(id), first_name, last_name, password, address, email, dob, contact_number, gender, department};
 
             tblModel.addRow(table_data);
         }

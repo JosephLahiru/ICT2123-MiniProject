@@ -6,6 +6,9 @@ package ict2123.miniproject.admin_windows;
 
 import ict2123.miniproject.AdminAccount;
 import ict2123.miniproject.DbConnector;
+import ict2123.miniproject.LecturerAccount;
+import ict2123.miniproject.StudentAccount;
+import ict2123.miniproject.TechnicalOfficerAccount;
 import javax.swing.JOptionPane;
 import java.sql.*;
 import java.util.logging.Level;
@@ -20,12 +23,14 @@ public class UpdateCourse extends javax.swing.JFrame {
 
     Connection conn;
     String userName;
+    String userType;
     int userID;
 
-    public UpdateCourse(String uName, int uID) {
+    public UpdateCourse(String uName, int uID, String uType) {
         
         this.userName = uName;
         this.userID = uID;
+        this.userType = uType;
         
         initComponents();
         init();
@@ -217,8 +222,20 @@ public class UpdateCourse extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUpdateDataActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        AdminAccount admin = new AdminAccount(userName, userID);
-        admin.show();
+        if ("admin".equals(userType)) {
+            AdminAccount admin = new AdminAccount(userName, userID);
+            admin.show();
+        } else if ("student".equals(userType)) {
+            StudentAccount student = new StudentAccount(userName, userID);
+            student.show();
+        } else if ("lecturer".equals(userType)) {
+            LecturerAccount lecturer = new LecturerAccount(userName, userID);
+            lecturer.show();
+        } else if ("technical_officer".equals(userType)) {
+            TechnicalOfficerAccount to = new TechnicalOfficerAccount(userName, userID);
+            to.show();
+        }
+        
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 

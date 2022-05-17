@@ -277,7 +277,7 @@ public class AdminAccount extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCreateCourseActionPerformed
 
     private void btnUpdateCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateCourseActionPerformed
-        UpdateCourse update = new UpdateCourse(userName, userId);
+        UpdateCourse update = new UpdateCourse(userName, userId, "admin");
         update.show();
         dispose();
     }//GEN-LAST:event_btnUpdateCourseActionPerformed

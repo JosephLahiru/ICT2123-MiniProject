@@ -17,6 +17,7 @@ public class ViewTimetable extends javax.swing.JFrame {
 
     Connection conn;
     String userName;
+    String department;
     int userID;
     
     public ViewTimetable(String uName, int uID) {

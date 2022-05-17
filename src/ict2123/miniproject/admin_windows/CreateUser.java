@@ -79,6 +79,8 @@ public class CreateUser extends javax.swing.JFrame {
         btnBack = new javax.swing.JButton();
         lblProPic = new javax.swing.JLabel();
         btnSelectPropic = new javax.swing.JButton();
+        lblDepartment = new javax.swing.JLabel();
+        comboDepartment = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -135,10 +137,18 @@ public class CreateUser extends javax.swing.JFrame {
             }
         });
 
+        lblDepartment.setText("Department : ");
+
+        comboDepartment.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ICT", "ET", "BT" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnCreateUser)
+                .addGap(356, 356, 356))
             .addGroup(layout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,7 +161,8 @@ public class CreateUser extends javax.swing.JFrame {
                     .addComponent(lblDob)
                     .addComponent(lblContact)
                     .addComponent(lblGender)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(lblDepartment))
                 .addGap(104, 104, 104)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -164,7 +175,8 @@ public class CreateUser extends javax.swing.JFrame {
                     .addComponent(comboType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(comboGender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pwd)
-                    .addComponent(pwdCom))
+                    .addComponent(pwdCom)
+                    .addComponent(comboDepartment, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -175,10 +187,6 @@ public class CreateUser extends javax.swing.JFrame {
                             .addComponent(btnSelectPropic, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                             .addComponent(lblProPic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(69, 69, 69))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnCreateUser)
-                .addGap(356, 356, 356))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,6 +231,10 @@ public class CreateUser extends javax.swing.JFrame {
                             .addComponent(comboGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblDepartment)
+                            .addComponent(comboDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblPwd)
                             .addComponent(pwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -243,7 +255,7 @@ public class CreateUser extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateUserActionPerformed
-        String type, _type, fname, lname, _pwd, com_pwd, address, email, dob, contact, gender, _gender;
+        String type, _type, fname, lname, _pwd, com_pwd, address, email, dob, contact, gender, _gender, department;
 
         type = comboType.getSelectedItem().toString().toLowerCase().replace(' ', '_');
         fname = txtFname.getText();
@@ -255,6 +267,7 @@ public class CreateUser extends javax.swing.JFrame {
         dob = txtDob.getText();
         contact = txtContact.getText();
         gender = (String) comboGender.getSelectedItem();
+        department = comboDepartment.getSelectedItem().toString().toLowerCase();
 
         if ("Male".equals(gender)) {
             _gender = "M";
@@ -276,8 +289,8 @@ public class CreateUser extends javax.swing.JFrame {
             try {
 
                 PreparedStatement ps = conn.prepareStatement("insert into " + type + "(first_name, last_name, "
-                        + "pro_pic, password, address, email, dob, contact_number, gender) "
-                        + "VALUES(?,?,?,?,?,?,?,?,?)");
+                        + "pro_pic, password, address, email, dob, contact_number, gender, department) "
+                        + "VALUES(?,?,?,?,?,?,?,?,?,?)");
 
                 ps.setString(1, fname);
                 ps.setString(2, lname);
@@ -293,6 +306,7 @@ public class CreateUser extends javax.swing.JFrame {
                 ps.setString(7, dob);
                 ps.setString(8, contact);
                 ps.setString(9, _gender);
+                ps.setString(10, department);
 
                 if (!ps.execute()) {
                     System.out.println("Inserted data to user table sucessfully.");
@@ -403,12 +417,14 @@ public class CreateUser extends javax.swing.JFrame {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCreateUser;
     private javax.swing.JButton btnSelectPropic;
+    private javax.swing.JComboBox<String> comboDepartment;
     private javax.swing.JComboBox<String> comboGender;
     private javax.swing.JComboBox<String> comboType;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblContact;
+    private javax.swing.JLabel lblDepartment;
     private javax.swing.JLabel lblDob;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblFname;
