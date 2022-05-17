@@ -4,7 +4,9 @@
  */
 package ict2123.miniproject;
 
+import com.mysql.cj.jdbc.result.UpdatableResultSet;
 import ict2123.miniproject.admin_windows.UpdateTO;
+import ict2123.miniproject.admin_windows.UploadMedical;
 import ict2123.miniproject.admin_windows.ViewNotice;
 import java.awt.Image;
 import java.sql.*;
@@ -82,6 +84,11 @@ public class TechnicalOfficerAccount extends javax.swing.JFrame {
         jButton2.setText("<html><center>Add Student<br>Attendance</center></html>");
 
         jButton3.setText("<html><center>Add Student<br>Medical<center></html>");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("View Notices");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -184,6 +191,12 @@ public class TechnicalOfficerAccount extends javax.swing.JFrame {
         notice.show();
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        UploadMedical medical = new UploadMedical(userName, userId, userName);
+        medical.show();
+        dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void init() {
         setLocationRelativeTo(null);
