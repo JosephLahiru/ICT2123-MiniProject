@@ -6,8 +6,10 @@ package ict2123.miniproject;
 
 import com.mysql.cj.jdbc.result.UpdatableResultSet;
 import ict2123.miniproject.admin_windows.UpdateTO;
+import ict2123.miniproject.admin_windows.UploadAttendance;
 import ict2123.miniproject.admin_windows.UploadMedical;
 import ict2123.miniproject.admin_windows.ViewNotice;
+import ict2123.miniproject.admin_windows.ViewTimetable;
 import java.awt.Image;
 import java.sql.*;
 import java.util.Objects;
@@ -21,7 +23,7 @@ import javax.swing.ImageIcon;
  */
 public class TechnicalOfficerAccount extends javax.swing.JFrame {
 
-    String userName;
+    String userName, department;
     int userId;
     Connection conn;
     private ImageIcon format = null;
@@ -82,6 +84,11 @@ public class TechnicalOfficerAccount extends javax.swing.JFrame {
         });
 
         jButton2.setText("<html><center>Add Student<br>Attendance</center></html>");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("<html><center>Add Student<br>Medical<center></html>");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -177,7 +184,9 @@ public class TechnicalOfficerAccount extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        ViewTimetable timetable = new ViewTimetable(userName, userId, "technical_officer", department);
+        timetable.show();
+        dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -193,10 +202,16 @@ public class TechnicalOfficerAccount extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        UploadMedical medical = new UploadMedical(userName, userId, userName);
+        UploadMedical medical = new UploadMedical(userName, userId, "technical_officer");
         medical.show();
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        UploadAttendance attendance = new UploadAttendance(userName, userId, "technical_officer");
+        attendance.show();
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void init() {
         setLocationRelativeTo(null);
@@ -215,13 +230,14 @@ public class TechnicalOfficerAccount extends javax.swing.JFrame {
 
     private void retrieve_pro_pic() throws SQLException {
 
-        String propic_query = "SELECT pro_pic FROM technical_officer WHERE id = " + userId + ";";
+        String propic_query = "SELECT pro_pic, department FROM technical_officer WHERE id = " + userId + ";";
 
         Statement st2 = conn.createStatement();
         ResultSet result2 = st2.executeQuery(propic_query);
 
         while (result2.next()) {
             byte[] pro_pic_data = result2.getBytes("pro_pic");
+            department = result2.getString("department");
             if (Objects.nonNull(pro_pic_data)) {
                 format = new ImageIcon(pro_pic_data);
                 Image mm = format.getImage();

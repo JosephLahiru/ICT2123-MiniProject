@@ -319,7 +319,7 @@ public class AdminAccount extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCreateTimetableActionPerformed
 
     private void btnViewTimetableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewTimetableActionPerformed
-        ViewTimetable timetable = new ViewTimetable(userName, userId);
+        ViewTimetable timetable = new ViewTimetable(userName, userId, "admin");
         timetable.show();
         dispose();
     }//GEN-LAST:event_btnViewTimetableActionPerformed

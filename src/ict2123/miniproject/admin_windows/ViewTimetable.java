@@ -5,6 +5,9 @@
 package ict2123.miniproject.admin_windows;
 import ict2123.miniproject.AdminAccount;
 import ict2123.miniproject.DbConnector;
+import ict2123.miniproject.LecturerAccount;
+import ict2123.miniproject.StudentAccount;
+import ict2123.miniproject.TechnicalOfficerAccount;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,14 +19,27 @@ import javax.swing.table.DefaultTableModel;
 public class ViewTimetable extends javax.swing.JFrame {
 
     Connection conn;
-    String userName;
-    String department;
+    String userName, userType;
+    String department=null;
     int userID;
     
-    public ViewTimetable(String uName, int uID) {
+    public ViewTimetable(String uName, int uID, String uType) {
         
         this.userName = uName;
         this.userID = uID;
+        this.userType = uType;
+        
+        initComponents();
+        init();
+        
+    }
+    
+    public ViewTimetable(String uName, int uID, String uType, String department) {
+        
+        this.userName = uName;
+        this.userID = uID;
+        this.userType = uType;
+        this.department = department;
         
         initComponents();
         init();
@@ -117,8 +133,20 @@ public class ViewTimetable extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        AdminAccount admin = new AdminAccount(userName, userID);
-        admin.show();
+        if ("admin".equals(userType)) {
+            AdminAccount admin = new AdminAccount(userName, userID);
+            admin.show();
+        } else if ("student".equals(userType)) {
+            StudentAccount student = new StudentAccount(userName, userID);
+            student.show();
+        } else if ("lecturer".equals(userType)) {
+            LecturerAccount lecturer = new LecturerAccount(userName, userID);
+            lecturer.show();
+        } else if ("technical_officer".equals(userType)) {
+            TechnicalOfficerAccount to = new TechnicalOfficerAccount(userName, userID);
+            to.show();
+        }
+        
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
@@ -141,6 +169,10 @@ public class ViewTimetable extends javax.swing.JFrame {
         tblModel.setRowCount(0);
         
         String get_user_data = "SELECT * FROM timetable;";
+        
+        if(department!=null){
+            get_user_data = "SELECT * FROM timetable WHERE department='" + department + "';";
+        }
 
         Statement st2 = conn.createStatement();
         ResultSet result2 = st2.executeQuery(get_user_data);
