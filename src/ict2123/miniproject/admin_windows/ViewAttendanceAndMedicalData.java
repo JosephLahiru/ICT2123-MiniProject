@@ -26,16 +26,26 @@ public class ViewAttendanceAndMedicalData extends javax.swing.JFrame {
     DefaultTableModel tblModel;
     String data_type;
     String student;
+    boolean overriden = false;
 
     public ViewAttendanceAndMedicalData(String uName, int uID, String uType) {
-
         this.userName = uName;
         this.userID = uID;
         this.userType = uType;
 
         initComponents();
         init();
+    }
 
+    public ViewAttendanceAndMedicalData(String uName, int uID, String uType, String student) {
+        this.userName = uName;
+        this.userID = uID;
+        this.userType = uType;
+        this.student = student;
+        overriden = true;
+
+        initComponents();
+        init();
     }
 
     private ViewAttendanceAndMedicalData() {
@@ -153,9 +163,12 @@ public class ViewAttendanceAndMedicalData extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnLoadDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadDataActionPerformed
-        
+
         data_type = comboType.getSelectedItem().toString().toLowerCase().replace(" ", "_");
-        student = comboStudent.getSelectedItem().toString().toLowerCase().replace(" ", "_").split(":")[0];
+
+        if (!overriden) {
+            student = comboStudent.getSelectedItem().toString().toLowerCase().replace(" ", "_").split(":")[0];
+        }
 
         if ("medical".equals(data_type)) {
             tblModel.setColumnCount(0);
@@ -170,7 +183,7 @@ public class ViewAttendanceAndMedicalData extends javax.swing.JFrame {
             tblModel.addColumn("Date");
             tblModel.addColumn("Status");
         }
-        
+
         try {
             load_data();
         } catch (SQLException ex) {
@@ -179,28 +192,32 @@ public class ViewAttendanceAndMedicalData extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoadDataActionPerformed
 
     private void init() {
-        try {
-            setLocationRelativeTo(null);
 
-            DbConnector DbCon = new DbConnector();
-            conn = DbCon.getConnection();
+        setLocationRelativeTo(null);
 
-            String get_user_data = "SELECT id, first_name FROM student;";
+        DbConnector DbCon = new DbConnector();
+        conn = DbCon.getConnection();
 
-            Statement st2 = conn.createStatement();
-            ResultSet result2 = st2.executeQuery(get_user_data);
+        if (overriden) {
+            comboStudent.hide();
+        } else {
+            try {
+                String get_user_data = "SELECT id, first_name FROM student;";
 
-            while (result2.next()) {
-                int id = result2.getInt("id");
-                String first_name = result2.getString("first_name");
+                Statement st2 = conn.createStatement();
+                ResultSet result2 = st2.executeQuery(get_user_data);
 
-                comboStudent.addItem(Integer.toString(id) + ":" + first_name);
+                while (result2.next()) {
+                    int id = result2.getInt("id");
+                    String first_name = result2.getString("first_name");
+
+                    comboStudent.addItem(Integer.toString(id) + ":" + first_name);
+                }
+
+                //load_data();
+            } catch (SQLException ex) {
+                Logger.getLogger(ViewAttendanceAndMedicalData.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-            //load_data();
-
-        } catch (SQLException ex) {
-            Logger.getLogger(ViewAttendanceAndMedicalData.class.getName()).log(Level.SEVERE, null, ex);
         }
         tblModel = (DefaultTableModel) dataTable.getModel();
         tblModel.setRowCount(0);
@@ -210,10 +227,10 @@ public class ViewAttendanceAndMedicalData extends javax.swing.JFrame {
         tblModel.setRowCount(0);
         if ("medical".equals(data_type)) {
 
-            String get_user_data=null;
+            String get_user_data = null;
             if ("all_students".equals(student)) {
                 get_user_data = "SELECT * FROM medicals;";
-            }else{
+            } else {
                 get_user_data = "SELECT * FROM medicals WHERE stu_id=" + student + ";";
             }
 
@@ -231,10 +248,10 @@ public class ViewAttendanceAndMedicalData extends javax.swing.JFrame {
             }
         } else if ("attendance".equals(data_type)) {
 
-            String get_user_data=null;
+            String get_user_data = null;
             if ("all_students".equals(student)) {
                 get_user_data = "SELECT * FROM attendance;";
-            }else{
+            } else {
                 get_user_data = "SELECT * FROM attendance WHERE stu_id=" + student + ";";
             }
 
