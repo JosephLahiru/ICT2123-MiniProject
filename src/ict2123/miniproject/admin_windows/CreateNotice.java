@@ -17,9 +17,9 @@ import java.util.logging.Logger;
  */
 public class CreateNotice extends javax.swing.JFrame {
 
-    Connection conn;
-    String userName;
-    int userID;
+    private Connection conn;
+    private String userName;
+    private int userID;
     
     public CreateNotice(String uName, int uID) {
         

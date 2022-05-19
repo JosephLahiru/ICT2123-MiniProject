@@ -21,10 +21,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class UpdateCourse extends javax.swing.JFrame {
 
-    Connection conn;
-    String userName;
-    String userType;
-    int userID;
+    private Connection conn;
+    private String userName, userType;
+    private int userID;
 
     public UpdateCourse(String uName, int uID, String uType) {
         

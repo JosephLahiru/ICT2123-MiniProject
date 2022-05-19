@@ -20,10 +20,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ViewCourse extends javax.swing.JFrame {
 
-    Connection conn;
-    String userName;
-    int userID;
-    String userType;
+    private Connection conn;
+    private String userName, userType;
+    private int userID;
 
     public ViewCourse(String uName, int uID, String uType) {
 

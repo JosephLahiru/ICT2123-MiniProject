@@ -16,9 +16,9 @@ import java.sql.*;
  */
 public class UploadMarks extends javax.swing.JFrame {
 
-    String userName, userType;
-    int userID;
-    Connection conn;
+    private String userName, userType;
+    private int userID;
+    private Connection conn;
     
     public UploadMarks(String uName, int uID, String uType) {
         

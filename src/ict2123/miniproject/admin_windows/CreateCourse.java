@@ -17,9 +17,9 @@ import java.util.logging.Logger;
  */
 public class CreateCourse extends javax.swing.JFrame {
 
-    Connection conn;
-    String userName;
-    int userID;
+    private Connection conn;
+    private String userName;
+    private int userID;
     
     public CreateCourse(String uName, int uID) {
         

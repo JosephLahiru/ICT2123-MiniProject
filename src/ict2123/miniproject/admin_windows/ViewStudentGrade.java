@@ -19,9 +19,10 @@ import java.util.logging.Logger;
  */
 public class ViewStudentGrade extends javax.swing.JFrame {
 
-    String userName, userType;
-    int userID;
-    Connection conn;
+    private String userName, userType, student;
+    private int userID;
+    private Connection conn;
+    private boolean overriden = false;
 
     public ViewStudentGrade(String uName, int uID, String uType) {
 
@@ -29,6 +30,19 @@ public class ViewStudentGrade extends javax.swing.JFrame {
         this.userID = uID;
         this.userType = uType;
 
+        initComponents();
+        init();
+    }
+    
+    public ViewStudentGrade(String uName, int uID, String uType, String student) {
+
+        this.userName = uName;
+        this.userID = uID;
+        this.userType = uType;
+        this.student = student;
+
+        overriden = true;
+        
         initComponents();
         init();
     }

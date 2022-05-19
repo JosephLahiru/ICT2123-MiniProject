@@ -23,9 +23,9 @@ import javax.swing.ImageIcon;
  */
 public class TechnicalOfficerAccount extends javax.swing.JFrame {
 
-    String userName, department;
-    int userId;
-    Connection conn;
+    private String userName, department;
+    private int userId;
+    private Connection conn;
     private ImageIcon format = null;
 
     public TechnicalOfficerAccount(String uName, int uID) {

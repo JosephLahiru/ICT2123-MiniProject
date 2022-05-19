@@ -25,13 +25,12 @@ import javax.swing.JFileChooser;
  */
 public class CreateUser extends javax.swing.JFrame {
 
-    Connection conn;
-    String userName;
-    int userID;
-    FileInputStream image_input = null;
+    private Connection conn;
+    private String userName, img_path;
+    private int userID;
+    private FileInputStream image_input = null;
     private ImageIcon format = null;
-    String img_path;
-    File file;
+    private File file;
 
     public CreateUser(String uName, int uID) {
 

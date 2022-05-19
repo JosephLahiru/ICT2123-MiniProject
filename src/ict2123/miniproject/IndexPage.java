@@ -15,11 +15,11 @@ import javax.swing.SwingConstants;
 
 public class IndexPage implements ActionListener {
 
-    JFrame frame = new JFrame("Index");
-    JButton startButton = new JButton("Get Started");
-    JPanel panel = new JPanel();
-    JPanel panel2 = new JPanel();
-    JLabel labelTopic = new JLabel("<html><br><center>WELCOME<br></center></html>");
+    private final JFrame frame = new JFrame("Index");
+    private final JButton startButton = new JButton("Get Started");
+    private final JPanel panel = new JPanel();
+    private final JPanel panel2 = new JPanel();
+    private final JLabel labelTopic = new JLabel("<html><br><center>WELCOME<br></center></html>");
 
     public IndexPage() {
         initialize();

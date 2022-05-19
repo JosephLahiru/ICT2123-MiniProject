@@ -13,9 +13,9 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame {
 
-    Connection conn;
-    String type, uName;
-    int id;
+    private Connection conn;
+    private String type, uName;
+    private int id;
 
     public Login() {
         initComponents();

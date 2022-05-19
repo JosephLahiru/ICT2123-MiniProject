@@ -18,10 +18,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class UpdateUser extends javax.swing.JFrame {
 
-    Connection conn;
-    String userName;
-    String currentUserType;
-    int userID;
+    private Connection conn;
+    private String userName, currentUserType;
+    private int userID;
 
     public UpdateUser(String uName, int uID) {
 

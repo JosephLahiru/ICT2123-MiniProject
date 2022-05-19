@@ -20,9 +20,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ViewNotice extends javax.swing.JFrame {
 
-    Connection conn;
-    String userName, userType;
-    int userID;
+    private Connection conn;
+    private String userName, userType;
+    private int userID;
 
     public ViewNotice(String uName, int uID, String uType) {
 

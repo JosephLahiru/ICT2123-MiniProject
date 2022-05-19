@@ -30,8 +30,8 @@ import javax.swing.ImageIcon;
 public class AdminAccount extends javax.swing.JFrame {
 
     private String userName;
-    int userId;
-    Connection conn;
+    private int userId;
+    private Connection conn;
     private ImageIcon format = null;
 
     public AdminAccount(String uName, int uID) {

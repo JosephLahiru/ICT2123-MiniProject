@@ -16,8 +16,8 @@ import javax.swing.SwingConstants;
 
 public class UserAccount {
 
-    String userName;
-    String type, fname, lname, pswd, address, email, dob, contact, gender;
+    private String userName;
+    private String type, fname, lname, pswd, address, email, dob, contact, gender;
     int id;
 
     private JFrame window;

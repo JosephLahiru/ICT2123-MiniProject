@@ -18,10 +18,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ViewTimetable extends javax.swing.JFrame {
 
-    Connection conn;
-    String userName, userType;
-    String department=null;
-    int userID;
+    private Connection conn;
+    private String userName, userType;
+    private String department=null;
+    private int userID;
     
     public ViewTimetable(String uName, int uID, String uType) {
         

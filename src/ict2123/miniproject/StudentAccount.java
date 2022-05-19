@@ -8,6 +8,7 @@ import ict2123.miniproject.admin_windows.UpdateStudent;
 import ict2123.miniproject.admin_windows.ViewAttendanceAndMedicalData;
 import ict2123.miniproject.admin_windows.ViewCourse;
 import ict2123.miniproject.admin_windows.ViewNotice;
+import ict2123.miniproject.admin_windows.ViewStudentGrade;
 import ict2123.miniproject.admin_windows.ViewTimetable;
 import java.awt.Image;
 import java.sql.*;
@@ -22,9 +23,9 @@ import javax.swing.ImageIcon;
  */
 public class StudentAccount extends javax.swing.JFrame {
 
-    String userName, department;
-    int userId;
-    Connection conn;
+    private String userName, department;
+    private int userId;
+    private Connection conn;
     private ImageIcon format = null;
 
     public StudentAccount(String uName, int uID) {
@@ -90,6 +91,11 @@ public class StudentAccount extends javax.swing.JFrame {
         });
 
         jButton5.setText("View Grades");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("<html><center>View<br>Timetables</center></html>");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -214,6 +220,12 @@ public class StudentAccount extends javax.swing.JFrame {
         timetable.show();
         dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        ViewStudentGrade grades = new ViewStudentGrade(userName, userId, "student", Integer.toString(userId));
+        grades.show();
+        dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     private void init() {
         setLocationRelativeTo(null);

@@ -16,7 +16,7 @@ public class DbConnector {
     public Connection getConnection() {
         registerConnection();
         Connection conn = null;
-        String url = "jdbc:mysql://localhost:3306/ICT2123";
+        String url = "jdbc:mysql://localhost:3306/_ICT2123";
         String user = "root";
         String password = "";
 

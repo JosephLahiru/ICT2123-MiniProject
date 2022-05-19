@@ -20,13 +20,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ViewAttendanceAndMedicalData extends javax.swing.JFrame {
 
-    Connection conn;
-    String userName, userType;
-    int userID;
-    DefaultTableModel tblModel;
-    String data_type;
-    String student;
-    boolean overriden = false;
+    private Connection conn;
+    private String userName, userType, data_type, student;
+    private int userID;
+    private DefaultTableModel tblModel;
+    private boolean overriden = false;
 
     public ViewAttendanceAndMedicalData(String uName, int uID, String uType) {
         this.userName = uName;
@@ -250,9 +248,9 @@ public class ViewAttendanceAndMedicalData extends javax.swing.JFrame {
 
             String get_user_data = null;
             if ("all_students".equals(student)) {
-                get_user_data = "SELECT * FROM attendance;";
+                get_user_data = "SELECT * FROM attendance ORDER BY date DESC;";
             } else {
-                get_user_data = "SELECT * FROM attendance WHERE stu_id=" + student + ";";
+                get_user_data = "SELECT * FROM attendance WHERE stu_id=" + student + " ORDER BY date DESC;";
             }
 
             Statement st2 = conn.createStatement();

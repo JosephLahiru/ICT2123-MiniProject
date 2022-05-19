@@ -18,9 +18,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class UpdateNotice extends javax.swing.JFrame {
 
-    Connection conn;
-    String userName;
-    int userID;
+    private Connection conn;
+    private String userName;
+    private int userID;
 
     public UpdateNotice(String uName, int uID) {
         

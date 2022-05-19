@@ -15,9 +15,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ViewUser extends javax.swing.JFrame {
 
-    Connection conn;
-    String userName;
-    int userID;
+    private Connection conn;
+    private String userName;
+    private int userID;
     
     public ViewUser(String uName, int uID) {
         

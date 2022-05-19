@@ -25,9 +25,9 @@ import javax.swing.ImageIcon;
  */
 public class LecturerAccount extends javax.swing.JFrame {
 
-    String userName;
-    int userId;
-    Connection conn;
+    private String userName;
+    private int userId;
+    private Connection conn;
     private ImageIcon format = null;
 
     public LecturerAccount(String uName, int uId) {
@@ -155,7 +155,7 @@ public class LecturerAccount extends javax.swing.JFrame {
                         .addGap(76, 76, 76)
                         .addComponent(btnLogout))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
+                        .addGap(70, 70, 70)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblLecturerName)
                             .addGroup(layout.createSequentialGroup()
@@ -174,7 +174,7 @@ public class LecturerAccount extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButton8))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(58, 58, 58))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

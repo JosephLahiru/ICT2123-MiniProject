@@ -20,9 +20,9 @@ import javax.swing.JOptionPane;
  */
 public class UploadQuizMarks extends javax.swing.JFrame {
 
-    String userName, userType;
-    int userID;
-    Connection conn;
+    private String userName, userType;
+    private int userID;
+    private Connection conn;
 
     public UploadQuizMarks(String uName, int uID, String uType) {
 
