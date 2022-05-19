@@ -12,6 +12,7 @@ import ict2123.miniproject.TechnicalOfficerAccount;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -51,10 +52,12 @@ public class ViewStudentEligibility extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnLoadData = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        eligibilityTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+
+        comboStudent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "all students" }));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setText("View Student Eligibility");
@@ -75,18 +78,33 @@ public class ViewStudentEligibility extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        eligibilityTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Student ID", "Course ID", "AVG Quiz Marks", "AVG Assessment Marks", "CA Marks", "Eligibility"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(eligibilityTable);
+        if (eligibilityTable.getColumnModel().getColumnCount() > 0) {
+            eligibilityTable.getColumnModel().getColumn(0).setResizable(false);
+            eligibilityTable.getColumnModel().getColumn(0).setPreferredWidth(5);
+            eligibilityTable.getColumnModel().getColumn(1).setResizable(false);
+            eligibilityTable.getColumnModel().getColumn(1).setPreferredWidth(5);
+            eligibilityTable.getColumnModel().getColumn(2).setResizable(false);
+            eligibilityTable.getColumnModel().getColumn(3).setResizable(false);
+            eligibilityTable.getColumnModel().getColumn(4).setResizable(false);
+            eligibilityTable.getColumnModel().getColumn(5).setResizable(false);
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -151,7 +169,11 @@ public class ViewStudentEligibility extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnLoadDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadDataActionPerformed
-        // TODO add your handling code here:
+        try {
+            populate_table();
+        } catch (SQLException ex) {
+            Logger.getLogger(ViewStudentEligibility.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnLoadDataActionPerformed
 
     private void init() {
@@ -174,6 +196,38 @@ public class ViewStudentEligibility extends javax.swing.JFrame {
             }
         } catch (SQLException ex) {
             Logger.getLogger(ViewStudentEligibility.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void populate_table() throws SQLException{
+        String curr_stu_id = comboStudent.getSelectedItem().toString().toLowerCase();
+        String get_user_data;
+        
+        if("all students".equals(curr_stu_id)){
+            get_user_data = "SELECT * FROM ca_eligibility;";
+        }
+        else{
+            curr_stu_id = curr_stu_id.split(":")[0];
+            get_user_data = "SELECT * FROM ca_eligibility WHERE stu_id=" + curr_stu_id + ";";
+        }
+        
+        DefaultTableModel tblModel = (DefaultTableModel) eligibilityTable.getModel();
+        tblModel.setRowCount(0);
+
+        Statement st2 = conn.createStatement();
+        ResultSet result2 = st2.executeQuery(get_user_data);
+
+        while (result2.next()) {
+            int stu_id = result2.getInt("stu_id");
+            int course_id = result2.getInt("course_id");
+            float quiz_marks = result2.getFloat("quiz_marks");
+            float asses_marks = result2.getFloat("assessment_marks");
+            float ca_marks = result2.getFloat("ca_marks");
+            String eligibility = result2.getString("eligibility");
+
+            String table_data[] = {Integer.toString(stu_id), Integer.toString(course_id), Float.toString(quiz_marks), Float.toString(asses_marks), Float.toString(ca_marks), eligibility};
+
+            tblModel.addRow(table_data);
         }
     }
 
@@ -216,9 +270,9 @@ public class ViewStudentEligibility extends javax.swing.JFrame {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnLoadData;
     private javax.swing.JComboBox<String> comboStudent;
+    private javax.swing.JTable eligibilityTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

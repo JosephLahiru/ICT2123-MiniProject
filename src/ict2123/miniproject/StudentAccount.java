@@ -222,7 +222,7 @@ public class StudentAccount extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        ViewStudentGrade grades = new ViewStudentGrade(userName, userId, "student", Integer.toString(userId));
+        ViewStudentGrade grades = new ViewStudentGrade(userName, userId, "student");
         grades.show();
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed

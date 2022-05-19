@@ -12,6 +12,7 @@ import ict2123.miniproject.TechnicalOfficerAccount;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,10 +20,9 @@ import java.util.logging.Logger;
  */
 public class ViewStudentGrade extends javax.swing.JFrame {
 
-    private String userName, userType, student;
+    private String userName, userType;
     private int userID;
     private Connection conn;
-    private boolean overriden = false;
 
     public ViewStudentGrade(String uName, int uID, String uType) {
 
@@ -30,19 +30,6 @@ public class ViewStudentGrade extends javax.swing.JFrame {
         this.userID = uID;
         this.userType = uType;
 
-        initComponents();
-        init();
-    }
-    
-    public ViewStudentGrade(String uName, int uID, String uType, String student) {
-
-        this.userName = uName;
-        this.userID = uID;
-        this.userType = uType;
-        this.student = student;
-
-        overriden = true;
-        
         initComponents();
         init();
     }
@@ -65,13 +52,15 @@ public class ViewStudentGrade extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnLoadData = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        gradeTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
+        comboStudent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "all students" }));
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setText("View Student Grade");
+        jLabel1.setText("View Student Grades");
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -89,18 +78,31 @@ public class ViewStudentGrade extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        gradeTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Student ID", "Course ID", "Final Grades", "Grade Point"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(gradeTable);
+        if (gradeTable.getColumnModel().getColumnCount() > 0) {
+            gradeTable.getColumnModel().getColumn(0).setResizable(false);
+            gradeTable.getColumnModel().getColumn(0).setPreferredWidth(5);
+            gradeTable.getColumnModel().getColumn(1).setResizable(false);
+            gradeTable.getColumnModel().getColumn(1).setPreferredWidth(5);
+            gradeTable.getColumnModel().getColumn(2).setResizable(false);
+            gradeTable.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -113,9 +115,9 @@ public class ViewStudentGrade extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 198, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
                                 .addComponent(jLabel1)
-                                .addGap(135, 135, 135)
+                                .addGap(140, 140, 140)
                                 .addComponent(btnBack)))
                         .addGap(40, 40, 40))
                     .addGroup(layout.createSequentialGroup()
@@ -165,7 +167,11 @@ public class ViewStudentGrade extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnLoadDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadDataActionPerformed
-        // TODO add your handling code here:
+        try {
+            populate_table();
+        } catch (SQLException ex) {
+            Logger.getLogger(ViewStudentGrade.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnLoadDataActionPerformed
 
     private void init() {
@@ -188,6 +194,36 @@ public class ViewStudentGrade extends javax.swing.JFrame {
             }
         } catch (SQLException ex) {
             Logger.getLogger(ViewStudentGrade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void populate_table() throws SQLException{
+        String curr_stu_id = comboStudent.getSelectedItem().toString().toLowerCase();
+        String get_user_data;
+        
+        if("all students".equals(curr_stu_id)){
+            get_user_data = "SELECT * FROM grades;";
+        }
+        else{
+            curr_stu_id = curr_stu_id.split(":")[0];
+            get_user_data = "SELECT * FROM grades WHERE stu_id=" + curr_stu_id + ";";
+        }
+        
+        DefaultTableModel tblModel = (DefaultTableModel) gradeTable.getModel();
+        tblModel.setRowCount(0);
+
+        Statement st2 = conn.createStatement();
+        ResultSet result2 = st2.executeQuery(get_user_data);
+
+        while (result2.next()) {
+            int stu_id = result2.getInt("stu_id");
+            int course_id = result2.getInt("course_id");
+            float final_grades = result2.getFloat("final_grades");
+            String grade_point = result2.getString("grade_point");
+
+            String table_data[] = {Integer.toString(stu_id), Integer.toString(course_id), Float.toString(final_grades), grade_point};
+
+            tblModel.addRow(table_data);
         }
     }
 
@@ -234,9 +270,9 @@ public class ViewStudentGrade extends javax.swing.JFrame {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnLoadData;
     private javax.swing.JComboBox<String> comboStudent;
+    private javax.swing.JTable gradeTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
