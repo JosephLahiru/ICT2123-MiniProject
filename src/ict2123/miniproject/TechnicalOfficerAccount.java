@@ -28,16 +28,8 @@ public class TechnicalOfficerAccount extends javax.swing.JFrame {
     private Connection conn;
     private ImageIcon format = null;
 
-    public TechnicalOfficerAccount(String uName, int uID) {
-
-        this.userName = uName;
-        this.userId = uID;
-
+    public TechnicalOfficerAccount() {
         initComponents();
-        init();
-    }
-
-    private TechnicalOfficerAccount() {
     }
 
     /**
@@ -213,7 +205,7 @@ public class TechnicalOfficerAccount extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void init() {
+    public void init() {
         setLocationRelativeTo(null);
 
         DbConnector DbCon = new DbConnector();
@@ -247,7 +239,15 @@ public class TechnicalOfficerAccount extends javax.swing.JFrame {
             }
         }
     }
+    
+    public void setUserNname(String uName){
+        this.userName = uName;
+    }
 
+    public void setUserID(int uID){
+        this.userId = uID;
+    } 
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

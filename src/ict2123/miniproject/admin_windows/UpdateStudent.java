@@ -327,7 +327,10 @@ public class UpdateStudent extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUpdateDataActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        StudentAccount student = new StudentAccount(userName, userID);
+        StudentAccount student = new StudentAccount();
+        student.setUserNname(userName);
+        student.setUserID(userID);
+        student.init();
         student.show();
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed

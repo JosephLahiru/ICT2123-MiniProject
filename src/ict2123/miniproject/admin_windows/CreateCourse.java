@@ -20,12 +20,12 @@ public class CreateCourse extends javax.swing.JFrame {
     private Connection conn;
     private String userName;
     private int userID;
-    
+
     public CreateCourse(String uName, int uID) {
-        
+
         this.userName = uName;
         this.userID = uID;
-        
+
         initComponents();
         init();
     }
@@ -136,28 +136,28 @@ public class CreateCourse extends javax.swing.JFrame {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         String course_name, course_id, credit_count;
-        
+
         course_name = txtCourseName.getText();
         course_id = txtCourseId.getText();
         credit_count = txtCreditCount.getText();
-        
-        if(!course_name.isEmpty() && !credit_count.isEmpty() && !course_id.isEmpty()){
+
+        if (!course_name.isEmpty() && !credit_count.isEmpty() && !course_id.isEmpty()) {
             String user_query = "INSERT INTO course (course_name, course_id, credit_count)"
                     + "VALUES('" + course_name + "', '" + course_id + "', '" + credit_count + "');";
-            
+
             Statement st1 = null;
             try {
                 st1 = conn.createStatement();
             } catch (SQLException ex) {
                 Logger.getLogger(CreateCourse.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
             try {
-                if(!st1.execute(user_query)){
+                if (!st1.execute(user_query)) {
                     System.out.println("Inserted data to course table sucessfully.");
                     JOptionPane.showMessageDialog(null, "Course Created Sucessfully !!!", "Sucess !!!", JOptionPane.INFORMATION_MESSAGE);
                     clear_form();
-                }else{
+                } else {
                     System.out.println("Course table data insertion failed.");
                     JOptionPane.showMessageDialog(null, "Course Creation Failed !!!", "Error !!!", JOptionPane.ERROR_MESSAGE);
                     clear_form();
@@ -165,31 +165,34 @@ public class CreateCourse extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(CreateCourse.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Fields can not be empty !!!", "Warning !!!", JOptionPane.WARNING_MESSAGE);
         }
-        
+
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        AdminAccount admin = new AdminAccount(userName, userID);
+        AdminAccount admin = new AdminAccount();
+        admin.setUserNname(userName);
+        admin.setUserID(userID);
+        admin.init();
         admin.show();
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void init(){
+    private void init() {
         setLocationRelativeTo(null);
         btnCreate.setFocusable(false);
 
         DbConnector DbCon = new DbConnector();
         conn = DbCon.getConnection();
     }
-    
-    private void clear_form(){
+
+    private void clear_form() {
         txtCourseName.setText("");
         txtCreditCount.setText("");
     }
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

@@ -173,7 +173,10 @@ public class CreateTimetable extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        AdminAccount admin = new AdminAccount(userName, userID);
+        AdminAccount admin = new AdminAccount();
+        admin.setUserNname(userName);
+        admin.setUserID(userID);
+        admin.init();
         admin.show();
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed

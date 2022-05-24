@@ -339,7 +339,10 @@ public class UpdateLecturer extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUpdateDataActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        LecturerAccount lecturer = new LecturerAccount(userName, userID);
+        LecturerAccount lecturer = new LecturerAccount();
+        lecturer.setUserNname(userName);
+        lecturer.setUserID(userID);
+        lecturer.init();
         lecturer.show();
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed

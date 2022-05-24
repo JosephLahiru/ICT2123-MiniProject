@@ -339,7 +339,10 @@ public class UpdateTO extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUpdateDataActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        TechnicalOfficerAccount to = new TechnicalOfficerAccount(userName, userID);
+        TechnicalOfficerAccount to = new TechnicalOfficerAccount();
+        to.setUserNname(userName);
+        to.setUserID(userID);
+        to.init();
         to.show();
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed

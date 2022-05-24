@@ -19,7 +19,6 @@ public class Login extends javax.swing.JFrame {
 
     public Login() {
         initComponents();
-        init();
     }
 
     /**
@@ -167,19 +166,28 @@ public class Login extends javax.swing.JFrame {
 
             } else if ("ST".equals(type)) {
                 System.out.println("HELLO Student, WELCOME!!");
-                StudentAccount account = new StudentAccount(uName, id);
+                StudentAccount account = new StudentAccount();
+                account.setUserNname(uName);
+                account.setUserID(id);
+                account.init();
                 account.show();
                 dispose();
                 
             } else if ("LEC".equals(type)) {
                 System.out.println("HELLO Lecturer, WELCOME!!");
-                LecturerAccount account = new LecturerAccount(uName, id);
+                LecturerAccount account = new LecturerAccount();
+                account.setUserNname(uName);
+                account.setUserID(id);
+                account.init();
                 account.show();
                 dispose();
                 
             } else if ("TO".equals(type)) {
                 System.out.println("HELLO Technical Officer, WELCOME!!");
-                TechnicalOfficerAccount account = new TechnicalOfficerAccount(uName, id);
+                TechnicalOfficerAccount account = new TechnicalOfficerAccount();
+                account.setUserNname(uName);
+                account.setUserID(id);
+                account.init();
                 account.show();
                 dispose();
                 
@@ -237,7 +245,7 @@ public class Login extends javax.swing.JFrame {
         return status;
     }
 
-    private void init() {
+    public void init() {
         setLocationRelativeTo(null);
         btnLogin.setFocusable(false);
 
