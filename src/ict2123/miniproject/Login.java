@@ -158,7 +158,10 @@ public class Login extends javax.swing.JFrame {
 
             if ("ADM".equals(type)) {
                 System.out.println("HELLO Admin, WELCOME!!");
-                AdminAccount account = new AdminAccount(uName, id);
+                AdminAccount account = new AdminAccount();
+                account.setUserNname(uName);
+                account.setUserID(id);
+                account.init();
                 account.show();
                 dispose();
 
@@ -242,6 +245,14 @@ public class Login extends javax.swing.JFrame {
         conn = DbCon.getConnection();
     }
 
+    public String getUserName(){
+        return this.uName;
+    }
+    
+    public int getUserID(){
+        return this.id;
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
