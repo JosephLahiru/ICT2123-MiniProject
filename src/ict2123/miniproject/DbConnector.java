@@ -17,13 +17,15 @@ public class DbConnector {
         registerConnection();
         Connection conn = null;
         String url = "jdbc:mysql://localhost:3306/_ICT2123";
-        String user = "root";
-        String password = "";
+        //localhost:3306
+        String user = "admin";
+        String password = "adminpwd";
 
         try {
             conn = DriverManager.getConnection(url, user, password);
         } catch (SQLException ex) {
             System.out.println("Getting Connection Error !!!");
+            System.out.println(ex);
         }
 
         return conn;
