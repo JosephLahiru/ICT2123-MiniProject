@@ -63,6 +63,7 @@ public class IndexPage implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == startButton) {
             Login login = new Login();
+            login.init();
             login.show();
             frame.dispose();
         }

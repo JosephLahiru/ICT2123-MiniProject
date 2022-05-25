@@ -23,7 +23,6 @@ public class CreateCourse extends javax.swing.JFrame {
 
     public CreateCourse() {
         initComponents();
-        init();
     }
 
     /**
@@ -168,11 +167,12 @@ public class CreateCourse extends javax.swing.JFrame {
         AdminAccount admin = new AdminAccount();
         admin.setUserNname(userName);
         admin.setUserID(userID);
+        admin.init();
         admin.show();
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void init() {
+    public void init() {
         setLocationRelativeTo(null);
         btnCreate.setFocusable(false);
 

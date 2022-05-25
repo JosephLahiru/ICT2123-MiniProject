@@ -30,7 +30,6 @@ public class TechnicalOfficerAccount extends javax.swing.JFrame {
 
     public TechnicalOfficerAccount() {
         initComponents();
-        init();
     }
 
     /**
@@ -174,6 +173,7 @@ public class TechnicalOfficerAccount extends javax.swing.JFrame {
         Login login = new Login();
         login.getUserName(userName);
         login.getUserID(userId);
+        login.init();
         login.show();
         dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
@@ -188,6 +188,7 @@ public class TechnicalOfficerAccount extends javax.swing.JFrame {
         UpdateTO to = new UpdateTO();
         to.setUserNname(userName);
         to.setUserID(userId);
+        to.init();
         to.show();
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -196,6 +197,7 @@ public class TechnicalOfficerAccount extends javax.swing.JFrame {
         ViewNotice notice = new ViewNotice();
         notice.setUserNname(userName);
         notice.setUserID(userId);
+        notice.init();
         notice.show();
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -204,7 +206,7 @@ public class TechnicalOfficerAccount extends javax.swing.JFrame {
         UploadMedical medical = new UploadMedical();
         medical.setUserNname(userName);
         medical.setUserID(userId);
-        medical.setUserType("technical_officer");
+        medical.init();
         medical.show();
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -213,12 +215,12 @@ public class TechnicalOfficerAccount extends javax.swing.JFrame {
         UploadAttendance attendance = new UploadAttendance();
         attendance.setUserNname(userName);
         attendance.setUserID(userId);
-        attendance.setUserType("technical_officer");
+        attendance.init();
         attendance.show();
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void init() {
+    public void init() {
         setLocationRelativeTo(null);
 
         DbConnector DbCon = new DbConnector();

@@ -19,7 +19,6 @@ public class Login extends javax.swing.JFrame {
 
     public Login() {
         initComponents();
-        init();
     }
 
     /**
@@ -181,6 +180,7 @@ public class Login extends javax.swing.JFrame {
                 AdminAccount account = new AdminAccount();
                 account.setUserNname(uName);
                 account.setUserID(id);
+                account.init();
                 account.show();
                 dispose();
 
@@ -189,6 +189,7 @@ public class Login extends javax.swing.JFrame {
                 StudentAccount account = new StudentAccount();
                 account.setUserNname(uName);
                 account.setUserID(id);
+                account.init();
                 account.show();
                 dispose();
 
@@ -197,6 +198,7 @@ public class Login extends javax.swing.JFrame {
                 LecturerAccount account = new LecturerAccount();
                 account.setUserNname(uName);
                 account.setUserID(id);
+                account.init();
                 account.show();
                 dispose();
 
@@ -205,6 +207,7 @@ public class Login extends javax.swing.JFrame {
                 TechnicalOfficerAccount account = new TechnicalOfficerAccount();
                 account.setUserNname(uName);
                 account.setUserID(id);
+                account.init();
                 account.show();
                 dispose();
 
@@ -262,7 +265,7 @@ public class Login extends javax.swing.JFrame {
         return status;
     }
 
-    private void init() {
+    public void init() {
         setLocationRelativeTo(null);
         btnLogin.setFocusable(false);
 
@@ -270,11 +273,11 @@ public class Login extends javax.swing.JFrame {
         conn = DbCon.getConnection();
     }
 
-    void getUserName(String userName) {
+    void setUserName(String userName) {
         this.uName = userName;
     }
 
-    void getUserID(int userId) {
+    void setUserID(int userId) {
         this.id = userId;
     }
 

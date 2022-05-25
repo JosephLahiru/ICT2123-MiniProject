@@ -37,7 +37,6 @@ public class UpdateLecturer extends javax.swing.JFrame {
 
     public UpdateLecturer() {
         initComponents();
-        init();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -334,6 +333,7 @@ public class UpdateLecturer extends javax.swing.JFrame {
         LecturerAccount lecturer = new LecturerAccount();
         lecturer.setUserNname(userName);
         lecturer.setUserID(userID);
+        lecturer.init();
         lecturer.show();
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed
@@ -383,7 +383,7 @@ public class UpdateLecturer extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSelectPropicActionPerformed
 
-    private void init() {
+    public void init() {
         setLocationRelativeTo(null);
 
         btnUpdateData.setFocusable(false);
