@@ -174,6 +174,7 @@ public class TechnicalOfficerAccount extends javax.swing.JFrame {
         Login login = new Login();
         login.getUserName(userName);
         login.getUserID(userId);
+
         login.show();
         dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
