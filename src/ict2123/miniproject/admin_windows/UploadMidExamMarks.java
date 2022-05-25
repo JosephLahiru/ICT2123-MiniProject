@@ -24,19 +24,9 @@ public class UploadMidExamMarks extends javax.swing.JFrame {
     private int userID;
     private Connection conn;
 
-    public UploadMidExamMarks(String uName, int uID, String uType) {
-
-        this.userName = uName;
-        this.userID = uID;
-        this.userType = uType;
-
+    public UploadMidExamMarks() {
         initComponents();
-        init();
     }
-
-    private UploadMidExamMarks() {
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -217,7 +207,7 @@ public class UploadMidExamMarks extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_btnSubmitActionPerformed
 
-    private void init() {
+    public void init() {
         try {
             setLocationRelativeTo(null);
             
@@ -256,6 +246,14 @@ public class UploadMidExamMarks extends javax.swing.JFrame {
     private void clear_form() {
         scoreMidTheory.setText("");
         scoreMidPractical.setText("");
+    }
+    
+    public void setUserNname(String uName){
+        this.userName = uName;
+    }
+
+    public void setUserID(int uID){
+        this.userID = uID;
     }
     
     public static void main(String args[]) {

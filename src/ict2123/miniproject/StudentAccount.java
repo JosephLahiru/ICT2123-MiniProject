@@ -185,24 +185,36 @@ public class StudentAccount extends javax.swing.JFrame {
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         Login login = new Login();
+        login.getUserName(userName);
+        login.getUserID(userId);
+        login.init();
         login.show();
         dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnUpdateProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateProfileActionPerformed
-        UpdateStudent student = new UpdateStudent(userName, userId);
+        UpdateStudent student = new UpdateStudent();
+        student.setUserNname(userName);
+        student.setUserID(userId);
+        student.init();
         student.show();
         dispose();
     }//GEN-LAST:event_btnUpdateProfileActionPerformed
 
     private void btnViewNoticeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewNoticeActionPerformed
-        ViewNotice notice = new ViewNotice(userName, userId, "student");
+        ViewNotice notice = new ViewNotice();
+        notice.setUserNname(userName);
+        notice.setUserID(userId);
+        notice.init();
         notice.show();
         dispose();
     }//GEN-LAST:event_btnViewNoticeActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        ViewCourse course = new ViewCourse(userName, userId, "student");
+        ViewCourse course = new ViewCourse();
+        course.setUserNname(userName);
+        course.setUserID(userId);
+        course.init();
         course.show();
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -214,7 +226,10 @@ public class StudentAccount extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        ViewStudentGrade grades = new ViewStudentGrade(userName, userId, "student");
+        ViewStudentGrade grades = new ViewStudentGrade();
+        grades.setUserNname(userName);
+        grades.setUserID(userId);
+        grades.init();
         grades.show();
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed

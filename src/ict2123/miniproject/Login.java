@@ -172,7 +172,7 @@ public class Login extends javax.swing.JFrame {
                 account.init();
                 account.show();
                 dispose();
-                
+
             } else if ("LEC".equals(type)) {
                 System.out.println("HELLO Lecturer, WELCOME!!");
                 LecturerAccount account = new LecturerAccount();
@@ -181,7 +181,7 @@ public class Login extends javax.swing.JFrame {
                 account.init();
                 account.show();
                 dispose();
-                
+
             } else if ("TO".equals(type)) {
                 System.out.println("HELLO Technical Officer, WELCOME!!");
                 TechnicalOfficerAccount account = new TechnicalOfficerAccount();
@@ -190,7 +190,7 @@ public class Login extends javax.swing.JFrame {
                 account.init();
                 account.show();
                 dispose();
-                
+
             } else {
                 JOptionPane.showMessageDialog(null, "User credentials incorrect,\n Please try again !!!", "Warning !!!", JOptionPane.WARNING_MESSAGE);
             }
@@ -221,7 +221,7 @@ public class Login extends javax.swing.JFrame {
             _check_type = "lecturer";
         } else if ("TO".equals(check_type)) {
             _check_type = "technical_officer";
-        } else{
+        } else {
             _check_type = "none";
         }
 
@@ -253,14 +253,14 @@ public class Login extends javax.swing.JFrame {
         conn = DbCon.getConnection();
     }
 
-    public String getUserName(){
+    public String setUserName() {
         return this.uName;
     }
-    
-    public int getUserID(){
+
+    public int setUserID() {
         return this.id;
     }
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -303,4 +303,13 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPasswordField pwdField;
     private javax.swing.JTextField txtUname;
     // End of variables declaration//GEN-END:variables
+
+    void getUserName(String userName) {
+        this.uName = userName;
+    }
+
+    void getUserID(int userId) {
+        this.id = userId;
+    }
+
 }

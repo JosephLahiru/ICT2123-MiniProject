@@ -21,16 +21,8 @@ public class CreateCourse extends javax.swing.JFrame {
     private String userName;
     private int userID;
 
-    public CreateCourse(String uName, int uID) {
-
-        this.userName = uName;
-        this.userID = uID;
-
+    public CreateCourse() {
         initComponents();
-        init();
-    }
-
-    private CreateCourse() {
     }
 
     /**
@@ -180,7 +172,7 @@ public class CreateCourse extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void init() {
+    public void init() {
         setLocationRelativeTo(null);
         btnCreate.setFocusable(false);
 
@@ -191,6 +183,14 @@ public class CreateCourse extends javax.swing.JFrame {
     private void clear_form() {
         txtCourseName.setText("");
         txtCreditCount.setText("");
+    }
+    
+    public void setUserNname(String uName){
+        this.userName = uName;
+    }
+
+    public void setUserID(int uID){
+        this.userID = uID;
     }
 
     public static void main(String args[]) {

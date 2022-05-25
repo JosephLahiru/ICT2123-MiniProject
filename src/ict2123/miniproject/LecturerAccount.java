@@ -199,18 +199,27 @@ public class LecturerAccount extends javax.swing.JFrame {
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         Login login = new Login();
+        login.getUserName(userName);
+        login.getUserID(userId);
+        login.init();
         login.show();
         dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        UpdateLecturer lecturer = new UpdateLecturer(userName, userId);
+        UpdateLecturer lecturer = new UpdateLecturer();
+        lecturer.setUserNname(userName);
+        lecturer.setUserID(userId);
+        lecturer.init();
         lecturer.show();
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        ViewNotice notice = new ViewNotice(userName, userId, "lecturer");
+        ViewNotice notice = new ViewNotice();
+        notice.setUserNname(userName);
+        notice.setUserID(userId);
+        notice.init();
         notice.show();
         dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -222,31 +231,46 @@ public class LecturerAccount extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        UpdateCourse course = new UpdateCourse(userName, userId, "lecturer");
+        UpdateCourse course = new UpdateCourse();
+        course.setUserNname(userName);
+        course.setUserID(userId);
+        course.init();
         course.show();
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        ViewStudent student = new ViewStudent(userName, userId, "lecturer");
+        ViewStudent student = new ViewStudent();
+        student.setUserNname(userName);
+        student.setUserID(userId);
+        student.init();
         student.show();
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        UploadMarks marks = new UploadMarks(userName, userId, "lecturer");
+        UploadMarks marks = new UploadMarks();
+        marks.setUserNname(userName);
+        marks.setUserID(userId);
+        marks.init();
         marks.show();
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        ViewStudentEligibility eligibility = new ViewStudentEligibility(userName, userId, "lecturer");
+        ViewStudentEligibility eligibility = new ViewStudentEligibility();
+        eligibility.setUserNname(userName);
+        eligibility.setUserID(userId);
+        eligibility.init();
         eligibility.show();
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        ViewStudentGrade grades = new ViewStudentGrade(userName, userId, "lecturer");
+        ViewStudentGrade grades = new ViewStudentGrade();
+        grades.setUserNname(userName);
+        grades.setUserID(userId);
+        grades.init();
         grades.show();
         dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
@@ -340,4 +364,5 @@ public class LecturerAccount extends javax.swing.JFrame {
     private javax.swing.JLabel lblLecturerName;
     private javax.swing.JLabel lblPropic;
     // End of variables declaration//GEN-END:variables
+
 }

@@ -24,19 +24,9 @@ public class ViewStudentEligibility extends javax.swing.JFrame {
     private int userID;
     private Connection conn;
 
-    public ViewStudentEligibility(String uName, int uID, String uType) {
-
-        this.userName = uName;
-        this.userID = uID;
-        this.userType = uType;
-
+    public ViewStudentEligibility() {
         initComponents();
-        init();
     }
-
-    private ViewStudentEligibility() {
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -188,7 +178,7 @@ public class ViewStudentEligibility extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnLoadDataActionPerformed
 
-    private void init() {
+    public void init() {
         try {
             setLocationRelativeTo(null);
             
@@ -241,6 +231,14 @@ public class ViewStudentEligibility extends javax.swing.JFrame {
 
             tblModel.addRow(table_data);
         }
+    }
+    
+    public void setUserNname(String uName){
+        this.userName = uName;
+    }
+
+    public void setUserID(int uID){
+        this.userID = uID;
     }
 
     public static void main(String args[]) {

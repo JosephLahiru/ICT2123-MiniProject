@@ -24,19 +24,9 @@ public class UploadMedical extends javax.swing.JFrame {
     private int userID;
     private Connection conn;
 
-    public UploadMedical(String uName, int uID, String uType) {
-
-        this.userName = uName;
-        this.userID = uID;
-        this.userType = uType;
-
+    public UploadMedical() {
         initComponents();
-        init();
     }
-
-    private UploadMedical() {
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -192,7 +182,7 @@ public class UploadMedical extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSubmitActionPerformed
 
-    private void init() {
+    public void init() {
         try {
             setLocationRelativeTo(null);
 
@@ -218,6 +208,14 @@ public class UploadMedical extends javax.swing.JFrame {
 
     private void clear_form() {
         issueDate.setText("");
+    }
+    
+    public void setUserNname(String uName){
+        this.userName = uName;
+    }
+
+    public void setUserID(int uID){
+        this.userID = uID;
     }
 
     public static void main(String args[]) {

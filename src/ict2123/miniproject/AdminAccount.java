@@ -245,67 +245,100 @@ public class AdminAccount extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateNoticeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateNoticeActionPerformed
-        CreateNotice notice = new CreateNotice(userName, userId);
+        CreateNotice notice = new CreateNotice();
+        notice.setUserNname(userName);
+        notice.setUserID(userId);
+        notice.init();
         notice.show();
         dispose();
     }//GEN-LAST:event_btnCreateNoticeActionPerformed
 
     private void btnCreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateUserActionPerformed
-        CreateUser user = new CreateUser(userName, userId);
+        CreateUser user = new CreateUser();
+        user.setUserNname(userName);
+        user.setUserID(userId);
+        user.init();
         user.show();
         dispose();
     }//GEN-LAST:event_btnCreateUserActionPerformed
 
     private void btnUpdateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateUserActionPerformed
-        UpdateUser update = new UpdateUser(userName, userId);
+        UpdateUser update = new UpdateUser();
+        update.setUserNname(userName);
+        update.setUserID(userId);
+        update.init();
         update.show();
         dispose();
     }//GEN-LAST:event_btnUpdateUserActionPerformed
 
     private void btnCreateCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateCourseActionPerformed
-        CreateCourse course = new CreateCourse(userName, userId);
+        CreateCourse course = new CreateCourse();
+        course.setUserNname(userName);
+        course.setUserID(userId);
+        course.init();
         course.show();
         dispose();
     }//GEN-LAST:event_btnCreateCourseActionPerformed
 
     private void btnUpdateCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateCourseActionPerformed
-        UpdateCourse update = new UpdateCourse(userName, userId, "admin");
+        UpdateCourse update = new UpdateCourse();
+        update.setUserNname(userName);
+        update.setUserID(userId);
+        update.init();
         update.show();
         dispose();
     }//GEN-LAST:event_btnUpdateCourseActionPerformed
 
     private void btnUpdateNoticeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateNoticeActionPerformed
-        UpdateNotice update = new UpdateNotice(userName, userId);
+        UpdateNotice update = new UpdateNotice();
+        update.setUserNname(userName);
+        update.setUserID(userId);
+        update.init();
         update.show();
         dispose();
     }//GEN-LAST:event_btnUpdateNoticeActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         Login login = new Login();
+        login.getUserName(userName);
+        login.getUserID(userId);
+        login.init();
         login.show();
         dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnViewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewUserActionPerformed
-        ViewUser user = new ViewUser(userName, userId);
+        ViewUser user = new ViewUser();
+        user.setUserNname(userName);
+        user.setUserID(userId);
+        user.init();
         user.show();
         dispose();
     }//GEN-LAST:event_btnViewUserActionPerformed
 
     private void btnViewCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewCourseActionPerformed
-        ViewCourse course = new ViewCourse(userName, userId, "admin");
+        ViewCourse course = new ViewCourse();
+        course.setUserNname(userName);
+        course.setUserID(userId);
+        course.init();
         course.show();
         dispose();
     }//GEN-LAST:event_btnViewCourseActionPerformed
 
     private void btnViewNoticeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewNoticeActionPerformed
-        ViewNotice notice = new ViewNotice(userName, userId, "admin");
+        ViewNotice notice = new ViewNotice();
+        notice.setUserNname(userName);
+        notice.setUserID(userId);
+        notice.init();
         notice.show();
         dispose();
     }//GEN-LAST:event_btnViewNoticeActionPerformed
 
     private void btnCreateTimetableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateTimetableActionPerformed
-        CreateTimetable timetable = new CreateTimetable(userName, userId);
+        CreateTimetable timetable = new CreateTimetable();
+        timetable.setUserNname(userName);
+        timetable.setUserID(userId);
+        timetable.init();
         timetable.show();
         dispose();
     }//GEN-LAST:event_btnCreateTimetableActionPerformed
@@ -317,7 +350,10 @@ public class AdminAccount extends javax.swing.JFrame {
     }//GEN-LAST:event_btnViewTimetableActionPerformed
 
     private void btnUpdateTimetableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateTimetableActionPerformed
-        UpdateTimetable table = new UpdateTimetable(userName, userId);
+        UpdateTimetable table = new UpdateTimetable();
+        table.setUserNname(userName);
+        table.setUserID(userId);
+        table.init();
         table.show();
         dispose();
     }//GEN-LAST:event_btnUpdateTimetableActionPerformed

@@ -35,18 +35,9 @@ public class UpdateLecturer extends javax.swing.JFrame {
     
     String tableName = "lecturer";
 
-    public UpdateLecturer(String uName, int uID) {
-
-        this.userName = uName;
-        this.userID = uID;
-
+    public UpdateLecturer() {
         initComponents();
-        init();
     }
-
-    private UpdateLecturer() {
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -392,7 +383,7 @@ public class UpdateLecturer extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSelectPropicActionPerformed
 
-    private void init() {
+    public void init() {
         setLocationRelativeTo(null);
 
         btnUpdateData.setFocusable(false);
@@ -469,6 +460,14 @@ public class UpdateLecturer extends javax.swing.JFrame {
         Image img2 = mm.getScaledInstance(lblProPic.getWidth(), lblProPic.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon image = new ImageIcon(img2);
         lblProPic.setIcon(image);
+    }
+    
+    public void setUserNname(String uName){
+        this.userName = uName;
+    }
+
+    public void setUserID(int uID){
+        this.userID = uID;
     }
 
     public static void main(String args[]) {

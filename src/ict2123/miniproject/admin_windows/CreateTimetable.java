@@ -21,18 +21,9 @@ public class CreateTimetable extends javax.swing.JFrame {
     private String userName;
     private int userID;
     
-    public CreateTimetable(String uName, int uID) {
-        
-        this.userName = uName;
-        this.userID = uID;
-        
+    public CreateTimetable() {        
         initComponents();
-        init();
     }
-
-    private CreateTimetable() {
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -181,7 +172,7 @@ public class CreateTimetable extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void init(){
+    public void init(){
         setLocationRelativeTo(null);
         btnCreate.setFocusable(false);
 
@@ -193,6 +184,14 @@ public class CreateTimetable extends javax.swing.JFrame {
         txtDepartment.setText("");
         txtPDFref.setText("");
         txtTimetableTopic.setText("");
+    }
+    
+    public void setUserNname(String uName){
+        this.userName = uName;
+    }
+
+    public void setUserID(int uID){
+        this.userID = uID;
     }
     
     public static void main(String args[]) {
