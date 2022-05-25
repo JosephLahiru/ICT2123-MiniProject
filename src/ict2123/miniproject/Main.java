@@ -11,7 +11,7 @@ public class Main {
         SwingUtilities.invokeLater(new Runnable(){
             @Override
             public void run(){
-                IndexPage index = new IndexPage();
+                Index index = new Index();
                 index.show();
             }
         });
