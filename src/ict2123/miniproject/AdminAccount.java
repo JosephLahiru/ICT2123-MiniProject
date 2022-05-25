@@ -19,10 +19,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 /**
  *
  * @author Joseph Rasanjana
@@ -300,8 +296,8 @@ public class AdminAccount extends javax.swing.JFrame {
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         Login login = new Login();
-        login.getUserName(userName);
-        login.getUserID(userId);
+        login.setUserName(userName);
+        login.setUserID(userId);
         login.init();
         login.show();
         dispose();

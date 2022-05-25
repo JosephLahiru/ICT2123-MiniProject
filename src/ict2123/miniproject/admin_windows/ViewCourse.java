@@ -116,18 +116,21 @@ public class ViewCourse extends javax.swing.JFrame {
             admin.setUserID(userID);
             admin.init();
             admin.show();
+            
         } else if ("student".equals(userType)) {
             StudentAccount student = new StudentAccount();
             student.setUserNname(userName);
             student.setUserID(userID);
             student.init();
             student.show();
+            
         } else if ("lecturer".equals(userType)) {
             LecturerAccount lecturer = new LecturerAccount();
             lecturer.setUserNname(userName);
             lecturer.setUserID(userID);
             lecturer.init();
             lecturer.show();
+            
         } else if ("technical_officer".equals(userType)) {
             TechnicalOfficerAccount to = new TechnicalOfficerAccount();
             to.setUserNname(userName);

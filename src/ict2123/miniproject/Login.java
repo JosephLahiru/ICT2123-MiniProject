@@ -273,12 +273,12 @@ public class Login extends javax.swing.JFrame {
         conn = DbCon.getConnection();
     }
 
-    public String setUserName() {
-        return this.uName;
+    void setUserName(String userName) {
+        this.uName = userName;
     }
 
-    public int setUserID() {
-        return this.id;
+    void setUserID(int userId) {
+        this.id = userId;
     }
 
     public static void main(String args[]) {
@@ -324,13 +324,5 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPasswordField pwdField;
     private javax.swing.JTextField txtUname;
     // End of variables declaration//GEN-END:variables
-
-    void getUserName(String userName) {
-        this.uName = userName;
-    }
-
-    void getUserID(int userId) {
-        this.id = userId;
-    }
 
 }
