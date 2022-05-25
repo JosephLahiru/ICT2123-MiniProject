@@ -185,8 +185,8 @@ public class StudentAccount extends javax.swing.JFrame {
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         Login login = new Login();
-        login.getUserName(userName);
-        login.getUserID(userId);
+        login.setUserName(userName);
+        login.setUserID(userId);
         login.init();
         login.show();
         dispose();
