@@ -22,20 +22,9 @@ public class ViewStudent extends javax.swing.JFrame {
     private String userName, userType;
     private int userID;
     
-    public ViewStudent(String uName, int uID, String uType) {
-        
-        this.userName = uName;
-        this.userID = uID;
-        this.userType = uType;
-        
+    public ViewStudent() {
         initComponents();
-        init();
-        
     }
-
-    private ViewStudent() {
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -153,7 +142,7 @@ public class ViewStudent extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void init(){
+    public void init(){
         setLocationRelativeTo(null);
 
         DbConnector DbCon = new DbConnector();
@@ -193,6 +182,14 @@ public class ViewStudent extends javax.swing.JFrame {
 
             tblModel.addRow(table_data);
         }
+    }
+    
+    public void setUserNname(String uName){
+        this.userName = uName;
+    }
+
+    public void setUserID(int uID){
+        this.userID = uID;
     }
     
     public static void main(String args[]) {

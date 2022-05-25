@@ -22,18 +22,9 @@ public class UpdateUser extends javax.swing.JFrame {
     private String userName, currentUserType;
     private int userID;
 
-    public UpdateUser(String uName, int uID) {
-
-        this.userName = uName;
-        this.userID = uID;
-
+    public UpdateUser() {
         initComponents();
-        init();
     }
-
-    private UpdateUser() {
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -279,7 +270,7 @@ public class UpdateUser extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnLoaddataActionPerformed
 
-    private void init() {
+    public void init() {
         setLocationRelativeTo(null);
 
         btnUpdateData.setFocusable(false);
@@ -323,6 +314,14 @@ public class UpdateUser extends javax.swing.JFrame {
 
             tblModel.addRow(table_data);
         }
+    }
+    
+    public void setUserNname(String uName){
+        this.userName = uName;
+    }
+
+    public void setUserID(int uID){
+        this.userID = uID;
     }
 
     public static void main(String args[]) {

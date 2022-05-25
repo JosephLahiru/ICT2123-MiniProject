@@ -21,16 +21,8 @@ public class CreateNotice extends javax.swing.JFrame {
     private String userName;
     private int userID;
     
-    public CreateNotice(String uName, int uID) {
-        
-        this.userName = uName;
-        this.userID = uID;
-        
+    public CreateNotice() {
         initComponents();
-        init();
-    }
-
-    private CreateNotice() {
     }
 
     /**
@@ -174,7 +166,7 @@ public class CreateNotice extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void init(){
+    public void init(){
         setLocationRelativeTo(null);
         btnCreate.setFocusable(false);
 
@@ -185,6 +177,14 @@ public class CreateNotice extends javax.swing.JFrame {
     private void clear_form(){
         txtNoticeTopic.setText("");
         areaNoticeBody.setText("");
+    }
+    
+    public void setUserNname(String uName){
+        this.userName = uName;
+    }
+
+    public void setUserID(int uID){
+        this.userID = uID;
     }
     
     public static void main(String args[]) {

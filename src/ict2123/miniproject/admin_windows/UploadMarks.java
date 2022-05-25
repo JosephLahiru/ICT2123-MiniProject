@@ -20,19 +20,9 @@ public class UploadMarks extends javax.swing.JFrame {
     private int userID;
     private Connection conn;
     
-    public UploadMarks(String uName, int uID, String uType) {
-        
-        this.userName = uName;
-        this.userID = uID;
-        this.userType = uType;
-        
+    public UploadMarks() {
         initComponents();
-        init();
     }
-
-    private UploadMarks() {
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -124,19 +114,28 @@ public class UploadMarks extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMidMarksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMidMarksActionPerformed
-        UploadMidExamMarks marks = new UploadMidExamMarks(userName, userID, userType);
+        UploadMidExamMarks marks = new UploadMidExamMarks();
+        marks.setUserNname(userName);
+        marks.setUserID(userID);
+        marks.init();
         marks.show();
         dispose();
     }//GEN-LAST:event_btnMidMarksActionPerformed
 
     private void btnAssessmentMarksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssessmentMarksActionPerformed
-        UploadAssessmentMarks marks = new UploadAssessmentMarks(userName, userID, userType);
+        UploadAssessmentMarks marks = new UploadAssessmentMarks();
+        marks.setUserNname(userName);
+        marks.setUserID(userID);
+        marks.init();
         marks.show();
         dispose();
     }//GEN-LAST:event_btnAssessmentMarksActionPerformed
 
     private void btnEndMarksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEndMarksActionPerformed
-        UploadEndExamMarks marks = new UploadEndExamMarks(userName, userID, userType);
+        UploadEndExamMarks marks = new UploadEndExamMarks();
+        marks.setUserNname(userName);
+        marks.setUserID(userID);
+        marks.init();
         marks.show();
         dispose();
     }//GEN-LAST:event_btnEndMarksActionPerformed
@@ -172,17 +171,28 @@ public class UploadMarks extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnQuizMarksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuizMarksActionPerformed
-        UploadQuizMarks marks = new UploadQuizMarks(userName, userID, userType);
+        UploadQuizMarks marks = new UploadQuizMarks();
+        marks.setUserNname(userName);
+        marks.setUserID(userID);
+        marks.init();
         marks.show();
         dispose();
     }//GEN-LAST:event_btnQuizMarksActionPerformed
 
 
-    private void init(){
+    public void init(){
         setLocationRelativeTo(null);
 
         DbConnector DbCon = new DbConnector();
         conn = DbCon.getConnection();
+    }
+    
+    public void setUserNname(String uName){
+        this.userName = uName;
+    }
+
+    public void setUserID(int uID){
+        this.userID = uID;
     }
     
     public static void main(String args[]) {

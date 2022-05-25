@@ -171,6 +171,9 @@ public class TechnicalOfficerAccount extends javax.swing.JFrame {
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         Login login = new Login();
+        login.getUserName(userName);
+        login.getUserID(userId);
+        login.init();
         login.show();
         dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
@@ -182,25 +185,37 @@ public class TechnicalOfficerAccount extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        UpdateTO to = new UpdateTO(userName, userId);
+        UpdateTO to = new UpdateTO();
+        to.setUserNname(userName);
+        to.setUserID(userId);
+        to.init();
         to.show();
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        ViewNotice notice = new ViewNotice(userName, userId, "technical_officer");
+        ViewNotice notice = new ViewNotice();
+        notice.setUserNname(userName);
+        notice.setUserID(userId);
+        notice.init();
         notice.show();
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        UploadMedical medical = new UploadMedical(userName, userId, "technical_officer");
+        UploadMedical medical = new UploadMedical();
+        medical.setUserNname(userName);
+        medical.setUserID(userId);
+        medical.init();
         medical.show();
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        UploadAttendance attendance = new UploadAttendance(userName, userId, "technical_officer");
+        UploadAttendance attendance = new UploadAttendance();
+        attendance.setUserNname(userName);
+        attendance.setUserID(userId);
+        attendance.init();
         attendance.show();
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed

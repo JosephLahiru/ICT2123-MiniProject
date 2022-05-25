@@ -25,24 +25,14 @@ public class UpdateCourse extends javax.swing.JFrame {
     private String userName, userType;
     private int userID;
 
-    public UpdateCourse(String uName, int uID, String uType) {
-        
-        this.userName = uName;
-        this.userID = uID;
-        this.userType = uType;
-        
+    public UpdateCourse() {
         initComponents();
-        init();
         try {
             populate_table();
         } catch (SQLException ex) {
             Logger.getLogger(UpdateCourse.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    private UpdateCourse() {
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -250,7 +240,7 @@ public class UpdateCourse extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void init() {
+    public void init() {
         setLocationRelativeTo(null);
 
         btnUpdateData.setFocusable(false);
@@ -286,6 +276,14 @@ public class UpdateCourse extends javax.swing.JFrame {
         }
     }
 
+    public void setUserNname(String uName){
+        this.userName = uName;
+    }
+
+    public void setUserID(int uID){
+        this.userID = uID;
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
