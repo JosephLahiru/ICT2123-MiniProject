@@ -25,13 +25,14 @@ import javax.swing.ImageIcon;
  */
 public class AdminAccount extends javax.swing.JFrame {
 
-    private String userName;
+    private String userName, userType;
     private int userId;
     private Connection conn;
     private ImageIcon format = null;
 
     public AdminAccount() {
         initComponents();
+        init();
     }
 
     /**
@@ -244,7 +245,6 @@ public class AdminAccount extends javax.swing.JFrame {
         CreateNotice notice = new CreateNotice();
         notice.setUserNname(userName);
         notice.setUserID(userId);
-        notice.init();
         notice.show();
         dispose();
     }//GEN-LAST:event_btnCreateNoticeActionPerformed
@@ -253,7 +253,6 @@ public class AdminAccount extends javax.swing.JFrame {
         CreateUser user = new CreateUser();
         user.setUserNname(userName);
         user.setUserID(userId);
-        user.init();
         user.show();
         dispose();
     }//GEN-LAST:event_btnCreateUserActionPerformed
@@ -262,7 +261,6 @@ public class AdminAccount extends javax.swing.JFrame {
         UpdateUser update = new UpdateUser();
         update.setUserNname(userName);
         update.setUserID(userId);
-        update.init();
         update.show();
         dispose();
     }//GEN-LAST:event_btnUpdateUserActionPerformed
@@ -271,7 +269,6 @@ public class AdminAccount extends javax.swing.JFrame {
         CreateCourse course = new CreateCourse();
         course.setUserNname(userName);
         course.setUserID(userId);
-        course.init();
         course.show();
         dispose();
     }//GEN-LAST:event_btnCreateCourseActionPerformed
@@ -280,7 +277,6 @@ public class AdminAccount extends javax.swing.JFrame {
         UpdateCourse update = new UpdateCourse();
         update.setUserNname(userName);
         update.setUserID(userId);
-        update.init();
         update.show();
         dispose();
     }//GEN-LAST:event_btnUpdateCourseActionPerformed
@@ -289,16 +285,14 @@ public class AdminAccount extends javax.swing.JFrame {
         UpdateNotice update = new UpdateNotice();
         update.setUserNname(userName);
         update.setUserID(userId);
-        update.init();
         update.show();
         dispose();
     }//GEN-LAST:event_btnUpdateNoticeActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         Login login = new Login();
-        login.setUserName(userName);
-        login.setUserID(userId);
-        login.init();
+        login.getUserName(userName);
+        login.getUserID(userId);
         login.show();
         dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
@@ -307,7 +301,6 @@ public class AdminAccount extends javax.swing.JFrame {
         ViewUser user = new ViewUser();
         user.setUserNname(userName);
         user.setUserID(userId);
-        user.init();
         user.show();
         dispose();
     }//GEN-LAST:event_btnViewUserActionPerformed
@@ -316,7 +309,6 @@ public class AdminAccount extends javax.swing.JFrame {
         ViewCourse course = new ViewCourse();
         course.setUserNname(userName);
         course.setUserID(userId);
-        course.init();
         course.show();
         dispose();
     }//GEN-LAST:event_btnViewCourseActionPerformed
@@ -325,7 +317,6 @@ public class AdminAccount extends javax.swing.JFrame {
         ViewNotice notice = new ViewNotice();
         notice.setUserNname(userName);
         notice.setUserID(userId);
-        notice.init();
         notice.show();
         dispose();
     }//GEN-LAST:event_btnViewNoticeActionPerformed
@@ -334,7 +325,6 @@ public class AdminAccount extends javax.swing.JFrame {
         CreateTimetable timetable = new CreateTimetable();
         timetable.setUserNname(userName);
         timetable.setUserID(userId);
-        timetable.init();
         timetable.show();
         dispose();
     }//GEN-LAST:event_btnCreateTimetableActionPerformed
@@ -349,12 +339,11 @@ public class AdminAccount extends javax.swing.JFrame {
         UpdateTimetable table = new UpdateTimetable();
         table.setUserNname(userName);
         table.setUserID(userId);
-        table.init();
         table.show();
         dispose();
     }//GEN-LAST:event_btnUpdateTimetableActionPerformed
 
-    public void init() {
+    private void init() {
         setLocationRelativeTo(null);
         btnLogout.setFocusable(false);
 
@@ -394,7 +383,10 @@ public class AdminAccount extends javax.swing.JFrame {
 
     public void setUserID(int uID){
         this.userId = uID;
-    }    
+    }
+    public void setUserType(String userType){
+        this.userType = userType;
+    }
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

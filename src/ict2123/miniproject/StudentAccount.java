@@ -30,6 +30,7 @@ public class StudentAccount extends javax.swing.JFrame {
 
     public StudentAccount() {
         initComponents();
+        init();
     }
 
     /**
@@ -187,7 +188,6 @@ public class StudentAccount extends javax.swing.JFrame {
         Login login = new Login();
         login.getUserName(userName);
         login.getUserID(userId);
-        login.init();
         login.show();
         dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
@@ -196,7 +196,6 @@ public class StudentAccount extends javax.swing.JFrame {
         UpdateStudent student = new UpdateStudent();
         student.setUserNname(userName);
         student.setUserID(userId);
-        student.init();
         student.show();
         dispose();
     }//GEN-LAST:event_btnUpdateProfileActionPerformed
@@ -205,7 +204,7 @@ public class StudentAccount extends javax.swing.JFrame {
         ViewNotice notice = new ViewNotice();
         notice.setUserNname(userName);
         notice.setUserID(userId);
-        notice.init();
+        notice.setUserType("student");
         notice.show();
         dispose();
     }//GEN-LAST:event_btnViewNoticeActionPerformed
@@ -214,7 +213,7 @@ public class StudentAccount extends javax.swing.JFrame {
         ViewCourse course = new ViewCourse();
         course.setUserNname(userName);
         course.setUserID(userId);
-        course.init();
+        course.setUserType("student");
         course.show();
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -229,12 +228,11 @@ public class StudentAccount extends javax.swing.JFrame {
         ViewStudentGrade grades = new ViewStudentGrade();
         grades.setUserNname(userName);
         grades.setUserID(userId);
-        grades.init();
         grades.show();
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    public void init() {
+    private void init() {
         setLocationRelativeTo(null);
 
         DbConnector DbCon = new DbConnector();

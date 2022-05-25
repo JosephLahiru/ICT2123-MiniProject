@@ -24,6 +24,7 @@ public class UpdateTimetable extends javax.swing.JFrame {
 
     public UpdateTimetable() {
         initComponents();
+        init();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -204,13 +205,12 @@ public class UpdateTimetable extends javax.swing.JFrame {
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         AdminAccount admin = new AdminAccount();
         admin.setUserNname(userName);
-        admin.setUserID(userID);
-        admin.init();
+        admin.setUserID(userID);;
         admin.show();
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
-    public void init() {
+    private void init() {
         setLocationRelativeTo(null);
 
         btnUpdateData.setFocusable(false);

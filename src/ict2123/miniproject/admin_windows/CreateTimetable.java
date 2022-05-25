@@ -23,6 +23,7 @@ public class CreateTimetable extends javax.swing.JFrame {
     
     public CreateTimetable() {        
         initComponents();
+        init();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -167,12 +168,11 @@ public class CreateTimetable extends javax.swing.JFrame {
         AdminAccount admin = new AdminAccount();
         admin.setUserNname(userName);
         admin.setUserID(userID);
-        admin.init();
         admin.show();
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
-    public void init(){
+    private void init(){
         setLocationRelativeTo(null);
         btnCreate.setFocusable(false);
 

@@ -26,7 +26,7 @@ public class ViewNotice extends javax.swing.JFrame {
 
     public ViewNotice() {
         initComponents();
-
+        init();
     }
 
     /**
@@ -116,31 +116,27 @@ public class ViewNotice extends javax.swing.JFrame {
             AdminAccount admin = new AdminAccount();
             admin.setUserNname(userName);
             admin.setUserID(userID);
-            admin.init();
             admin.show();
         }else if("student".equals(userType)){
             StudentAccount student = new StudentAccount();
             student.setUserNname(userName);
             student.setUserID(userID);
-            student.init();
             student.show();
         }else if("lecturer".equals(userType)){
             LecturerAccount lecturer = new LecturerAccount();
             lecturer.setUserNname(userName);
             lecturer.setUserID(userID);
-            lecturer.init();
             lecturer.show();
         }else if("technical_officer".equals(userType)){
             TechnicalOfficerAccount to = new TechnicalOfficerAccount();
             to.setUserNname(userName);
             to.setUserID(userID);
-            to.init();
             to.show();
         }
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
-    public void init() {
+    private void init() {
         setLocationRelativeTo(null);
 
         DbConnector DbCon = new DbConnector();
@@ -181,6 +177,9 @@ public class ViewNotice extends javax.swing.JFrame {
 
     public void setUserID(int uID){
         this.userID = uID;
+    }
+    public void setUserType(String userType){
+        this.userType = userType;
     }
 
     public static void main(String args[]) {

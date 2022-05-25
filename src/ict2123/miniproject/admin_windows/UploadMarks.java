@@ -22,6 +22,7 @@ public class UploadMarks extends javax.swing.JFrame {
     
     public UploadMarks() {
         initComponents();
+        init();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -117,6 +118,7 @@ public class UploadMarks extends javax.swing.JFrame {
         UploadMidExamMarks marks = new UploadMidExamMarks();
         marks.setUserNname(userName);
         marks.setUserID(userID);
+        marks.setUserType("lecturer");
         marks.init();
         marks.show();
         dispose();
@@ -126,7 +128,7 @@ public class UploadMarks extends javax.swing.JFrame {
         UploadAssessmentMarks marks = new UploadAssessmentMarks();
         marks.setUserNname(userName);
         marks.setUserID(userID);
-        marks.init();
+        marks.setUserType("lecturer");
         marks.show();
         dispose();
     }//GEN-LAST:event_btnAssessmentMarksActionPerformed
@@ -135,7 +137,7 @@ public class UploadMarks extends javax.swing.JFrame {
         UploadEndExamMarks marks = new UploadEndExamMarks();
         marks.setUserNname(userName);
         marks.setUserID(userID);
-        marks.init();
+        marks.setUserType("lecturer");
         marks.show();
         dispose();
     }//GEN-LAST:event_btnEndMarksActionPerformed
@@ -145,25 +147,21 @@ public class UploadMarks extends javax.swing.JFrame {
             AdminAccount admin = new AdminAccount();
             admin.setUserNname(userName);
             admin.setUserID(userID);
-            admin.init();
             admin.show();
         } else if ("student".equals(userType)) {
             StudentAccount student = new StudentAccount();
             student.setUserNname(userName);
             student.setUserID(userID);
-            student.init();
             student.show();
         } else if ("lecturer".equals(userType)) {
             LecturerAccount lecturer = new LecturerAccount();
             lecturer.setUserNname(userName);
             lecturer.setUserID(userID);
-            lecturer.init();
             lecturer.show();
         } else if ("technical_officer".equals(userType)) {
             TechnicalOfficerAccount to = new TechnicalOfficerAccount();
             to.setUserNname(userName);
             to.setUserID(userID);
-            to.init();
             to.show();
         }
         
@@ -174,13 +172,12 @@ public class UploadMarks extends javax.swing.JFrame {
         UploadQuizMarks marks = new UploadQuizMarks();
         marks.setUserNname(userName);
         marks.setUserID(userID);
-        marks.init();
         marks.show();
         dispose();
     }//GEN-LAST:event_btnQuizMarksActionPerformed
 
 
-    public void init(){
+    private void init(){
         setLocationRelativeTo(null);
 
         DbConnector DbCon = new DbConnector();
@@ -193,6 +190,9 @@ public class UploadMarks extends javax.swing.JFrame {
 
     public void setUserID(int uID){
         this.userID = uID;
+    }
+    public void setUserType(String userType){
+        this.userType = userType;
     }
     
     public static void main(String args[]) {

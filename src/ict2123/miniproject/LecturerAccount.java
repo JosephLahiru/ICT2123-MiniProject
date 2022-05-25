@@ -32,6 +32,7 @@ public class LecturerAccount extends javax.swing.JFrame {
 
     public LecturerAccount() {
         initComponents();
+        init();
     }
 
     /**
@@ -199,9 +200,8 @@ public class LecturerAccount extends javax.swing.JFrame {
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         Login login = new Login();
-        login.setUserName(userName);
-        login.setUserID(userId);
-        login.init();
+        login.getUserName(userName);
+        login.getUserID(userId);
         login.show();
         dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
@@ -210,7 +210,6 @@ public class LecturerAccount extends javax.swing.JFrame {
         UpdateLecturer lecturer = new UpdateLecturer();
         lecturer.setUserNname(userName);
         lecturer.setUserID(userId);
-        lecturer.init();
         lecturer.show();
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -219,13 +218,13 @@ public class LecturerAccount extends javax.swing.JFrame {
         ViewNotice notice = new ViewNotice();
         notice.setUserNname(userName);
         notice.setUserID(userId);
-        notice.init();
         notice.show();
         dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         ViewAttendanceAndMedicalData att_med = new ViewAttendanceAndMedicalData(userName, userId, "lecturer");
+        
         att_med.show();
         dispose();
     }//GEN-LAST:event_jButton8ActionPerformed
@@ -234,7 +233,6 @@ public class LecturerAccount extends javax.swing.JFrame {
         UpdateCourse course = new UpdateCourse();
         course.setUserNname(userName);
         course.setUserID(userId);
-        course.init();
         course.show();
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -243,7 +241,7 @@ public class LecturerAccount extends javax.swing.JFrame {
         ViewStudent student = new ViewStudent();
         student.setUserNname(userName);
         student.setUserID(userId);
-        student.init();
+        student.setUserType("lecturer");
         student.show();
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -252,7 +250,7 @@ public class LecturerAccount extends javax.swing.JFrame {
         UploadMarks marks = new UploadMarks();
         marks.setUserNname(userName);
         marks.setUserID(userId);
-        marks.init();
+        marks.setUserType("lecturer");
         marks.show();
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -261,7 +259,7 @@ public class LecturerAccount extends javax.swing.JFrame {
         ViewStudentEligibility eligibility = new ViewStudentEligibility();
         eligibility.setUserNname(userName);
         eligibility.setUserID(userId);
-        eligibility.init();
+        eligibility.setUserType("lecturer");
         eligibility.show();
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -270,12 +268,12 @@ public class LecturerAccount extends javax.swing.JFrame {
         ViewStudentGrade grades = new ViewStudentGrade();
         grades.setUserNname(userName);
         grades.setUserID(userId);
-        grades.init();
+        grades.setUserType("lecturer");
         grades.show();
         dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    public void init() {
+    private void init() {
         setLocationRelativeTo(null);
 
         DbConnector DbCon = new DbConnector();
@@ -316,7 +314,7 @@ public class LecturerAccount extends javax.swing.JFrame {
 
     public void setUserID(int uID){
         this.userId = uID;
-    } 
+    }
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

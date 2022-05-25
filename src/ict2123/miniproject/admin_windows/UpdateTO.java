@@ -37,6 +37,7 @@ public class UpdateTO extends javax.swing.JFrame {
 
     public UpdateTO() {
         initComponents();
+        init();
     }
 
     /**
@@ -334,7 +335,6 @@ public class UpdateTO extends javax.swing.JFrame {
         TechnicalOfficerAccount to = new TechnicalOfficerAccount();
         to.setUserNname(userName);
         to.setUserID(userID);
-        to.init();
         to.show();
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed
@@ -384,7 +384,7 @@ public class UpdateTO extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSelectPropicActionPerformed
 
-    public void init() {
+    private void init() {
         setLocationRelativeTo(null);
 
         btnUpdateData.setFocusable(false);

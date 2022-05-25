@@ -35,6 +35,7 @@ public class UpdateStudent extends javax.swing.JFrame {
 
     public UpdateStudent() {
         initComponents();
+        init();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -321,7 +322,6 @@ public class UpdateStudent extends javax.swing.JFrame {
         StudentAccount student = new StudentAccount();
         student.setUserNname(userName);
         student.setUserID(userID);
-        student.init();
         student.show();
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed
@@ -371,7 +371,7 @@ public class UpdateStudent extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSelectPropicActionPerformed
 
-    public void init() {
+    private void init() {
         setLocationRelativeTo(null);
 
         btnUpdateData.setFocusable(false);

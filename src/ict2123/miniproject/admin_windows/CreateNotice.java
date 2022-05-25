@@ -23,6 +23,7 @@ public class CreateNotice extends javax.swing.JFrame {
     
     public CreateNotice() {
         initComponents();
+        init();
     }
 
     /**
@@ -161,12 +162,11 @@ public class CreateNotice extends javax.swing.JFrame {
         AdminAccount admin = new AdminAccount();
         admin.setUserNname(userName);
         admin.setUserID(userID);
-        admin.init();
         admin.show();
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
-    public void init(){
+    private void init(){
         setLocationRelativeTo(null);
         btnCreate.setFocusable(false);
 
