@@ -16,6 +16,7 @@ public class Index extends javax.swing.JFrame {
     public Index() {
         initComponents();
         setLocationRelativeTo(null);
+        jButton1.setFocusable(false);
     }
 
     /**
