@@ -23,6 +23,7 @@ public class UpdateCourse extends javax.swing.JFrame {
 
     public UpdateCourse() {
         initComponents();
+        init();
         try {
             populate_table();
         } catch (SQLException ex) {
@@ -279,6 +280,10 @@ public class UpdateCourse extends javax.swing.JFrame {
     public void setUserID(int uID){
         this.userID = uID;
     }
+    
+   public void setUserType(String uType){
+       this.userType = uType;
+   }
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
