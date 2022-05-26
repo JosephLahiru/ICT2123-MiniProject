@@ -250,6 +250,7 @@ public class TechnicalOfficerAccount extends javax.swing.JFrame {
         UploadAttendance attendance = new UploadAttendance();
         attendance.setUserNname(userName);
         attendance.setUserID(userId);
+        attendance.setUserType("technical_officer");
         attendance.init();
         attendance.show();
         dispose();
