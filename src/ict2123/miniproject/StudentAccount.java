@@ -220,6 +220,7 @@ public class StudentAccount extends javax.swing.JFrame implements Startup{
         Login login = new Login();
         login.setUserName(userName);
         login.setUserID(userId);
+        login.setUserType("student");
         login.init();
         login.show();
         dispose();
@@ -238,6 +239,7 @@ public class StudentAccount extends javax.swing.JFrame implements Startup{
         ViewNotice notice = new ViewNotice();
         notice.setUserNname(userName);
         notice.setUserID(userId);
+        notice.setUserType("student");
         notice.init();
         notice.show();
         dispose();
@@ -247,6 +249,7 @@ public class StudentAccount extends javax.swing.JFrame implements Startup{
         ViewCourse course = new ViewCourse();
         course.setUserNname(userName);
         course.setUserID(userId);
+        course.setUserType("student");
         course.init();
         course.show();
         dispose();
@@ -262,6 +265,7 @@ public class StudentAccount extends javax.swing.JFrame implements Startup{
         ViewStudentGrade grades = new ViewStudentGrade();
         grades.setUserNname(userName);
         grades.setUserID(userId);
+        grades.setUserType("student");
         grades.init();
         grades.show();
         dispose();

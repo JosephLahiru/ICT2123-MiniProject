@@ -117,6 +117,7 @@ public class UploadMarks extends javax.swing.JFrame {
         UploadMidExamMarks marks = new UploadMidExamMarks();
         marks.setUserNname(userName);
         marks.setUserID(userID);
+        marks.setUserType("lecturer");
         marks.init();
         marks.show();
         dispose();
@@ -126,6 +127,7 @@ public class UploadMarks extends javax.swing.JFrame {
         UploadAssessmentMarks marks = new UploadAssessmentMarks();
         marks.setUserNname(userName);
         marks.setUserID(userID);
+        marks.setUserType("lecturer");
         marks.init();
         marks.show();
         dispose();
@@ -135,6 +137,7 @@ public class UploadMarks extends javax.swing.JFrame {
         UploadEndExamMarks marks = new UploadEndExamMarks();
         marks.setUserNname(userName);
         marks.setUserID(userID);
+        marks.setUserType("lecturer");
         marks.init();
         marks.show();
         dispose();
@@ -174,6 +177,7 @@ public class UploadMarks extends javax.swing.JFrame {
         UploadQuizMarks marks = new UploadQuizMarks();
         marks.setUserNname(userName);
         marks.setUserID(userID);
+        marks.setUserType("lecturer");
         marks.init();
         marks.show();
         dispose();
@@ -193,6 +197,9 @@ public class UploadMarks extends javax.swing.JFrame {
 
     public void setUserID(int uID){
         this.userID = uID;
+    }
+    public void setUserType(String uType){
+       this.userType = uType;
     }
     
     public static void main(String args[]) {

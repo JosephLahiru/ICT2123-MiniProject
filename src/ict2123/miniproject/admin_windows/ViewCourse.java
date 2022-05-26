@@ -184,6 +184,9 @@ public class ViewCourse extends javax.swing.JFrame {
     public void setUserID(int uID){
         this.userID = uID;
     }
+    public void setUserType(String uType){
+       this.userType = uType;
+    }
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

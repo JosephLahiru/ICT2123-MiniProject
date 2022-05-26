@@ -205,6 +205,7 @@ public class TechnicalOfficerAccount extends javax.swing.JFrame {
         Login login = new Login();
         login.setUserName(userName);
         login.setUserID(userId);
+        login.setUserType("technical_officer");
         login.init();
         login.show();
         dispose();
@@ -229,6 +230,7 @@ public class TechnicalOfficerAccount extends javax.swing.JFrame {
         ViewNotice notice = new ViewNotice();
         notice.setUserNname(userName);
         notice.setUserID(userId);
+        notice.setUserType("technical_officer");
         notice.init();
         notice.show();
         dispose();
@@ -238,6 +240,7 @@ public class TechnicalOfficerAccount extends javax.swing.JFrame {
         UploadMedical medical = new UploadMedical();
         medical.setUserNname(userName);
         medical.setUserID(userId);
+        medical.setUserType("technical_officer");
         medical.init();
         medical.show();
         dispose();

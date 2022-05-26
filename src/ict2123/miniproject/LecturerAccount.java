@@ -237,6 +237,7 @@ public class LecturerAccount extends javax.swing.JFrame {
         Login login = new Login();
         login.setUserName(userName);
         login.setUserID(userId);
+        login.setUserType("lecturer");
         login.init();
         login.show();
         dispose();
@@ -255,6 +256,7 @@ public class LecturerAccount extends javax.swing.JFrame {
         ViewNotice notice = new ViewNotice();
         notice.setUserNname(userName);
         notice.setUserID(userId);
+        notice.setUserType("lecturer");
         notice.init();
         notice.show();
         dispose();
@@ -270,6 +272,7 @@ public class LecturerAccount extends javax.swing.JFrame {
         UpdateCourse course = new UpdateCourse();
         course.setUserNname(userName);
         course.setUserID(userId);
+        course.setUserType("lecturer");
         course.init();
         course.show();
         dispose();
@@ -279,6 +282,7 @@ public class LecturerAccount extends javax.swing.JFrame {
         ViewStudent student = new ViewStudent();
         student.setUserNname(userName);
         student.setUserID(userId);
+        student.setUserType("lecturer");
         student.init();
         student.show();
         dispose();
@@ -288,6 +292,7 @@ public class LecturerAccount extends javax.swing.JFrame {
         UploadMarks marks = new UploadMarks();
         marks.setUserNname(userName);
         marks.setUserID(userId);
+        marks.setUserType("lecturer");
         marks.init();
         marks.show();
         dispose();
@@ -297,6 +302,7 @@ public class LecturerAccount extends javax.swing.JFrame {
         ViewStudentEligibility eligibility = new ViewStudentEligibility();
         eligibility.setUserNname(userName);
         eligibility.setUserID(userId);
+        eligibility.setUserType("lecturer");
         eligibility.init();
         eligibility.show();
         dispose();
@@ -306,6 +312,7 @@ public class LecturerAccount extends javax.swing.JFrame {
         ViewStudentGrade grades = new ViewStudentGrade();
         grades.setUserNname(userName);
         grades.setUserID(userId);
+        grades.setUserType("lecturer");
         grades.init();
         grades.show();
         dispose();

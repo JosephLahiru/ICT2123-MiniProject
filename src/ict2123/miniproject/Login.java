@@ -280,6 +280,9 @@ public class Login extends javax.swing.JFrame {
     void setUserID(int userId) {
         this.id = userId;
     }
+    void setUserType(String type){
+        this.type = type;
+    }
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

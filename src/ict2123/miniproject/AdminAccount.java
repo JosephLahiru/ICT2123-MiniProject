@@ -313,6 +313,7 @@ public class AdminAccount extends javax.swing.JFrame {
         UpdateCourse update = new UpdateCourse();
         update.setUserNname(userName);
         update.setUserID(userId);
+        update.setUserType("admin");
         update.init();
         update.show();
         dispose();
@@ -331,6 +332,7 @@ public class AdminAccount extends javax.swing.JFrame {
         Login login = new Login();
         login.setUserName(userName);
         login.setUserID(userId);
+        login.setUserType("admin");
         login.init();
         login.show();
         dispose();
@@ -349,6 +351,7 @@ public class AdminAccount extends javax.swing.JFrame {
         ViewCourse course = new ViewCourse();
         course.setUserNname(userName);
         course.setUserID(userId);
+        course.setUserType("admin");
         course.init();
         course.show();
         dispose();
@@ -358,6 +361,7 @@ public class AdminAccount extends javax.swing.JFrame {
         ViewNotice notice = new ViewNotice();
         notice.setUserNname(userName);
         notice.setUserID(userId);
+        notice.setUserType("admin");
         notice.init();
         notice.show();
         dispose();
