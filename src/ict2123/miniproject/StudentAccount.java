@@ -21,7 +21,7 @@ import javax.swing.ImageIcon;
  *
  * @author Joseph Rasanjana
  */
-public class StudentAccount extends javax.swing.JFrame {
+public class StudentAccount extends javax.swing.JFrame implements Startup{
 
     private String userName, department;
     private int userId;
@@ -234,6 +234,7 @@ public class StudentAccount extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    @Override
     public void init() {
         setLocationRelativeTo(null);
 
