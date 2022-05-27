@@ -5,6 +5,7 @@
 package ict2123.miniproject.admin_windows;
 
 import ict2123.miniproject.DbConnector;
+import java.awt.Desktop;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -37,6 +38,7 @@ public class UploadLectureMaterials extends javax.swing.JFrame {
         try {
             populateCourseCombo();
             populate_table();
+            populateCourseMatirialCombo();
         } catch (SQLException ex) {
             Logger.getLogger(UploadLectureMaterials.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -60,6 +62,8 @@ public class UploadLectureMaterials extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         courseMaterialTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        metrialCombo = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -118,13 +122,25 @@ public class UploadLectureMaterials extends javax.swing.JFrame {
 
         jLabel1.setText("Choose Course : ");
 
+        jButton1.setText("Open File");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(metrialCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnUpload)
@@ -134,7 +150,7 @@ public class UploadLectureMaterials extends javax.swing.JFrame {
                             .addComponent(jLabel1))
                         .addGap(40, 40, 40)
                         .addComponent(jScrollPane1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap(77, Short.MAX_VALUE)
                         .addComponent(lblLecturer)
                         .addGap(77, 77, 77)
@@ -160,8 +176,12 @@ public class UploadLectureMaterials extends javax.swing.JFrame {
                         .addComponent(lblSelected)
                         .addGap(47, 47, 47)
                         .addComponent(btnUpload, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(48, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(metrialCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
@@ -213,7 +233,7 @@ public class UploadLectureMaterials extends javax.swing.JFrame {
                         StandardCopyOption.REPLACE_EXISTING);
 
                 String user_query = "INSERT INTO course_materials (course_id, metirial_path)"
-                        + "VALUES('" + course_id + "', 'rc/ict2123/course_matrials/" + relative_pdf_path + "');";
+                        + "VALUES('" + course_id + "', 'src/ict2123/course_matrials/" + relative_pdf_path + "');";
 
                 Statement st1 = null;
                 try {
@@ -242,6 +262,34 @@ public class UploadLectureMaterials extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please Select a File First !!!", "Warning !!!", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnUploadActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        try {
+            
+            String path=null;
+            
+            String get_course_data = "SELECT metirial_path FROM course_materials WHERE material_id='" + metrialCombo.getSelectedItem().toString() + "';";
+            
+            Statement st3 = conn.createStatement();
+            ResultSet result3 = st3.executeQuery(get_course_data);
+            
+            while (result3.next()) {
+                path = result3.getString("metirial_path");
+            }
+            
+            if (Desktop.isDesktopSupported()) {
+                try {
+                    File myFile = new File(path);
+                    Desktop.getDesktop().open(myFile);
+                } catch (IOException ex) {
+                    Logger.getLogger(UploadLectureMaterials.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UploadLectureMaterials.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public void setUserNname(String uName) {
         this.userName = uName;
@@ -274,6 +322,19 @@ public class UploadLectureMaterials extends javax.swing.JFrame {
             String course_id = result3.getString("course_id");
 
             courseCombo.addItem(Integer.toString(id) + ":" + course_id);
+        }
+    }
+
+    private void populateCourseMatirialCombo() throws SQLException {
+        String get_course_data = "SELECT material_id FROM course_materials;";
+
+        Statement st3 = conn.createStatement();
+        ResultSet result3 = st3.executeQuery(get_course_data);
+
+        while (result3.next()) {
+            int material_id = result3.getInt("material_id");
+
+            metrialCombo.addItem(Integer.toString(material_id));
         }
     }
 
@@ -337,9 +398,11 @@ public class UploadLectureMaterials extends javax.swing.JFrame {
     private javax.swing.JButton btnUpload;
     private javax.swing.JComboBox<String> courseCombo;
     private javax.swing.JTable courseMaterialTable;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblLecturer;
     private javax.swing.JLabel lblSelected;
+    private javax.swing.JComboBox<String> metrialCombo;
     // End of variables declaration//GEN-END:variables
 }
