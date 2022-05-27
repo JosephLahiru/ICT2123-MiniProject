@@ -281,7 +281,7 @@ public class CreateUser extends javax.swing.JFrame {
 
                 PreparedStatement ps = null;
 
-                if (type != "admin") {
+                if (!"admin".equals(type)) {
 
                     ps = conn.prepareStatement("insert into " + type + "(first_name, last_name, "
                             + "pro_pic, password, address, email, dob, contact_number, gender, department) "
