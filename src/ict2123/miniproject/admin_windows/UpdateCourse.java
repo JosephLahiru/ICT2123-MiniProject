@@ -30,6 +30,7 @@ public class UpdateCourse extends javax.swing.JFrame {
             Logger.getLogger(UpdateCourse.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,6 +51,7 @@ public class UpdateCourse extends javax.swing.JFrame {
         btnBack = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         courseTable = new javax.swing.JTable();
+        insertCourseData = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -106,6 +108,13 @@ public class UpdateCourse extends javax.swing.JFrame {
             courseTable.getColumnModel().getColumn(3).setResizable(false);
         }
 
+        insertCourseData.setText("<html><center>Insert<br>Course<br>Materials</center></html>");
+        insertCourseData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insertCourseDataActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -127,7 +136,8 @@ public class UpdateCourse extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
                                     .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
+                                    .addComponent(jLabel3)
+                                    .addComponent(insertCourseData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(40, 40, 40)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(txtNewValue, javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,10 +168,12 @@ public class UpdateCourse extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(txtNewValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
+                        .addGap(23, 23, 23)
+                        .addComponent(insertCourseData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnUpdateData))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(36, 36, 36))
         );
@@ -177,7 +189,6 @@ public class UpdateCourse extends javax.swing.JFrame {
 
             updateField = updateFieldCombo.getSelectedItem().toString().replace(" ", "_");
             newValue = txtNewValue.getText();
-
 
             String update_query = "UPDATE course SET " + updateField + " = '" + newValue + "' WHERE course_id = '" + course_id + "';";
 
@@ -202,7 +213,7 @@ public class UpdateCourse extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(CreateUser.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Please fill all the fields !!!", "Warning !!!", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnUpdateDataActionPerformed
@@ -233,9 +244,19 @@ public class UpdateCourse extends javax.swing.JFrame {
             to.init();
             to.show();
         }
-        
+
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void insertCourseDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertCourseDataActionPerformed
+        UploadLectureMaterials materials = new UploadLectureMaterials();
+        materials.setUserNname(userName);
+        materials.setUserID(userID);
+        materials.init();
+        materials.show();
+        
+        dispose();
+    }//GEN-LAST:event_insertCourseDataActionPerformed
 
     public void init() {
         setLocationRelativeTo(null);
@@ -250,12 +271,12 @@ public class UpdateCourse extends javax.swing.JFrame {
         txtNewValue.setText("");
         txtCourseId.setText("");
     }
-    
+
     private void populate_table() throws SQLException {
 
         DefaultTableModel tblModel = (DefaultTableModel) courseTable.getModel();
         tblModel.setRowCount(0);
-        
+
         String get_notice = "SELECT * FROM course;";
 
         Statement st2 = conn.createStatement();
@@ -273,18 +294,18 @@ public class UpdateCourse extends javax.swing.JFrame {
         }
     }
 
-    public void setUserNname(String uName){
+    public void setUserNname(String uName) {
         this.userName = uName;
     }
 
-    public void setUserID(int uID){
+    public void setUserID(int uID) {
         this.userID = uID;
     }
-    
-    public void setUserType(String uType){
-       this.userType = uType;
+
+    public void setUserType(String uType) {
+        this.userType = uType;
     }
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -322,6 +343,7 @@ public class UpdateCourse extends javax.swing.JFrame {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnUpdateData;
     private javax.swing.JTable courseTable;
+    private javax.swing.JButton insertCourseData;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
