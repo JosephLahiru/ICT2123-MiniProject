@@ -279,25 +279,7 @@ public class CreateUser extends javax.swing.JFrame {
 
             try {
 
-                PreparedStatement ps = conn.prepareStatement("insert into " + type + "(first_name, last_name, "
-                        + "pro_pic, password, address, email, dob, contact_number, gender, department) "
-                        + "VALUES(?,?,?,?,?,?,?,?,?,?)");
-
-                ps.setString(1, fname);
-                ps.setString(2, lname);
-
-                if (Objects.nonNull(file)) {
-                    ps.setBinaryStream(3, (InputStream) image_input, (int) file.length());
-                } else {
-                    ps.setNull(3, WIDTH);
-                }
-                ps.setString(4, _pwd);
-                ps.setString(5, address);
-                ps.setString(6, email);
-                ps.setString(7, dob);
-                ps.setString(8, contact);
-                ps.setString(9, _gender);
-                ps.setString(10, department);
+                PreparedStatement ps = null;
 
                 if (type != "admin") {
 
@@ -321,6 +303,26 @@ public class CreateUser extends javax.swing.JFrame {
                     ps.setString(9, _gender);
                     ps.setString(10, department);
 
+                } else {
+                    ps = conn.prepareStatement("insert into " + type + "(first_name, last_name, "
+                            + "pro_pic, password, address, email, dob, contact_number, gender, department) "
+                            + "VALUES(?,?,?,?,?,?,?,?,?,?)");
+
+                    ps.setString(1, fname);
+                    ps.setString(2, lname);
+
+                    if (Objects.nonNull(file)) {
+                        ps.setBinaryStream(3, (InputStream) image_input, (int) file.length());
+                    } else {
+                        ps.setNull(3, WIDTH);
+                    }
+                    ps.setString(4, _pwd);
+                    ps.setString(5, address);
+                    ps.setString(6, email);
+                    ps.setString(7, dob);
+                    ps.setString(8, contact);
+                    ps.setString(9, _gender);
+                    ps.setString(10, department);
                 }
 
                 if (!ps.execute()) {
