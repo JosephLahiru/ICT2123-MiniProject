@@ -284,8 +284,8 @@ public class CreateUser extends javax.swing.JFrame {
                 if (!"admin".equals(type)) {
 
                     ps = conn.prepareStatement("insert into " + type + "(first_name, last_name, "
-                            + "pro_pic, password, address, email, dob, contact_number, gender, department) "
-                            + "VALUES(?,?,?,?,?,?,?,?,?,?)");
+                            + "pro_pic, password, address, email, dob, contact_number, gender) "
+                            + "VALUES(?,?,?,?,?,?,?,?,?)");
 
                     ps.setString(1, fname);
                     ps.setString(2, lname);
@@ -301,7 +301,6 @@ public class CreateUser extends javax.swing.JFrame {
                     ps.setString(7, dob);
                     ps.setString(8, contact);
                     ps.setString(9, _gender);
-                    ps.setString(10, department);
 
                 } else {
                     ps = conn.prepareStatement("insert into " + type + "(first_name, last_name, "
