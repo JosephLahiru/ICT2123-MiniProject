@@ -4,7 +4,6 @@
  */
 package ict2123.miniproject;
 
-import com.mysql.cj.jdbc.result.UpdatableResultSet;
 import ict2123.miniproject.admin_windows.UpdateTO;
 import ict2123.miniproject.admin_windows.UploadAttendance;
 import ict2123.miniproject.admin_windows.UploadMedical;
